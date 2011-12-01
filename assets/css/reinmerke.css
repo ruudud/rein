@@ -1,0 +1,56 @@
+body {
+    margin: 5px;
+}
+.reset {
+    position: absolute;
+    cursor: pointer;
+    color: #4E9A06;
+    font-size: 150%;
+    font-weight: bold;
+}
+.cut {
+    float: left;
+    margin-left: 5px;
+    margin-top: 5px;
+    color: #EEE;
+    font-size: 70%;
+    background-color: #EB6841;
+    text-align: center;
+}
+.draggable {
+    position: absolute;
+    color: #EEE;
+    font-size: 70%;
+    background-color: #00A0B0;
+    text-align: center;
+}
+#ears {
+    margin-top: 10px;
+    position: relative;
+}
+.ear {
+    background-color: #6A4A3C;
+    color: #FFF;
+    text-align: center;
+    border-bottom-right-radius: 150px 35px;
+    border-top-right-radius: 150px 35px;
+}
+.ear .forward, .ear .back {
+    float: left;
+}
+.ear .forward {
+    border-bottom: 1px solid #FFF;
+}
+.ear .side {
+    border-left: 1px solid #FFF;
+    float: right;
+}
+
+/** Common styles **/
+.clear {
+    clear: both;
+}
+div.box > div {
+    width: 55px;
+    height: 40px;
+}
