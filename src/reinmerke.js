@@ -23,6 +23,6 @@ var REINMERKE = (function() {
 
 jQuery(function($) {
     REINMERKE.init();
+
+    window.scrollTo(0, 1);
 });
-
-

@@ -16,6 +16,8 @@ body {
     font-size: 70%;
     background-color: #EB6841;
     text-align: center;
+    width: 55px;
+    height: 40px;
 }
 .draggable {
     position: absolute;
@@ -23,6 +25,8 @@ body {
     font-size: 70%;
     background-color: #00A0B0;
     text-align: center;
+    width: 75px;
+    height: 60px;
 }
 #ears {
     margin-top: 10px;
@@ -49,8 +53,4 @@ body {
 /** Common styles **/
 .clear {
     clear: both;
-}
-div.box > div {
-    width: 55px;
-    height: 40px;
 }
