@@ -86,10 +86,10 @@
         el: $('#cuts'),
 
         events: {
-            'click .cut': 'cutClick'
+            'click .cut': 'createDraggable'
         },
 
-        cutClick: function(e) {
+        createDraggable: function(e) {
             var clickedPos, newCut, clickedEl = e.currentTarget;
 
             e.originalEvent.preventDefault();
@@ -134,26 +134,50 @@
         },
 
         events: {
-            'touchstart .draggable': 'move',
+            'touchstart .draggable': 'start',
             'touchmove .draggable': 'move',
             'touchend .draggable': 'drop',
             'mousemove .draggable': 'move', // Mouse events may be removed
             'mouseup .draggable': 'drop'
         },
 
+        start: function(e) {
+            var oe = e.originalEvent;
+            if (oe.changedTouches) {
+                this.dragging = true;
+            }
+        },
         move: function(e) {
-            var coordinates, oe = e.originalEvent, clickedEl = e.currentTarget;
+            var coordinates, left, right, oe, $movingEl;
 
-            coordinates = {
-                top: oe.changedTouches && oe.changedTouches[0].pageY || oe.clientY,
-                left: oe.changedTouches && oe.changedTouches[0].pageX || oe.clientX
-            };
+            oe = e.originalEvent;
+            $movingEl = $(e.currentTarget);
 
-            $(clickedEl).css(coordinates);
+            oe.preventDefault();
+
+            if (oe.targetTouches) {
+                var touch = oe.targetTouches[0]; // One finger is enough
+                coordinates = {
+                    top: (touch.pageY - (parseInt($movingEl.css('height'), 10) / 2)),
+                    left: (touch.pageX - (parseInt($movingEl.css('width'), 10) / 2))
+                };
+                if (this.dragging) {
+                    $movingEl.css(coordinates);
+                }
+            }
+            else {
+                coordinates = {
+                    top: oe.clientY,
+                    left: oe.clientX
+                };
+                $movingEl.css(coordinates);
+            }
         },
 
         drop: function(e) {
             var currentPoint, activePart, cutType, searchResult, oe, droppedEl;
+
+            this.dragging = false;
 
             oe = e.originalEvent;
             droppedEl = e.currentTarget;
