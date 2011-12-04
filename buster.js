@@ -1,7 +1,7 @@
 var config = module.exports;
 
 config['Browser tests'] = {
-    libs: ['lib/jquery-1.6.4.js', 'lib/underscore.js', 'lib/backbone.js', 
+    libs: ['lib/jquery-1.7.1.min.js', 'lib/underscore.js', 'lib/backbone.js', 
            'lib/backbone.localStorage.js'],
     sources: ['src/reinmerke.js', 'src/**/*.js'],
     tests: ['test/*_test.js'],
