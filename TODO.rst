@@ -1,9 +1,8 @@
 List of stuff to do
 ===================
-[ ] Add more cuts
+[ ] Cut graphics when drawn to ear
+[ ] Add support to draw all cuts, on both ears
 [ ] Add offline mainifest file, *disable* cache on this file
-[ ] Create script to parse information
-[ ] Canvas for shapes/ear, http://www.kineticjs.com/ for events
 [ ] Speed testing on search
 [x] More test data
 [x] Create backbone models
@@ -14,3 +13,4 @@ List of stuff to do
 [x] Make search incremental
 [x] Add reset search btn
 [x] Adaptive / responsive design: http://adapt.960.gs/ -- Adapt.JS.
+[x] Create script to parse information
