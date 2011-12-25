@@ -9,6 +9,7 @@ body {
     font-weight: bold;
 }
 .cut {
+    display: block;
     float: left;
     margin-left: 5px;
     margin-top: 5px;

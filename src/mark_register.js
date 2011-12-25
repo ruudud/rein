@@ -119,7 +119,7 @@
 },
 {
     id: 4410,
-    firstName: 'dan',
+    firstName: 'Dan',
     lastName: 'Jåma',
     address: '',
     place: '',

@@ -1,4 +1,4 @@
-(function(F, P, $) {
+(function(F, P, PA, $) {
     F.init = function() {
         F.cutView = new F.Views.Cuts();
         F.earsView = new F.Views.Ears();
@@ -7,6 +7,10 @@
     // Models and Collections
     // The Cut model needs to have both cut type and side=true/false.
     F.Models.Cut = Backbone.Model.extend({ });
+
+    F.Collections.Cuts = Backbone.Collection.extend({
+        model: F.Models.Cut
+    });
 
     F.Views.Ears = Backbone.View.extend({
         el: $('#ears'),
@@ -36,7 +40,7 @@
         initialize: function() {
             this.forward = new F.Views.EarPart({
                 el: this.$('.forward'),
-                name: 'c1'
+                name: 'c1',
             });
             this.side = new F.Views.EarPart({
                 el: this.$('.side'),
@@ -58,28 +62,71 @@
     F.Views.EarPart = Backbone.View.extend({
         initialize: function() {
             var offset = this.el.offset() || {};
-            this.box = {
+            this.coordinates = {
                 x1: offset.left,
                 y1: offset.top,
                 x2: offset.left + this.el.width(),
                 y2: offset.top + this.el.height()
             };
+            this.downRightPoint = {
+                x: this.el.width(),
+                y: this.el.height()
+            };
+            this.cuts = new F.Collections.Cuts();
+            this.ctx = this._setupCanvas();
         },
 
-        render: function() {
-            this.el.text(this.cuts);
+        isFront: function() {
+            return _.indexOf(['c1', 'c6'], this.options.name) >= 0;
+        },
+
+        isBack: function() {
+            return _.indexOf(['c3', 'c4'], this.options.name) >= 0;
+        },
+
+        isSide: function() {
+            return _.indexOf(['c2', 'c5'], this.options.name) >= 0;
+        },
+
+        isRight: function() {
+            return _.indexOf(['c1', 'c2', 'c3'], this.options.name) >= 0;
+        },
+
+        isLeft: function() {
+            return _.indexOf(['c4', 'c5', 'c6'], this.options.name) >= 0;
         },
 
         addCut: function(cut) {
-            this.cuts = this.cuts || ''; // FIXME: Collection?
-            this.cuts += cut.get('cutType');
+            PA.draw(cut, this);
+            this.cuts.add(cut); 
+        },
+
+        addText: function(text) {
+            var offsetY = this.cuts.length * 10 + 11;
+            this.ctx.fillText(text, 0, offsetY);
         },
 
         clearCuts: function() {
-            this.cuts = '';
-            this.render();
-        }
+            this.cuts.reset();
+            this.ctx.clearRect(0, 0, this.downRightPoint.x,
+                               this.downRightPoint.y);
+            this.ctx.save();
+        },
 
+        _setupCanvas: function() {
+            var cvs, ctx;
+            cvs = this.$('canvas').length > 0 && this.$('canvas')[0];
+            ctx = cvs && cvs.getContext('2d');
+            this._copyWidthAndHeight(cvs, this.el);
+            this._copyWidthAndHeight(ctx, this.el);
+            ctx.fillStyle = '#FFFFFF';
+            return ctx;
+        },
+
+        _copyWidthAndHeight: function(el, $baseEl) {
+            el.width = $baseEl.width();
+            el.height = $baseEl.height();
+        }
     });
 
     F.Views.Cuts = Backbone.View.extend({
@@ -148,7 +195,7 @@
             }
         },
         move: function(e) {
-            var coordinates, left, right, oe, $movingEl;
+            var coordinates, left, right, oe, $movingEl, touch;
 
             oe = e.originalEvent;
             $movingEl = $(e.currentTarget);
@@ -156,7 +203,7 @@
             oe.preventDefault();
 
             if (oe.targetTouches) {
-                var touch = oe.targetTouches[0]; // One finger is enough
+                touch = oe.targetTouches[0]; // One finger is enough
                 coordinates = {
                     top: (touch.pageY - (parseInt($movingEl.css('height'), 10) / 2)),
                     left: (touch.pageX - (parseInt($movingEl.css('width'), 10) / 2))
@@ -175,12 +222,9 @@
         },
 
         drop: function(e) {
-            var currentPoint, activePart, cutType, searchResult, oe, droppedEl;
+            var currentPoint, activePart, oe = e.originalEvent;
 
             this.dragging = false;
-
-            oe = e.originalEvent;
-            droppedEl = e.currentTarget;
 
             currentPoint = {
                 y: oe.changedTouches && oe.changedTouches[0].pageY || oe.clientY,
@@ -194,13 +238,7 @@
             }
 
             activePart.addCut(this.model);
-            activePart.render();
-
-            cutType = this.model.get('cutType');
-            searchResult = P.Owners.search(activePart.options.name, cutType);
-
-            P.resultsView.update(searchResult);
-            P.resultsView.render();
+            this._updateSearch(activePart.options.name, activePart.cuts);
 
             this.clear();
         },
@@ -209,18 +247,24 @@
             var sideCut = cut.get('side'), rightEar = F.earsView.rightEar;
 
             if (sideCut) {
-                if (F.isInside(rightEar.side.box, point)) {
+                if (F.isInside(rightEar.side.coordinates, point)) {
                     return rightEar.side;
                 }
             }
             else {
-                if (F.isInside(rightEar.forward.box, point)) {
+                if (F.isInside(rightEar.forward.coordinates, point)) {
                     return rightEar.forward;
                 }
-                else if (F.isInside(rightEar.back.box, point)) {
+                else if (F.isInside(rightEar.back.coordinates, point)) {
                     return rightEar.back;
                 }
             }
+        },
+
+        _updateSearch: function(partName, cuts) {
+            var searchResult = P.Owners.search(partName, cuts);
+            P.resultsView.update(searchResult);
+            P.resultsView.render();
         }
     });
 
@@ -237,4 +281,4 @@
         }
         return true;
     };
-}(REINMERKE.module('drawear'), REINMERKE.module('people'), jQuery));
+}(REINMERKE.module('drawear'), REINMERKE.module('people'), REINMERKE.module('painter'), jQuery));
