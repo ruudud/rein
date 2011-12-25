@@ -1,4 +1,4 @@
-(function(P, F) {
+(function(P, F, E) {
     'use strict';
     var assert = buster.assert, refute = buster.refute;
 
@@ -17,13 +17,13 @@
         },
         'filter tests': {
             setUp: function() {
-                var cut_a = new F.Models.Cut({'cutType': 'a'});
-                this.cuts = new F.Collections.Cuts([cut_a]);
+                var cut_a = new E.Models.Cut({'cutType': 'a'});
+                this.cuts = new E.Collections.Cuts([cut_a]);
                 this.people = new P.Collections.Owners();
                 this.people.create({'id': 13, 'c1': 'a'});
                 this.people.create({'id': 14, 'c1': 'c'});
-                this.bcuts = new F.Collections.Cuts([
-                        new F.Models.Cut({'cutType':'a,b'})]);
+                this.bcuts = new E.Collections.Cuts([
+                        new E.Models.Cut({'cutType':'a,b'})]);
             },
             'a on pos1 should only include a-people': function() {
                 var matchingIDS = this.people.search('c1', this.cuts);
@@ -66,4 +66,4 @@
             }
         }
     });
-}(REINMERKE.module('people'), REINMERKE.module('findbyear')));
+}(REINMERKE.module('people'), REINMERKE.module('findbyear'), REINMERKE.module('ears')));
