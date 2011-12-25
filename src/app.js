@@ -1,11 +1,6 @@
 var REINMERKE = (function() {
     var modules = {}, init, module;
 
-    init = function() {
-        REINMERKE.module('people').init();
-        REINMERKE.module('drawear').init();
-    };
-
     module = function(name) {
         if (modules[name]) {
             return modules[name];
@@ -16,13 +11,7 @@ var REINMERKE = (function() {
     };
 
     return {
-        init: init,
         module: module,
     };
 }());
 
-jQuery(function($) {
-    REINMERKE.init();
-
-    window.scrollTo(0, 1);
-});

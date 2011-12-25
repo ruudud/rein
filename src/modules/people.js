@@ -89,7 +89,6 @@
                 cutsAtPosOwner = owner.get(pos) || '';
 
                 _.each(cutsMap, function(cutVal) {
-                    console.log(cutVal);
                     if (cutVal.indexOf('a') > -1) {
                         if (cutsAtPosOwner.indexOf(cutVal) < 0 &&
                                 cutsAtPosOwner.indexOf(cutVal.replace(/a/g, 'b')) < 0) {
@@ -124,4 +123,4 @@
         });
     };
 
-}(REINMERKE.module('people'), REINMERKE.module('drawear')));
+}(REINMERKE.module('people'), REINMERKE.module('findbyear')));

@@ -281,4 +281,4 @@
         }
         return true;
     };
-}(REINMERKE.module('drawear'), REINMERKE.module('people'), REINMERKE.module('painter'), jQuery));
+}(REINMERKE.module('findbyear'), REINMERKE.module('people'), REINMERKE.module('painter'), jQuery));

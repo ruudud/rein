@@ -66,4 +66,4 @@
             }
         }
     });
-}(REINMERKE.module('people'), REINMERKE.module('drawear')));
+}(REINMERKE.module('people'), REINMERKE.module('findbyear')));
