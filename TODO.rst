@@ -1,6 +1,7 @@
 List of stuff to do
 ===================
-[ ] Cut graphics when drawn to ear
+[ ] Fix tests
+[ ] Canvas on all cuts
 [ ] Add support to draw all cuts, on both ears
 [ ] Add offline mainifest file, *disable* cache on this file
 [ ] Speed testing on search
@@ -14,3 +15,6 @@ List of stuff to do
 [x] Add reset search btn
 [x] Adaptive / responsive design: http://adapt.960.gs/ -- Adapt.JS.
 [x] Create script to parse information
+[x] Start on cut graphics when drawn to ear
+[x] Properly clear canvas on reset
+[x] Width on canvas based on Adapt.JS

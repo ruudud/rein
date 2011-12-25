@@ -31,28 +31,40 @@
 <body>
 
     <div id="cuts">
-        <div class="cut" data-type="a,b">tjiehkie</div>
-        <div class="cut" data-type="c">govre</div>
-        <div class="cut" data-type="d">voelese</div>
-        <div class="cut" data-type="e">vitnjeluktie<br/>åvteld</div>
-        <div class="cut" data-type="f">vitnjeluktie<br/>minngelde</div>
+        <a class="cut" data-type="a,b">tjiehkie</a>
+        <a class="cut" data-type="c">govre</a>
+        <a class="cut" data-type="d">voelese</a>
+        <a class="cut" data-type="e">vitnjeluktie åvteld</a>
+        <a class="cut" data-type="f">vitnjeluktie minngelde</a>
         <span class="clear"></span>
-        <div class="cut" data-type="g">saerkie</div>
-        <div class="cut" data-type="k">raejkie</div>
-        <div class="cut" data-type="l">skaajte<br/>åvtelde</div>
-        <div class="cut" data-type="n">kruehkie<br/>åvtelde</div>
-        <div class="cut" data-type="x">tjiehkie<br/>vuelege</div>
+        <a class="cut" data-type="g">saerkie</a>
+        <a class="cut" data-type="k">raejkie</a>
+        <a class="cut" data-type="l">skaajte åvtelde</a>
+        <a class="cut" data-type="n">kruehkie åvtelde</a>
+        <a class="cut" data-type="x">tjiehkie vuelege</a>
         <span class="clear"></span>
-        <div class="cut" data-type="z">jarpe</div>
-        <div class="cut" data-type="y">tsiehkie-<br/>saerkie</div>
+        <a class="cut" data-type="z">jarpe</a>
+        <a class="cut" data-type="y">tsiehkie- saerkie</a>
     </div>
 
     <div id="ears">
         <div class="reset">↩</div>
         <div id="right_ear" class="ear">
-            <div class="forward"></div>
-            <div class="side"></div>
-            <div class="back"></div>
+            <div class="forward">
+                <canvas>
+                    Din nettleser støtter ikke canvas.
+                </canvas>
+            </div>
+            <div class="side">
+                <canvas>
+                    Din nettleser støtter ikke canvas.
+                </canvas>
+            </div>
+            <div class="back">
+                <canvas>
+                    Din nettleser støtter ikke canvas.
+                </canvas>
+            </div>
         </div>
     </div>
 
@@ -77,10 +89,12 @@
     <script src="lib/backbone.js" type="text/javascript"></script>
     <script src="lib/backbone.localStorage.js" type="text/javascript"></script>
 
-    <script src="src/reinmerke.js" type="text/javascript"></script>
+    <script src="src/app.js" type="text/javascript"></script>
     <script src="src/mark_register.js" type="text/javascript"></script>
     <script src="src/modules/people.js" type="text/javascript"></script>
     <script src="src/modules/findbyear.js" type="text/javascript"></script>
+    <script src="src/modules/painter.js" type="text/javascript"></script>
+    <script src="src/setup.js" type="text/javascript"></script>
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-27760816-1']);
@@ -91,6 +105,6 @@
          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
          })();
-     </script>
+    </script>
 </body>
 </html>
