@@ -1,6 +1,5 @@
 List of stuff to do
 ===================
-[ ] Fix tests
 [ ] Canvas on all cuts
 [ ] Add support to draw all cuts, on both ears
 [ ] Add offline mainifest file, *disable* cache on this file
@@ -18,3 +17,4 @@ List of stuff to do
 [x] Start on cut graphics when drawn to ear
 [x] Properly clear canvas on reset
 [x] Width on canvas based on Adapt.JS
+[x] Fix tests

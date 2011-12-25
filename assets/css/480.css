@@ -2,7 +2,7 @@
     width: 460px;
     height: 140px;
 }
-.reset {
+#reset {
     left: 450px;
     top: 0;
 }
@@ -10,7 +10,7 @@
     width: 461px;
     height: 81px;
 }
-.ear .forward, .ear .back {
+.ear .front, .ear .back {
     width: 310px;
     height: 40px;
     line-height: 40px;

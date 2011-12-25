@@ -1,7 +1,7 @@
 body {
     margin: 5px;
 }
-.reset {
+#reset {
     position: absolute;
     cursor: pointer;
     color: #4E9A06;
@@ -40,10 +40,10 @@ body {
     border-bottom-right-radius: 150px 35px;
     border-top-right-radius: 150px 35px;
 }
-.ear .forward, .ear .back {
+.ear .front, .ear .back {
     float: left;
 }
-.ear .forward {
+.ear .front {
     border-bottom: 1px solid #FFF;
 }
 .ear .side {
