@@ -50,13 +50,23 @@
         return length;
     };
 
+    P.raejkie = function(ctx, startX, startY, downwards, downRightPoint) {
+        if (!downwards) {
+            _circle(ctx, downRightPoint.x / 2, 10, 5);
+        } else {
+            _circle(ctx, downRightPoint.x / 2, downRightPoint.y - 10, 5);
+        }
+
+        return 0;
+    };
+
     P.draw = function(cutModel, earPart) {
         var drawFunction, downRightPoint, ctx, startX, startY, offsetX,
             downwards, length = 0, spacing = 5;
         ctx = earPart.ctx;
         downRightPoint = earPart.downRightPoint;
 
-        startX = 25; //downRightPoint.x / 2;
+        startX = 25;
         downwards = false;
 
         if (earPart.isFront()) {
@@ -69,11 +79,11 @@
             startX = earPart.isRight() ? downRightPoint.x : 0;
         }
 
-        offsetX = earPart.canvasContentLength() || 5; //cuts.length * 50;
+        offsetX = earPart.canvasContentLength() || 5;
 
         drawFunction = _availableCuts[cutModel.get('cutType')];
         if (drawFunction) {
-            length = drawFunction(ctx, startX + offsetX, startY, downwards);
+            length = drawFunction(ctx, startX + offsetX, startY, downwards, downRightPoint);
         } else {
             earPart.addText(cutModel.get('cutName'));
         }
@@ -107,7 +117,8 @@
         'a,b': P.tjiehkie,
         'c': P.govre,
         'd': P.voelese,
-        'g': P.saerkie
+        'g': P.saerkie,
+        'k': P.raejkie 
     };
 
 }(REINMERKE.module('painter'), jQuery));
