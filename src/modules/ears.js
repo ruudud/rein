@@ -61,6 +61,7 @@
             };
             this.cuts = new E.Collections.Cuts();
             this.ctx = this._setupCanvas();
+            this._canvasContentLength = 0;
         },
 
         isFront: function() {
@@ -88,11 +89,19 @@
             this.ctx.fillText(text, 0, offsetY);
         },
 
+        canvasContentLength: function(value) {
+            if (typeof(value) !== 'undefined') {
+                this._canvasContentLength = value;
+            }
+            return this._canvasContentLength;
+        },
+
         clearCuts: function() {
             this.cuts.reset();
             this.ctx.clearRect(0, 0, this.downRightPoint.x,
                                this.downRightPoint.y);
             this.ctx.save();
+            this.canvasContentLength(0);
         },
 
         _setupCanvas: function() {
