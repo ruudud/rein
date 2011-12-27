@@ -2,34 +2,61 @@
     var _availableCuts, _circle, _ellipse;
 
     P.tjiehkie = function(ctx, startX, startY) { // a + b
-        _circle(ctx, startX, startY, 20);
+        var radius = 20;
+        _circle(ctx, startX + radius, startY, radius);
+        return radius * 2;
     };
 
     P.govre = function(ctx, startX, startY) { // c
-        _ellipse(ctx, startX, startY, 15, 1.75);
+        var radius = 15, scaleX = 1.75, padding = radius * scaleX;
+        _ellipse(ctx, startX + padding, startY, 15, 1.75);
+        return 2 * padding; 
     };
 
-    P.saerkie = function(ctx, startX, startY, downwards) { // g
-        ctx.beginPath();
+    P.voelese = function(ctx, startX, startY, downwards) { // d
+        var nextY, ctrlY1, endPointX = 95;
+        nextY = downwards ? startY + 40 : startY - 40;
+        ctrlY1 = downwards ? startY + 10 : startY - 10;
 
+        ctx.beginPath();
         ctx.moveTo(startX, startY);
-        var nextY = downwards ? startY + 20 : startY - 20;
+
+        ctx.bezierCurveTo(startX - 1, nextY, startX + 55, ctrlY1, startX +
+                          endPointX, startY);
+        ctx.lineTo(startX, startY);
+
+        ctx.stroke();
+        ctx.fill();
+        ctx.closePath();
+
+        return endPointX;
+    };
+
+
+    P.saerkie = function(ctx, startX, startY, downwards) { // g
+        var length = 20, nextY = downwards ? startY + 20 : startY - 20;
+
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
 
         ctx.lineTo(startX - 5, nextY);
-        ctx.lineTo(startX + 20, startY);
+        ctx.lineTo(startX + length, startY);
         ctx.lineTo(startX, startY);
         
         ctx.stroke();
         ctx.fill();
         ctx.closePath();
+
+        return length;
     };
 
     P.draw = function(cutModel, earPart) {
-        var drawFunction, downRightPoint, ctx, startX, startY, offsetX, downwards;
+        var drawFunction, downRightPoint, ctx, startX, startY, offsetX,
+            downwards, length = 0, spacing = 5;
         ctx = earPart.ctx;
         downRightPoint = earPart.downRightPoint;
 
-        startX = downRightPoint.x / 2;
+        startX = 25; //downRightPoint.x / 2;
         downwards = false;
 
         if (earPart.isFront()) {
@@ -42,14 +69,15 @@
             startX = earPart.isRight() ? downRightPoint.x : 0;
         }
 
-        offsetX = earPart.cuts.length * 50;
+        offsetX = earPart.canvasContentLength() || 5; //cuts.length * 50;
 
         drawFunction = _availableCuts[cutModel.get('cutType')];
         if (drawFunction) {
-            drawFunction(ctx, startX + offsetX, startY, downwards);
+            length = drawFunction(ctx, startX + offsetX, startY, downwards);
         } else {
             earPart.addText(cutModel.get('cutName'));
         }
+        earPart.canvasContentLength(offsetX + length + spacing);
         return;
     };
 
@@ -78,6 +106,7 @@
     _availableCuts = {
         'a,b': P.tjiehkie,
         'c': P.govre,
+        'd': P.voelese,
         'g': P.saerkie
     };
 
