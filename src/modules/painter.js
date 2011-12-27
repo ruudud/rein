@@ -1,12 +1,12 @@
 (function(P, $) {
-    var rightBack, rightFront, rightSide, _availableCuts;
-
+    var _availableCuts, _circle, _ellipse;
 
     P.tjiehkie = function(ctx, startX, startY) { // a + b
-        ctx.beginPath();
-        ctx.arc(startX, startY, 20, (Math.PI/180)*0, (Math.PI/180)*360, false);
-        ctx.stroke();
-        ctx.fill();
+        _circle(ctx, startX, startY, 20);
+    };
+
+    P.govre = function(ctx, startX, startY) { // c
+        _ellipse(ctx, startX, startY, 15, 1.75);
     };
 
     P.saerkie = function(ctx, startX, startY, downwards) { // g
@@ -53,8 +53,31 @@
         return;
     };
 
+    _ellipse = function(ctx, startX, startY, radius, scaleX, scaleY) {
+        var ellipseX = scaleX || 1, ellipseY = scaleY || 1;
+        ctx.save();
+        ctx.beginPath();
+        ctx.translate(startX - ellipseX, startY - ellipseY);
+        ctx.scale(ellipseX || 1, ellipseY || 1);
+        ctx.arc(1, 1, radius, 0, 2*Math.PI, false);
+
+        ctx.restore();
+        ctx.stroke();
+        ctx.fill();
+        ctx.closePath();
+    };
+
+    _circle = function(ctx, startX, startY, radius) {
+        ctx.beginPath();
+        ctx.arc(startX, startY, radius, (Math.PI/180)*0, (Math.PI/180)*360, false);
+        ctx.stroke();
+        ctx.fill();
+        ctx.closePath();
+    };
+
     _availableCuts = {
         'a,b': P.tjiehkie,
+        'c': P.govre,
         'g': P.saerkie
     };
 
