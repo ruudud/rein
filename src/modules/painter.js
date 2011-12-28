@@ -75,8 +75,8 @@
         } else if (earPart.isBack()) {
             startY = downRightPoint.y;
         } else if (earPart.isSide()) {
-            startY = downRightPoint.y / 2;
-            startX = earPart.isRight() ? downRightPoint.x : 0;
+            earPart.addText(cutModel.get('cutName'));
+            return;
         }
 
         offsetX = earPart.canvasContentLength() || 5;

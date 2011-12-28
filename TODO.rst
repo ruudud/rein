@@ -1,8 +1,9 @@
 List of stuff to do
 ===================
-[ ] Canvas on all cuts
+[ ] Canvas on most of the cuts
 [ ] Add support to draw all cuts, on both ears
 [ ] Add offline mainifest file, *disable* cache on this file
+[ ] Save and cache images?
 [ ] Speed testing on search
 [x] More test data
 [x] Create backbone models

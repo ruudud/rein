@@ -86,7 +86,7 @@
 
         addText: function(text) {
             var offsetY = this.cuts.length * 10 + 11;
-            this.ctx.fillText(text, 0, offsetY);
+            this.ctx.fillText(text, 2, offsetY);
         },
 
         canvasContentLength: function(value) {
