@@ -50,7 +50,7 @@
         return length;
     };
 
-    P.raejkie = function(ctx, startX, startY, downwards, downRightPoint) {
+    P.raejkie = function(ctx, startX, startY, downwards, downRightPoint) { // k
         if (!downwards) {
             _circle(ctx, downRightPoint.x / 2, 10, 5);
         } else {
@@ -75,8 +75,8 @@
         } else if (earPart.isBack()) {
             startY = downRightPoint.y;
         } else if (earPart.isSide()) {
-            startY = downRightPoint.y / 2;
-            startX = earPart.isRight() ? downRightPoint.x : 0;
+            earPart.addText(cutModel.get('cutName'));
+            return;
         }
 
         offsetX = earPart.canvasContentLength() || 5;

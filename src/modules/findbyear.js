@@ -2,7 +2,9 @@
 
     F.init = function() {
         F.earsView = new E.Views.Ears();
+        F.cuts = E.SouthSamiCuts();
         F.cutView = new E.Views.Cuts({
+            collection: F.cuts,
             onDrop: F._updateSearch,
             validDrops: [
                 F.earsView.rightEar.front,
