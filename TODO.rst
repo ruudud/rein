@@ -1,5 +1,13 @@
 List of stuff to do
 ===================
+[ ] Questions:
+
+ * Fokusere mindre på søkefunksjonaliteten?
+   - Kan spisses mot at søketreffene blir mer "snille" pga. mange kutt som
+     ligner.
+ * Tilsvarende mer på å enkelt lete gjennom kutt?
+   - Basert på hva; område, kutt-hiearki?
+  
 [ ] Canvas on most of the cuts
 [ ] Add support to draw all cuts, on both ears
 [ ] Add offline mainifest file, *disable* cache on this file

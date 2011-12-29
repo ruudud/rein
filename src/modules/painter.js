@@ -50,7 +50,7 @@
         return length;
     };
 
-    P.raejkie = function(ctx, startX, startY, downwards, downRightPoint) {
+    P.raejkie = function(ctx, startX, startY, downwards, downRightPoint) { // k
         if (!downwards) {
             _circle(ctx, downRightPoint.x / 2, 10, 5);
         } else {
