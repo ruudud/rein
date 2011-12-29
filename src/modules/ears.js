@@ -1,7 +1,6 @@
 (function(E, U, $) {
  
     // Models and Collections
-    // The Cut model needs to have both cut type and side=true/false.
     E.Models.Cut = Backbone.Model.extend({ });
 
     E.Collections.Cuts = Backbone.Collection.extend({
@@ -123,12 +122,44 @@
     E.Views.Cuts = Backbone.View.extend({
         el: $('#cuts'),
 
-        events: {
-            'click .cut': 'createDraggable'
+        _viewsOfCuts: [],
+
+        initialize: function() {
+            var that = this;
+            this.collection.each(function(model) {
+                var newCut = new E.Views.Cut({
+                    model: model,
+                    onDrop: that.options.onDrop,
+                    validDrops: that.options.validDrops
+                });
+                newCut.render();
+                that._viewsOfCuts.push(newCut);
+            });
+            this.render();
         },
 
-        createDraggable: function(e) {
-            var clickedPos, newCut, clickedEl = e.currentTarget;
+
+        render: function() {
+            var that = this;
+            _.each(this._viewsOfCuts, function(view) {
+                that.el.append(view.el);
+            });
+        }
+    });
+
+    E.Views.Cut = Backbone.View.extend({
+        className: 'cut',
+
+        events: {
+            'click': '_createDraggable'
+        },
+
+        render: function(){
+            $(this.el).text(this.model.get('name'));
+        },
+
+        _createDraggable: function(e) {
+            var clickedPos, newCut;
 
             e.originalEvent.preventDefault();
 
@@ -138,23 +169,22 @@
             };
 
             newCut = new E.Models.Cut({
-                'cutType': $(clickedEl).data('type'),
-                'cutName': clickedEl.innerHTML,
-                'sideCut': $(clickedEl).data('side') || false,
+                'cutType': this.model.get('id'),
+                'cutName': this.model.get('name'),
                 'cutY': clickedPos.top,
                 'cutX': clickedPos.left
             });
 
-            if (E.currentCut) { E.currentCut.clear(); }
-            E.currentCut = new E.Views.CurrentCut({
+            if (E.movingCut) { E.movingCut.clear(); }
+            E.movingCut = new E.Views.MovingCut({
                 model: newCut,
                 onDrop: this.options.onDrop,
                 validDrops: this.options.validDrops
             });
-        }
+        },
     });
 
-    E.Views.CurrentCut = Backbone.View.extend({
+    E.Views.MovingCut = Backbone.View.extend({
         el: $('#moving_cut'),
 
         template: $('#moving_cut_template').html() || '',
@@ -162,7 +192,7 @@
         clear: function() {
             this.el.unbind();
             this.el.empty();
-            delete E.currentCut;
+            delete E.movingCut;
         },
 
         render: function() {
@@ -193,9 +223,8 @@
             var coordinates, left, right, oe, $movingEl, touch;
 
             oe = e.originalEvent;
-            $movingEl = $(e.currentTarget);
-
             oe.preventDefault();
+            $movingEl = this.$('.draggable');
 
             if (oe.targetTouches) {
                 touch = oe.targetTouches[0]; // One finger is enough
@@ -247,5 +276,22 @@
             return insideBox;
         }
     });
+
+    E.SouthSamiCuts = function() {
+        return new E.Collections.Cuts([
+            {name: 'tjiehkie', id: 'a,b'},
+            {name: 'govre', id: 'c'},
+            {name: 'voelese', id: 'd'},
+            {name: 'vitnjeluktie åvtelde', id: 'e'},
+            {name: 'vitnjeluktie minngelde', id: 'f'},
+            {name: 'saerkie', id: 'g'},
+            {name: 'raejkie', id: 'k'},
+            {name: 'skaajte åvtelde', id: 'l'},
+            {name: 'kruehkie åvtelde', id: 'n'},
+            {name: 'tjiehkie vuelege', id: 'x'},
+            {name: 'jarpe', id: 'z'},
+            {name: 'tjiehkie saerkie', id: 'y'}
+        ]);
+    };
 
 }(REINMERKE.module('ears'), REINMERKE.module('utils'), jQuery));
