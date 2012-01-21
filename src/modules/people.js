@@ -5,8 +5,9 @@
         P.Owners = P.Owners || new P.Collections.Owners();
         P.Owners.fetch();
 
-        if (P.Owners.length < 1) {
-            _fillDB(P.Owners);
+        if (P.Owners.length !== P.register.length) {
+            localStorage.clear();
+            _fillDB(P.Owners, P.register);
         }
     };
 
@@ -75,8 +76,8 @@
 
 
     // Utility Functions
-    _fillDB = function(collection) {
-        _.each(P.register, function(p) {
+    _fillDB = function(collection, rawData) {
+        _.each(rawData, function(p) {
             collection.create(p);
         });
     };
