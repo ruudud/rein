@@ -1,4 +1,5 @@
-[
+(function(People) {
+    People.register = [
 {
     id: 407,
     district: 72,
@@ -2364,5 +2365,6 @@
     c4: '',
     c5: '',
     c6: 'a'
-},
-]
+}
+];
+}(REINMERKE.module('people')));
