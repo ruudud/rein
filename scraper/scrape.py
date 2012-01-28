@@ -1,6 +1,8 @@
 # coding: utf-8
 
 from cStringIO import StringIO
+import os
+import re
 import sys
 
 from twill import set_output
@@ -8,8 +10,9 @@ from twill.commands import go, fv, submit, show
 from BeautifulSoup import BeautifulSoup
 import requests
 
-BASE_URL = 'http://merker.reindrift.no/'
+BASE_URL = 'https://merker.reindrift.no/'
 AREA = '3'
+CURRENT_DIR = os.getcwd()
 
 def prettify(string):
     if len(string) < 4:
@@ -26,6 +29,22 @@ def _get_districts(html):
     for option in districsSoup[1:]:
         districts.append((option['value'], option.text))
     return districts
+
+def _download_cut(uri):
+    match = re.search('merkenr=(\d+)', uri)
+    cut_id = match.group(1)
+    cut = requests.get(BASE_URL + uri)
+
+    fp = open('%s/%s.png' % (CURRENT_DIR, cut_id), 'w')
+    fp.write(cut.content)
+    fp.close()
+
+def _save_cut_img(html):
+    soup = BeautifulSoup(html)
+    hits = soup.findAll('img', 'listetabellinnhold')
+
+    for img in hits:
+        _download_cut(img.attrMap['src'])
 
 def _get_people_links(html):
     soup = BeautifulSoup(html)
@@ -88,6 +107,9 @@ def run():
         people_links = _get_people_links(show())
         sys.stderr.write('Merker i distrikt: %d\n' % len(people_links))
 
+        sys.stderr.write('Lagrer bilder ..\n')
+        _save_cut_img(show())
+
         for link in people_links:
             mark_url = '%s%s' % (BASE_URL, link)
             mark_id = mark_url[mark_url.rfind('=') + 1:]
@@ -108,7 +130,8 @@ def run():
 
     sys.stderr.write('Resultat:\n')
 
-    print '['
+    print '(function(People) {'
+    print '    People.register = ['
     for owner in people:
         print "{"
         print "    %s: %s," % ('id', owner['id'])
@@ -124,7 +147,8 @@ def run():
         print "    %s: '%s'," % ('c5', owner['c5'] or "")
         print "    %s: '%s'" % ('c6', owner['c6'] or "")
         print "},"
-    print ']'
+    print '];'
+    print "}(REINMERKE.module('people')));"
 
 if __name__ == '__main__':
     run()
