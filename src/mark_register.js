@@ -2,6 +2,7 @@
     People.register = [
 {
     id: 407,
+    cutId: 519,
     district: 72,
     firstName: 'Anna A.',
     lastName: 'Stenfjell',
@@ -16,6 +17,7 @@
 },
 {
     id: 4372,
+    cutId: 4881,
     district: 72,
     firstName: 'Sindre Fjelner Danielsen',
     lastName: 'Gundersen',
@@ -30,6 +32,7 @@
 },
 {
     id: 3872,
+    cutId: 4595,
     district: 72,
     firstName: 'Silje Helen Danielsen',
     lastName: 'Gundersen',
@@ -44,6 +47,7 @@
 },
 {
     id: 3873,
+    cutId: 4596,
     district: 72,
     firstName: 'Joakim',
     lastName: 'Danielsen',
@@ -58,6 +62,7 @@
 },
 {
     id: 36,
+    cutId: 76,
     district: 72,
     firstName: 'Nils K.',
     lastName: 'Danielsen',
@@ -72,6 +77,7 @@
 },
 {
     id: 2175,
+    cutId: 2475,
     district: 72,
     firstName: 'Sonja Kristine',
     lastName: 'Danielsen',
@@ -86,6 +92,7 @@
 },
 {
     id: 89,
+    cutId: 139,
     district: 72,
     firstName: 'Elias A.',
     lastName: 'Stenfjell',
@@ -100,6 +107,7 @@
 },
 {
     id: 98,
+    cutId: 152,
     district: 72,
     firstName: 'Nils Sigvard',
     lastName: 'Danielsen',
@@ -114,6 +122,7 @@
 },
 {
     id: 4582,
+    cutId: 5100,
     district: 72,
     firstName: 'Elias Sammol Gaino',
     lastName: 'Danielsen',
@@ -128,6 +137,7 @@
 },
 {
     id: 40,
+    cutId: 80,
     district: 72,
     firstName: 'Elias Paul',
     lastName: 'Danielsen',
@@ -142,6 +152,7 @@
 },
 {
     id: 428,
+    cutId: 546,
     district: 72,
     firstName: 'Lars Tony',
     lastName: 'Danielsen',
@@ -156,6 +167,7 @@
 },
 {
     id: 411,
+    cutId: 526,
     district: 72,
     firstName: 'Sonja Elise',
     lastName: 'Danielsen',
@@ -170,6 +182,7 @@
 },
 {
     id: 429,
+    cutId: 548,
     district: 72,
     firstName: 'Ann-sofie D.',
     lastName: 'Gundersen',
@@ -184,6 +197,7 @@
 },
 {
     id: 4371,
+    cutId: 4778,
     district: 72,
     firstName: 'Amalie-søøfe Charlotte',
     lastName: 'Gundersen',
@@ -198,6 +212,7 @@
 },
 {
     id: 3819,
+    cutId: 4546,
     district: 72,
     firstName: 'Tony Kristoffer',
     lastName: 'Danielsen',
@@ -212,6 +227,7 @@
 },
 {
     id: 4115,
+    cutId: 4777,
     district: 72,
     firstName: 'Sonja Kristine',
     lastName: 'Danielsen',
@@ -226,6 +242,7 @@
 },
 {
     id: 4108,
+    cutId: 4771,
     district: 72,
     firstName: 'Aina-lene Gaino',
     lastName: 'Danielsen',
@@ -240,6 +257,7 @@
 },
 {
     id: 507,
+    cutId: 629,
     district: 72,
     firstName: 'Stig Daniel',
     lastName: 'Danielsen',
@@ -254,6 +272,7 @@
 },
 {
     id: 537,
+    cutId: 663,
     district: 72,
     firstName: 'Ina Ristin',
     lastName: 'Gundersen',
@@ -268,6 +287,7 @@
 },
 {
     id: 79,
+    cutId: 127,
     district: 72,
     firstName: 'Sofie',
     lastName: 'Stenfjell',
@@ -282,6 +302,7 @@
 },
 {
     id: 2158,
+    cutId: 2464,
     district: 72,
     firstName: 'Linda Iren',
     lastName: 'Gundersen',
@@ -296,6 +317,7 @@
 },
 {
     id: 95,
+    cutId: 148,
     district: 72,
     firstName: 'Ann-marie',
     lastName: 'Stenfjell',
@@ -310,6 +332,7 @@
 },
 {
     id: 2176,
+    cutId: 4868,
     district: 73,
     firstName: 'Laila',
     lastName: 'Hætta',
@@ -324,6 +347,7 @@
 },
 {
     id: 3871,
+    cutId: 4594,
     district: 73,
     firstName: 'Aina Lisa',
     lastName: 'Wilks',
@@ -338,6 +362,7 @@
 },
 {
     id: 325,
+    cutId: 417,
     district: 73,
     firstName: 'Birgit Helen',
     lastName: 'Wilks',
@@ -352,6 +377,7 @@
 },
 {
     id: 423,
+    cutId: 539,
     district: 73,
     firstName: 'Elin',
     lastName: 'Danielsen',
@@ -366,6 +392,7 @@
 },
 {
     id: 4353,
+    cutId: 4867,
     district: 73,
     firstName: 'Mathis Ivan',
     lastName: 'Hætta',
@@ -380,6 +407,7 @@
 },
 {
     id: 321,
+    cutId: 412,
     district: 73,
     firstName: 'Eva Anette',
     lastName: 'Wilks',
@@ -394,6 +422,7 @@
 },
 {
     id: 2082,
+    cutId: 2376,
     district: 73,
     firstName: 'Niklas A.',
     lastName: 'Hætta',
@@ -408,6 +437,7 @@
 },
 {
     id: 4409,
+    cutId: 69,
     district: 73,
     firstName: 'Neila-issát Påve',
     lastName: 'Wilks',
@@ -422,6 +452,7 @@
 },
 {
     id: 2177,
+    cutId: 2477,
     district: 73,
     firstName: 'Marit',
     lastName: 'Hætta',
@@ -436,6 +467,7 @@
 },
 {
     id: 68,
+    cutId: 114,
     district: 73,
     firstName: 'Laila Gunilla',
     lastName: 'Wilks',
@@ -450,6 +482,7 @@
 },
 {
     id: 3795,
+    cutId: 4521,
     district: 73,
     firstName: 'Maria Gunilla Påve',
     lastName: 'Wilks',
@@ -464,6 +497,7 @@
 },
 {
     id: 4611,
+    cutId: 5119,
     district: 73,
     firstName: 'Anne K.',
     lastName: 'Danielsen',
@@ -478,9 +512,10 @@
 },
 {
     id: 473,
+    cutId: 596,
     district: 73,
     firstName: 'Johan',
-    lastName: '*hætta',
+    lastName: 'Hætta',
     address: '',
     place: 'Snåsa',
     c1: '',
@@ -492,6 +527,7 @@
 },
 {
     id: 45,
+    cutId: 85,
     district: 73,
     firstName: 'Anne K.',
     lastName: 'Danielsen',
@@ -506,6 +542,7 @@
 },
 {
     id: 460,
+    cutId: 573,
     district: 73,
     firstName: 'Katrine',
     lastName: 'Hætta',
@@ -520,6 +557,7 @@
 },
 {
     id: 4612,
+    cutId: 5120,
     district: 73,
     firstName: 'Anne K.',
     lastName: 'Danielsen',
@@ -534,6 +572,7 @@
 },
 {
     id: 426,
+    cutId: 542,
     district: 73,
     firstName: 'Hanne-lena',
     lastName: 'Wilks',
@@ -548,6 +587,7 @@
 },
 {
     id: 4363,
+    cutId: 4876,
     district: 73,
     firstName: 'Cecilie',
     lastName: 'Hætta',
@@ -562,6 +602,7 @@
 },
 {
     id: 4364,
+    cutId: 4877,
     district: 73,
     firstName: 'Jorun Finsås',
     lastName: 'Hætta',
@@ -576,6 +617,7 @@
 },
 {
     id: 3860,
+    cutId: 4582,
     district: 73,
     firstName: 'Anna-laila',
     lastName: 'Kappfjell',
@@ -590,6 +632,7 @@
 },
 {
     id: 4412,
+    cutId: 4946,
     district: 73,
     firstName: 'Ole Frank',
     lastName: 'Hætta',
@@ -604,6 +647,7 @@
 },
 {
     id: 3870,
+    cutId: 4593,
     district: 73,
     firstName: 'Brita Sandvik',
     lastName: 'Wilks',
@@ -618,6 +662,7 @@
 },
 {
     id: 4411,
+    cutId: 4945,
     district: 73,
     firstName: 'Anne K.',
     lastName: 'Danielsen',
@@ -632,6 +677,7 @@
 },
 {
     id: 4212,
+    cutId: 4866,
     district: 73,
     firstName: 'Naja K.',
     lastName: 'Hætta',
@@ -646,6 +692,7 @@
 },
 {
     id: 2171,
+    cutId: 2460,
     district: 73,
     firstName: 'Lisa',
     lastName: 'Hætta',
@@ -660,6 +707,7 @@
 },
 {
     id: 3846,
+    cutId: 4575,
     district: 73,
     firstName: 'Hans Erik',
     lastName: 'Sandvik',
@@ -674,6 +722,7 @@
 },
 {
     id: 2162,
+    cutId: 2468,
     district: 73,
     firstName: 'Malin Kristine S.',
     lastName: 'Wilks',
@@ -688,6 +737,7 @@
 },
 {
     id: 4116,
+    cutId: 4780,
     district: 73,
     firstName: 'Jonas A.k.',
     lastName: 'Hætta',
@@ -702,6 +752,7 @@
 },
 {
     id: 531,
+    cutId: 657,
     district: 73,
     firstName: 'Tomas A.',
     lastName: 'Danielsen',
@@ -716,6 +767,7 @@
 },
 {
     id: 4531,
+    cutId: 5036,
     district: 73,
     firstName: 'Isak',
     lastName: 'Danielsen',
@@ -730,6 +782,7 @@
 },
 {
     id: 4355,
+    cutId: 4869,
     district: 74,
     firstName: 'Hanna Marie',
     lastName: 'Jåma',
@@ -744,6 +797,7 @@
 },
 {
     id: 432,
+    cutId: 550,
     district: 74,
     firstName: 'Elle',
     lastName: 'Stenfjell',
@@ -758,6 +812,7 @@
 },
 {
     id: 2163,
+    cutId: 41,
     district: 74,
     firstName: 'Bengt Mattias',
     lastName: 'Jåma',
@@ -772,6 +827,7 @@
 },
 {
     id: 9,
+    cutId: 47,
     district: 74,
     firstName: 'Bernt Arvid',
     lastName: 'Jåma',
@@ -786,6 +842,7 @@
 },
 {
     id: 4535,
+    cutId: 5040,
     district: 74,
     firstName: 'Jon Andreas',
     lastName: 'Stenfjell',
@@ -800,6 +857,7 @@
 },
 {
     id: 72,
+    cutId: 118,
     district: 74,
     firstName: 'Evald',
     lastName: 'Stenfjell',
@@ -814,6 +872,7 @@
 },
 {
     id: 807,
+    cutId: 974,
     district: 74,
     firstName: 'Bengt Åke',
     lastName: 'Jåma',
@@ -828,6 +887,7 @@
 },
 {
     id: 4118,
+    cutId: 4781,
     district: 74,
     firstName: 'Marja Linnea A. Gosen',
     lastName: 'Jåma',
@@ -842,6 +902,7 @@
 },
 {
     id: 490,
+    cutId: 613,
     district: 74,
     firstName: 'Maja Marie',
     lastName: 'Jåma',
@@ -856,6 +917,7 @@
 },
 {
     id: 4410,
+    cutId: 2396,
     district: 74,
     firstName: 'dan',
     lastName: 'Jåma',
@@ -870,6 +932,7 @@
 },
 {
     id: 2164,
+    cutId: 408,
     district: 74,
     firstName: 'Jon Andreas',
     lastName: 'Stenfjell',
@@ -884,6 +947,7 @@
 },
 {
     id: 4356,
+    cutId: 4870,
     district: 74,
     firstName: 'Johan Martin',
     lastName: 'Stenfjell',
@@ -898,6 +962,7 @@
 },
 {
     id: 2157,
+    cutId: 2463,
     district: 74,
     firstName: 'Malena J.',
     lastName: 'Stenfjell',
@@ -912,6 +977,7 @@
 },
 {
     id: 2172,
+    cutId: 2462,
     district: 74,
     firstName: 'Britt Inger G.',
     lastName: 'Stenfjell',
@@ -926,6 +992,7 @@
 },
 {
     id: 2156,
+    cutId: 2461,
     district: 74,
     firstName: 'Niila',
     lastName: 'Blind',
@@ -940,6 +1007,7 @@
 },
 {
     id: 4413,
+    cutId: 646,
     district: 74,
     firstName: 'Mats Jøran',
     lastName: 'Jåma',
@@ -954,6 +1022,7 @@
 },
 {
     id: 4367,
+    cutId: 100,
     district: 74,
     firstName: 'Mats Jøran',
     lastName: 'Jåma',
@@ -968,6 +1037,7 @@
 },
 {
     id: 4171,
+    cutId: 601,
     district: 74,
     firstName: 'Jon Daniel',
     lastName: 'Jåma',
@@ -982,6 +1052,7 @@
 },
 {
     id: 4715,
+    cutId: 5230,
     district: 74,
     firstName: 'Niila',
     lastName: 'Blind',
@@ -996,6 +1067,7 @@
 },
 {
     id: 54,
+    cutId: 98,
     district: 74,
     firstName: 'Kjell Jøran',
     lastName: 'Jåma',
@@ -1010,6 +1082,7 @@
 },
 {
     id: 485,
+    cutId: 608,
     district: 74,
     firstName: 'Anna Liisa',
     lastName: 'Jåma',
@@ -1024,6 +1097,7 @@
 },
 {
     id: 64,
+    cutId: 105,
     district: 74,
     firstName: 'Arnt Erik',
     lastName: 'Jåma',
@@ -1038,6 +1112,7 @@
 },
 {
     id: 371,
+    cutId: 477,
     district: 75,
     firstName: 'ove',
     lastName: 'Jåma',
@@ -1052,6 +1127,7 @@
 },
 {
     id: 406,
+    cutId: 518,
     district: 75,
     firstName: 'Algot',
     lastName: 'Jåma',
@@ -1066,6 +1142,7 @@
 },
 {
     id: 437,
+    cutId: 556,
     district: 75,
     firstName: 'Ingvar',
     lastName: 'Jåma',
@@ -1080,6 +1157,7 @@
 },
 {
     id: 3868,
+    cutId: 4591,
     district: 75,
     firstName: 'Inger K.a.g.',
     lastName: 'Jåma',
@@ -1094,6 +1172,7 @@
 },
 {
     id: 3867,
+    cutId: 4590,
     district: 75,
     firstName: 'Jon Olov',
     lastName: 'Jåma',
@@ -1108,6 +1187,7 @@
 },
 {
     id: 379,
+    cutId: 487,
     district: 75,
     firstName: 'Nils Ludvik',
     lastName: 'Jåma',
@@ -1122,6 +1202,7 @@
 },
 {
     id: 2165,
+    cutId: 484,
     district: 75,
     firstName: 'Marja Lisa',
     lastName: 'Thomasson',
@@ -1136,6 +1217,7 @@
 },
 {
     id: 2081,
+    cutId: 2375,
     district: 75,
     firstName: 'Mats Ailo',
     lastName: 'Jåma',
@@ -1150,6 +1232,7 @@
 },
 {
     id: 4361,
+    cutId: 914,
     district: 75,
     firstName: 'Mats',
     lastName: 'Joma',
@@ -1164,6 +1247,7 @@
 },
 {
     id: 2173,
+    cutId: 2473,
     district: 75,
     firstName: 'Nils Anders',
     lastName: 'Jåma',
@@ -1178,6 +1262,7 @@
 },
 {
     id: 2174,
+    cutId: 2474,
     district: 75,
     firstName: 'ole',
     lastName: 'Nordfjell',
@@ -1192,6 +1277,7 @@
 },
 {
     id: 528,
+    cutId: 652,
     district: 75,
     firstName: 'Brita Iren',
     lastName: 'Thomasson',
@@ -1206,6 +1292,7 @@
 },
 {
     id: 383,
+    cutId: 490,
     district: 75,
     firstName: 'Anders',
     lastName: 'Joma',
@@ -1220,6 +1307,7 @@
 },
 {
     id: 4471,
+    cutId: 5022,
     district: 75,
     firstName: 'Odd Bjørnar',
     lastName: 'Bjørkås',
@@ -1234,6 +1322,7 @@
 },
 {
     id: 1641,
+    cutId: 1889,
     district: 75,
     firstName: 'Inger Marit',
     lastName: 'Eira-åhren',
@@ -1248,6 +1337,7 @@
 },
 {
     id: 412,
+    cutId: 527,
     district: 75,
     firstName: 'Peder Ludvik',
     lastName: 'Jåma',
@@ -1262,6 +1352,7 @@
 },
 {
     id: 362,
+    cutId: 464,
     district: 75,
     firstName: 'Aina',
     lastName: 'Steinfjell',
@@ -1276,6 +1367,7 @@
 },
 {
     id: 398,
+    cutId: 509,
     district: 75,
     firstName: 'Sigfred Hilmar',
     lastName: 'Jåma',
@@ -1290,6 +1382,7 @@
 },
 {
     id: 4360,
+    cutId: 4874,
     district: 75,
     firstName: 'Klemet I.',
     lastName: 'Jåma',
@@ -1304,6 +1397,7 @@
 },
 {
     id: 4362,
+    cutId: 4875,
     district: 75,
     firstName: 'Elin Kristina',
     lastName: 'Jåma',
@@ -1318,6 +1412,7 @@
 },
 {
     id: 4358,
+    cutId: 4872,
     district: 75,
     firstName: 'Linda Mari',
     lastName: 'Jåma',
@@ -1332,6 +1427,7 @@
 },
 {
     id: 4359,
+    cutId: 4873,
     district: 75,
     firstName: 'Per Anders',
     lastName: 'Joma',
@@ -1346,6 +1442,7 @@
 },
 {
     id: 4357,
+    cutId: 4871,
     district: 75,
     firstName: 'Selma',
     lastName: 'Jåma',
@@ -1360,6 +1457,7 @@
 },
 {
     id: 3864,
+    cutId: 4587,
     district: 75,
     firstName: 'Eva Bendikke',
     lastName: 'Jåma',
@@ -1374,6 +1472,7 @@
 },
 {
     id: 4170,
+    cutId: 4815,
     district: 75,
     firstName: 'Ida Marie Kristine Ingvarsdatter',
     lastName: 'Jåma',
@@ -1388,6 +1487,7 @@
 },
 {
     id: 3865,
+    cutId: 4588,
     district: 75,
     firstName: 'Ellinor M.',
     lastName: 'Jåma',
@@ -1402,6 +1502,7 @@
 },
 {
     id: 3866,
+    cutId: 4589,
     district: 75,
     firstName: 'John Henrik',
     lastName: 'Jåma',
@@ -1416,6 +1517,7 @@
 },
 {
     id: 364,
+    cutId: 466,
     district: 75,
     firstName: 'Nils P.',
     lastName: 'Joma',
@@ -1430,6 +1532,7 @@
 },
 {
     id: 4107,
+    cutId: 4770,
     district: 75,
     firstName: 'Marja Magdalena',
     lastName: 'Joma',
@@ -1444,6 +1547,7 @@
 },
 {
     id: 770,
+    cutId: 931,
     district: 75,
     firstName: 'Vilmi',
     lastName: 'Steinfjell',
@@ -1458,6 +1562,7 @@
 },
 {
     id: 538,
+    cutId: 664,
     district: 75,
     firstName: 'Maili Anita',
     lastName: 'Jåma',
@@ -1472,6 +1577,7 @@
 },
 {
     id: 381,
+    cutId: 489,
     district: 75,
     firstName: 'Nils Ole Oskar',
     lastName: 'Jåma',
@@ -1486,6 +1592,7 @@
 },
 {
     id: 3845,
+    cutId: 4574,
     district: 75,
     firstName: 'Maidi',
     lastName: 'Steinfjell',
@@ -1500,9 +1607,10 @@
 },
 {
     id: 375,
+    cutId: 482,
     district: 75,
     firstName: 'Lars N.',
-    lastName: '*jåma',
+    lastName: 'Jåma',
     address: 'Nyvikmoen',
     place: 'Limingen',
     c1: 'bn',
@@ -1514,6 +1622,7 @@
 },
 {
     id: 448,
+    cutId: 565,
     district: 75,
     firstName: 'Lars Alvar',
     lastName: 'Thomasson',
@@ -1528,6 +1637,7 @@
 },
 {
     id: 3803,
+    cutId: 4532,
     district: 75,
     firstName: 'Lars Jonas',
     lastName: 'Åhrén',
@@ -1542,6 +1652,7 @@
 },
 {
     id: 3802,
+    cutId: 4531,
     district: 75,
     firstName: 'Tomas Mikael',
     lastName: 'Thomasson',
@@ -1556,6 +1667,7 @@
 },
 {
     id: 4530,
+    cutId: 5035,
     district: 75,
     firstName: 'Elias Ole',
     lastName: 'Joma',
@@ -1570,6 +1682,7 @@
 },
 {
     id: 4529,
+    cutId: 5033,
     district: 75,
     firstName: 'Inga Emelie',
     lastName: 'Joma',
@@ -1584,6 +1697,7 @@
 },
 {
     id: 298,
+    cutId: 373,
     district: 75,
     firstName: 'Knut Peder',
     lastName: 'Jåma',
@@ -1598,6 +1712,7 @@
 },
 {
     id: 4626,
+    cutId: 5130,
     district: 75,
     firstName: 'Lars Jonas',
     lastName: 'Åhrén',
@@ -1612,6 +1727,7 @@
 },
 {
     id: 4608,
+    cutId: 5117,
     district: 75,
     firstName: 'Berit Ellen G.',
     lastName: 'Jåma',
@@ -1626,6 +1742,7 @@
 },
 {
     id: 3875,
+    cutId: 4598,
     district: 76,
     firstName: 'Elle Karen Inga Johan Andersda',
     lastName: 'Oskal',
@@ -1640,6 +1757,7 @@
 },
 {
     id: 418,
+    cutId: 534,
     district: 76,
     firstName: 'John Samuel',
     lastName: 'Anti',
@@ -1654,6 +1772,7 @@
 },
 {
     id: 2185,
+    cutId: 2484,
     district: 76,
     firstName: 'Gunn',
     lastName: 'Toven',
@@ -1668,6 +1787,7 @@
 },
 {
     id: 3874,
+    cutId: 4597,
     district: 76,
     firstName: 'Mikael Mathias',
     lastName: 'Anti',
@@ -1682,6 +1802,7 @@
 },
 {
     id: 439,
+    cutId: 559,
     district: 76,
     firstName: 'Inger Berit',
     lastName: 'Anti',
@@ -1696,6 +1817,7 @@
 },
 {
     id: 304,
+    cutId: 385,
     district: 76,
     firstName: 'Laila Marlene',
     lastName: 'Toven',
@@ -1710,6 +1832,7 @@
 },
 {
     id: 2166,
+    cutId: 380,
     district: 76,
     firstName: 'Per Jonas Aksel',
     lastName: 'Toven',
@@ -1724,6 +1847,7 @@
 },
 {
     id: 4366,
+    cutId: 494,
     district: 76,
     firstName: 'Nils Johan',
     lastName: 'Anti',
@@ -1738,6 +1862,7 @@
 },
 {
     id: 790,
+    cutId: 951,
     district: 76,
     firstName: 'Ellen Marie Anne',
     lastName: 'Anti',
@@ -1752,6 +1877,7 @@
 },
 {
     id: 792,
+    cutId: 954,
     district: 76,
     firstName: 'Samuel Nils',
     lastName: 'Anti',
@@ -1766,6 +1892,7 @@
 },
 {
     id: 2168,
+    cutId: 957,
     district: 76,
     firstName: 'Ina Sofie',
     lastName: 'Jåma',
@@ -1780,6 +1907,7 @@
 },
 {
     id: 4352,
+    cutId: 458,
     district: 76,
     firstName: 'Hans Jakob',
     lastName: 'Toven',
@@ -1794,6 +1922,7 @@
 },
 {
     id: 400,
+    cutId: 511,
     district: 76,
     firstName: 'Albert',
     lastName: 'Jåma',
@@ -1808,6 +1937,7 @@
 },
 {
     id: 2086,
+    cutId: 2395,
     district: 76,
     firstName: 'Karen Magga',
     lastName: 'Anti',
@@ -1822,6 +1952,7 @@
 },
 {
     id: 352,
+    cutId: 452,
     district: 76,
     firstName: 'Anna',
     lastName: 'Anti',
@@ -1836,6 +1967,7 @@
 },
 {
     id: 354,
+    cutId: 455,
     district: 76,
     firstName: 'Lars',
     lastName: 'Toven',
@@ -1850,6 +1982,7 @@
 },
 {
     id: 397,
+    cutId: 508,
     district: 76,
     firstName: 'Ivar',
     lastName: 'Toven',
@@ -1864,6 +1997,7 @@
 },
 {
     id: 4365,
+    cutId: 4878,
     district: 76,
     firstName: 'Samuel Petter',
     lastName: 'Anti',
@@ -1878,6 +2012,7 @@
 },
 {
     id: 554,
+    cutId: 681,
     district: 76,
     firstName: 'Rasmus Jon',
     lastName: 'Anti',
@@ -1892,6 +2027,7 @@
 },
 {
     id: 466,
+    cutId: 584,
     district: 76,
     firstName: 'Helge Karlot',
     lastName: 'Anti',
@@ -1906,6 +2042,7 @@
 },
 {
     id: 2167,
+    cutId: 506,
     district: 76,
     firstName: 'Arnt Ove',
     lastName: 'Toven',
@@ -1920,6 +2057,7 @@
 },
 {
     id: 395,
+    cutId: 505,
     district: 76,
     firstName: 'Anne Marit',
     lastName: 'Jåma',
@@ -1934,6 +2072,7 @@
 },
 {
     id: 524,
+    cutId: 649,
     district: 76,
     firstName: 'Aslak Per',
     lastName: 'Anti',
@@ -1948,6 +2087,7 @@
 },
 {
     id: 513,
+    cutId: 639,
     district: 76,
     firstName: 'Jonill Margrethe',
     lastName: 'Anti',
@@ -1962,6 +2102,7 @@
 },
 {
     id: 2170,
+    cutId: 2469,
     district: 76,
     firstName: 'Anders Ole',
     lastName: 'Anti',
@@ -1976,6 +2117,7 @@
 },
 {
     id: 4441,
+    cutId: 4533,
     district: 76,
     firstName: 'Pål Kristoffer',
     lastName: 'Toven',
@@ -1990,6 +2132,7 @@
 },
 {
     id: 300,
+    cutId: 377,
     district: 76,
     firstName: 'Kjell Peder',
     lastName: 'Toven',
@@ -2004,6 +2147,7 @@
 },
 {
     id: 350,
+    cutId: 449,
     district: 76,
     firstName: 'Rasmus Nils',
     lastName: 'Anti',
@@ -2018,6 +2162,7 @@
 },
 {
     id: 440,
+    cutId: 560,
     district: 76,
     firstName: 'Karen Anette Anti',
     lastName: 'Oskal',
@@ -2032,6 +2177,7 @@
 },
 {
     id: 342,
+    cutId: 439,
     district: 77,
     firstName: 'Ingvald',
     lastName: 'Jåma',
@@ -2046,6 +2192,7 @@
 },
 {
     id: 4370,
+    cutId: 531,
     district: 77,
     firstName: 'Petter',
     lastName: 'Haugen',
@@ -2060,6 +2207,7 @@
 },
 {
     id: 402,
+    cutId: 513,
     district: 77,
     firstName: 'Siv Stormo',
     lastName: 'Holtan',
@@ -2074,6 +2222,7 @@
 },
 {
     id: 4351,
+    cutId: 4865,
     district: 77,
     firstName: 'Berit',
     lastName: 'Jåma',
@@ -2088,6 +2237,7 @@
 },
 {
     id: 338,
+    cutId: 435,
     district: 77,
     firstName: 'Naina',
     lastName: 'Jåma',
@@ -2102,6 +2252,7 @@
 },
 {
     id: 2083,
+    cutId: 2377,
     district: 77,
     firstName: 'Sissel S.',
     lastName: 'Holtan',
@@ -2116,6 +2267,7 @@
 },
 {
     id: 24,
+    cutId: 64,
     district: 77,
     firstName: 'Terje',
     lastName: 'Haugen',
@@ -2130,6 +2282,7 @@
 },
 {
     id: 2084,
+    cutId: 2378,
     district: 77,
     firstName: 'Synneve',
     lastName: 'F¨jällberg',
@@ -2144,6 +2297,7 @@
 },
 {
     id: 535,
+    cutId: 660,
     district: 77,
     firstName: 'Tom Mathias',
     lastName: 'Jåma',
@@ -2158,6 +2312,7 @@
 },
 {
     id: 4369,
+    cutId: 4862,
     district: 77,
     firstName: 'Anna Pavall',
     lastName: 'Holtan',
@@ -2172,6 +2327,7 @@
 },
 {
     id: 414,
+    cutId: 529,
     district: 77,
     firstName: 'Arne',
     lastName: 'Holtan',
@@ -2186,6 +2342,7 @@
 },
 {
     id: 2169,
+    cutId: 525,
     district: 77,
     firstName: 'Elise Holtan Pavall',
     lastName: 'Årbogen',
@@ -2200,6 +2357,7 @@
 },
 {
     id: 409,
+    cutId: 521,
     district: 77,
     firstName: 'Leif Arne',
     lastName: 'Jåma',
@@ -2214,6 +2372,7 @@
 },
 {
     id: 410,
+    cutId: 522,
     district: 77,
     firstName: 'John Kristian',
     lastName: 'Jåma',
@@ -2228,6 +2387,7 @@
 },
 {
     id: 3861,
+    cutId: 4583,
     district: 77,
     firstName: 'Tor Daniel',
     lastName: 'Jåma',
@@ -2242,6 +2402,7 @@
 },
 {
     id: 3863,
+    cutId: 4586,
     district: 77,
     firstName: 'Lena',
     lastName: 'Haugen',
@@ -2256,6 +2417,7 @@
 },
 {
     id: 404,
+    cutId: 516,
     district: 77,
     firstName: 'Arvid',
     lastName: 'Jåma',
@@ -2270,6 +2432,7 @@
 },
 {
     id: 4368,
+    cutId: 4584,
     district: 77,
     firstName: 'Ingrid Maria',
     lastName: 'Jåma',
@@ -2284,6 +2447,7 @@
 },
 {
     id: 3862,
+    cutId: 4585,
     district: 77,
     firstName: 'John',
     lastName: 'Haugen',
@@ -2298,6 +2462,7 @@
 },
 {
     id: 2161,
+    cutId: 2467,
     district: 77,
     firstName: 'John Kristoffer',
     lastName: 'Jåma',
@@ -2312,6 +2477,7 @@
 },
 {
     id: 2160,
+    cutId: 2466,
     district: 77,
     firstName: 'Sara Emilie',
     lastName: 'Jåma',
@@ -2326,6 +2492,7 @@
 },
 {
     id: 2159,
+    cutId: 2465,
     district: 77,
     firstName: 'Maja Kristine',
     lastName: 'Jåma',
@@ -2340,6 +2507,7 @@
 },
 {
     id: 517,
+    cutId: 643,
     district: 77,
     firstName: 'Sissel',
     lastName: 'Jåma',
@@ -2354,6 +2522,7 @@
 },
 {
     id: 52,
+    cutId: 92,
     district: 77,
     firstName: 'Erling',
     lastName: 'Holtan',

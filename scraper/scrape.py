@@ -14,9 +14,13 @@ BASE_URL = 'https://merker.reindrift.no/'
 AREA = '3'
 CURRENT_DIR = os.getcwd()
 
-def prettify(string):
+def _prettify(string):
     if len(string) < 4:
         return string.strip().lower()
+    if string[0] == '*':
+        string = string[1:]
+    if string[-1] == '*':
+        string = string[:-1]
     return ' '.join([s.capitalize() for s in string.strip().split(' ')])
 
 def _get_districts(html):
@@ -30,9 +34,12 @@ def _get_districts(html):
         districts.append((option['value'], option.text))
     return districts
 
-def _download_cut(uri):
+def _get_cut_id(uri):
     match = re.search('merkenr=(\d+)', uri)
-    cut_id = match.group(1)
+    return match.group(1)
+
+def _download_cut(uri):
+    cut_id = _get_cut_id(uri)
     cut = requests.get(BASE_URL + uri)
 
     fp = open('%s/%s.png' % (CURRENT_DIR, cut_id), 'w')
@@ -78,11 +85,11 @@ def _extract_owner_info(info_list):
         else:
             continue
 
-        owner[key] = prettify(info.get('value', ''))
+        owner[key] = _prettify(info.get('value', ''))
     return owner
 
 
-def run():
+def run(*args):
     set_output(StringIO())
 
     sys.stderr.write('Navigerer til merkeregister ..\n')
@@ -122,19 +129,21 @@ def run():
 
             owner = _extract_owner_info(info_list)
             owner['district'] = int(district[0])
+            owner['cutId'] = int(_get_cut_id(link))
 
             people.append(owner)
             sys.stderr.write('\t=> Fant merket til %s %s\n' % (
                         owner['firstName'].encode('utf-8'),
                         owner['lastName'].encode('utf-8')))
 
-    sys.stderr.write('Resultat:\n')
+    sys.stderr.write('Skriver ut resultat ..\n')
 
     print '(function(People) {'
     print '    People.register = ['
-    for owner in people:
+    for i, owner in enumerate(people):
         print "{"
         print "    %s: %s," % ('id', owner['id'])
+        print "    %s: %s," % ('cutId', owner['cutId'])
         print "    %s: %s," % ('district', owner['district'])
         print "    %s: '%s'," % ('firstName', owner['firstName'].encode('utf-8'))
         print "    %s: '%s'," % ('lastName', owner['lastName'].encode('utf-8'))
@@ -146,9 +155,12 @@ def run():
         print "    %s: '%s'," % ('c4', owner['c4'] or "")
         print "    %s: '%s'," % ('c5', owner['c5'] or "")
         print "    %s: '%s'" % ('c6', owner['c6'] or "")
-        print "},"
+        if i == (len(people) - 1):
+            print "}"
+        else:
+            print "},"
     print '];'
     print "}(REINMERKE.module('people')));"
 
 if __name__ == '__main__':
-    run()
+    run(sys.argv[1:])
