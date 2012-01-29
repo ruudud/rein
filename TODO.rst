@@ -3,7 +3,8 @@ List of stuff to do
 
 [ ] Browse based on district
 [ ] Add offline mainifest file, *disable* cache on this file
-[ ] Speed testing on search
+[ ] Create sprite of all marks
+[-] Speed testing on search
 [-] Add support to draw all cuts, on both ears
 [-] Canvas on most of the cuts
 [x] More test data
