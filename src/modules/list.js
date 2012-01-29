@@ -1,4 +1,6 @@
 (function(L, P) {
+    var addOnClick;
+
     L.init = function() {
         var markList = new L.Views.MarkList({
             collection: P.Owners,
@@ -37,13 +39,11 @@
 
         model: new Backbone.Model.extend({}),
 
-        events: {
-            'click': '_onClick'
-        },
-
         _isOpen: false,
 
         initialize: function() {
+            _.bindAll(this, '_onClick');
+            addOnClick.call(this.el, this._onClick);
         },
 
         render: function() {
@@ -55,7 +55,6 @@
         },
 
         _onClick: function(event){
-            event.preventDefault();
             if (this._isOpen) {
                 this._closeInformation();
                 $(this.el).removeClass('selected');
@@ -68,12 +67,35 @@
         },
 
         _closeInformation: function() {
-            this.$('.wrapper').slideUp(200);
+            this.$('.information').hide();
         },
 
         _openInformation: function() {
-            this.$('.wrapper').slideDown(200);
+            this.$('.information').show();
         }
     });
+
+    // Utility Functions
+    addOnClick = function(func) {
+        if (window.Touch) {
+            this.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                this.moved = false;
+                this.addEventListener('touchmove', function() {
+                    this.moved = true;
+                }, false);
+                this.addEventListener('touchend', function() {
+                    this.removeEventListener('touchmove', this, false);
+                    this.removeEventListener('touchend', this, false);
+                    if (!this.moved) {
+                        func();
+                    }
+                }, false);
+
+            }, false);
+        } else {
+            this.onclick = func;
+        }
+    };
 
 }(REINMERKE.module('list'), REINMERKE.module('people')));

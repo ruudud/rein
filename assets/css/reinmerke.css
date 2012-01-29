@@ -65,6 +65,7 @@ html {
     font-size: 100%;
     background-color: #F6F6F6;
     color: #333;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 body {
@@ -94,16 +95,18 @@ li {
 
 /** Listing **/
 
-#marks img {
-    width: 140px;
-    height: 50px;
-    margin: 10px auto;
-}
-
 .marks .mark {
     border-bottom: 1px solid #999;
     background-image: -webkit-linear-gradient(#fdfdfd,#eee);
     background-image: linear-gradient(#fdfdfd,#eee);
+}
+
+.marks .image {
+    padding: 1em 0;
+}
+
+.marks .image .content {
+    margin: 0 auto;
 }
 
 .marks .selected {
@@ -111,11 +114,11 @@ li {
     background-image: linear-gradient(#ededed,#dadada);
 }
 
-.marks .wrapper {
+.marks .information {
     display: none;
 }
 
-.marks .information {
+.marks .information .content {
     padding: 1em 0;
     background-color: #FFF;
 }
