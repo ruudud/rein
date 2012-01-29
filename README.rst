@@ -42,6 +42,16 @@ ImageMagic)::
 
     for fl in `ls`; do convert `echo $fl` -fuzz 20% -transparent white $fl; done
 
+Spriting
+--------
+
+We use `Glue`_ with OptiPNG for creating sprites (and corresponding css)::
+
+   glue assets/img/marks --img=assets/img/ --css=assets/css/ --simple --crop --optipng
+
+.. _Glue: https://github.com/jorgebastida/glue
+
+
 Application Description (in Norwegian)
 ======================================
 

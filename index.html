@@ -14,6 +14,7 @@
 
     <link rel="apple-touch-icon" href="./touch_icon.png"/>
     <link rel="stylesheet" href="assets/css/reinmerke.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/marks.css" type="text/css">
 
     <script type="text/javascript">
         var ADAPT_CONFIG = {
@@ -32,9 +33,11 @@
     <div id="marks"></div>
 
     <script type="text/template" id="mark_template">
-        <img src="assets/img/marks/<%= owner.get('cutId') %>.png" />
-        <div class="wrapper">
-            <div class="information">
+        <div class="image">
+            <div class="content sprite-marks-<%= owner.get('cutId') %>"></div>
+        </div>
+        <div class="information">
+            <div class="content">
                 <%= owner.get('firstName') %> <%= owner.get('lastName') %><br/>
                 <strong><%= district %></strong><br/>
                 <em>
