@@ -37,13 +37,11 @@
 
         model: new Backbone.Model.extend({}),
 
-        events: {
-            'click': '_onClick'
-        },
-
         _isOpen: false,
 
         initialize: function() {
+            _.bindAll(this, '_onClick');
+            this.el.addOnClick(this._onClick);
         },
 
         render: function() {
@@ -55,7 +53,6 @@
         },
 
         _onClick: function(event){
-            event.preventDefault();
             if (this._isOpen) {
                 this._closeInformation();
                 $(this.el).removeClass('selected');
@@ -68,11 +65,11 @@
         },
 
         _closeInformation: function() {
-            this.$('.wrapper').slideUp(200);
+            this.$('.wrapper').hide();
         },
 
         _openInformation: function() {
-            this.$('.wrapper').slideDown(200);
+            this.$('.wrapper').show();
         }
     });
 
