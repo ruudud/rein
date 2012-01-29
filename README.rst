@@ -30,6 +30,17 @@ The palette in use, is `Ocean Five`_:
 
 .. _Ocean Five: http://www.colourlovers.com/palette/1473/Ocean_Five
 
+Scraping
+--------
+
+Simply run::
+
+    python scraper/scrape.py > mark_register.js
+
+When it finishes, the white needs to be made transparent (requires
+ImageMagic)::
+
+    for fl in `ls`; do convert `echo $fl` -fuzz 20% -transparent white $fl; done
 
 Application Description (in Norwegian)
 ======================================
