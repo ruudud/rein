@@ -1,57 +1,121 @@
+/*------------------------------------*\
+    $RESET (inuitcss)
+\*------------------------------------*/
+/*
+A more considered reset; more of a restart... csswizardry.com/2011/10/reset-restarted
+*/
+html,body,div,span,applet,object,iframe,
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,hr,
+a,abbr,address,cite,code,
+del,dfn,em,img,ins,kbd,q,s,samp,
+small,strong,sub,sup,tt,var,
+b,u,i,
+dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary,
+time,mark,audio,video{
+    margin:0;
+    padding:0;
+}
+article,aside,details,figcaption,figure,footer,
+header,hgroup,menu,nav,section{
+    display:block;
+}
+h1,h2,h3,h4,h5,h6{
+    font-size:1em;
+}
+strong,b,mark{
+    font-weight:bold;
+    font-style:inherit;
+}
+em,i,cite,q,address,dfn,var{
+    font-style:italic;
+    font-weight:inherit;
+}
+abbr[title],dfn[title]{
+    cursor:help;
+    border-bottom:1px dotted;
+}
+ins{
+    border-bottom:1px solid;
+}
+a,u,ins{
+    text-decoration:none;
+}
+del,s{
+    text-decoration:line-through;
+}
+small{
+    font-size:0.75em;
+}
+img{
+    border:none;
+    font-style:italic;
+}
+input,
+select,option,optgroup,
+textarea{
+    font:inherit;
+}
+
+/** Main **/
+html {
+    font-size: 100%;
+    background-color: #F6F6F6;
+    color: #333;
+}
+
 body {
-    margin: 5px;
-}
-#reset {
-    position: absolute;
-    cursor: pointer;
-    color: #4E9A06;
-    font-size: 150%;
-    font-weight: bold;
-}
-.cut {
-    display: block;
-    float: left;
-    margin-left: 5px;
-    margin-top: 5px;
-    color: #EEE;
-    font-size: 70%;
-    background-color: #EB6841;
+    min-height: 100%;
+    font: normal 12px/20px helvetica,arial,sans-serif;
     text-align: center;
-    width: 55px;
-    height: 40px;
 }
-.draggable {
-    position: absolute;
-    color: #EEE;
-    font-size: 70%;
-    background-color: #00A0B0;
-    text-align: center;
-    width: 75px;
-    height: 60px;
-}
-#ears {
-    margin-top: 10px;
-    position: relative;
-}
-.ear {
-    background-color: #6A4A3C;
-    color: #FFF;
-    text-align: center;
-    border-bottom-right-radius: 150px 35px;
-    border-top-right-radius: 150px 35px;
-}
-.ear .front, .ear .back {
-    float: left;
-}
-.ear .front {
-    border-bottom: 1px solid #FFF;
-}
-.ear .side {
-    border-left: 1px solid #FFF;
-    float: right;
+
+li {
+    list-style-type: none;
 }
 
 /** Common styles **/
-.clear {
+.cf {
+    zoom: 1;
+}
+
+.cf:before,
+.cf:after {
+    content: "";
+    display: table;
+}
+
+.cf:after {
     clear: both;
+}
+
+/** Listing **/
+
+#marks img {
+    width: 140px;
+    height: 50px;
+    margin: 10px auto;
+}
+
+.marks .mark {
+    border-bottom: 1px solid #999;
+    background-image: -webkit-linear-gradient(#fdfdfd,#eee);
+    background-image: linear-gradient(#fdfdfd,#eee);
+}
+
+.marks .selected {
+    background-image: -webkit-linear-gradient(#ededed,#dadada);
+    background-image: linear-gradient(#ededed,#dadada);
+}
+
+.marks .wrapper {
+    display: none;
+}
+
+.marks .information {
+    padding: 1em 0;
+    background-color: #FFF;
 }

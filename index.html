@@ -29,44 +29,19 @@
     <script src="lib/adapt.js" type="text/javascript"></script>
 </head>
 <body>
+    <div id="marks"></div>
 
-    <div id="cuts"></div>
-
-    <div id="ears">
-        <div id="reset">↩</div>
-        <div id="right_ear" class="ear">
-            <div class="front">
-                <canvas>
-                    Din nettleser støtter ikke canvas.
-                </canvas>
-            </div>
-            <div class="side">
-                <canvas>
-                    Din nettleser støtter ikke canvas.
-                </canvas>
-            </div>
-            <div class="back">
-                <canvas>
-                    Din nettleser støtter ikke canvas.
-                </canvas>
+    <script type="text/template" id="mark_template">
+        <img src="assets/img/marks/<%= owner.get('cutId') %>.png" />
+        <div class="wrapper">
+            <div class="information">
+                <%= owner.get('firstName') %> <%= owner.get('lastName') %><br/>
+                <strong><%= district %></strong><br/>
+                <em>
+                    <%= owner.get('address') %> <%= owner.get('place') %>
+                </em>
             </div>
         </div>
-    </div>
-
-    <div>
-        <h3>Søketreff</h3>
-        <ul id="search_results"></ul>
-    </div>
-
-    <div id="moving_cut"></div>
-
-    <script type="text/template" id="moving_cut_template">
-        <div class="draggable" data-type="<%= cutType %>" style="top: <%= cutY %>px; left: <%= cutX %>px">
-            <%= cutName %>
-        </div>
-    </script>
-    <script type="text/template" id="search_hit_template">
-        <li><%= firstName %> <%= lastName %> (<%= address %>, <%= place %>)</li>
     </script>
 
     <script src="lib/jquery-1.7.1.min.js" type="text/javascript"></script>
@@ -77,10 +52,7 @@
     <script src="src/app.js" type="text/javascript"></script>
     <script src="src/mark_register.js" type="text/javascript"></script>
     <script src="src/modules/people.js" type="text/javascript"></script>
-    <script src="src/modules/ears.js" type="text/javascript"></script>
-    <script src="src/modules/findbyear.js" type="text/javascript"></script>
-    <script src="src/modules/painter.js" type="text/javascript"></script>
-    <script src="src/modules/utils.js" type="text/javascript"></script>
+    <script src="src/modules/list.js" type="text/javascript"></script>
     <script src="src/setup.js" type="text/javascript"></script>
     <script type="text/javascript">
         var _gaq = _gaq || [];
