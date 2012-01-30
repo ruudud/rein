@@ -1,7 +1,7 @@
-(function(L, P) {
+(function (L, P) {
     var addOnClick;
 
-    L.init = function() {
+    L.init = function () {
         var markList = new L.Views.MarkList({
             collection: P.Owners,
         });
@@ -14,13 +14,13 @@
         className: 'marks',
         collection: new Backbone.Collection.extend({}),
 
-        initialize: function() {
+        initialize: function () {
         },
 
-        render: function() {
+        render: function () {
             $(this.el).empty();
             var self = this;
-            this.collection.each(function(owner) {
+            this.collection.each(function (owner) {
                 var markItem = new L.Views.Mark({
                     model: owner
                 });
@@ -41,12 +41,12 @@
 
         _isOpen: false,
 
-        initialize: function() {
+        initialize: function () {
             _.bindAll(this, '_onClick');
             addOnClick.call(this.el, this._onClick);
         },
 
-        render: function() {
+        render: function () {
             $(this.el).html(_.template(this.template, {
                 owner: this.model,
                 district: P.Districts[this.model.get('district')]
@@ -54,7 +54,7 @@
             return this;
         },
 
-        _onClick: function(event){
+        _onClick: function (event) {
             if (this._isOpen) {
                 this._closeInformation();
                 $(this.el).removeClass('selected');
@@ -66,25 +66,25 @@
             }
         },
 
-        _closeInformation: function() {
+        _closeInformation: function () {
             this.$('.information').hide();
         },
 
-        _openInformation: function() {
+        _openInformation: function () {
             this.$('.information').show();
         }
     });
 
-    // Utility Functions
-    addOnClick = function(func) {
+    // Utility function s
+    addOnClick = function (func) {
         if (window.Touch) {
-            this.addEventListener('touchstart', function(e) {
+            this.addEventListener('touchstart', function (e) {
                 e.preventDefault();
                 this.moved = false;
-                this.addEventListener('touchmove', function() {
+                this.addEventListener('touchmove', function () {
                     this.moved = true;
                 }, false);
-                this.addEventListener('touchend', function() {
+                this.addEventListener('touchend', function () {
                     this.removeEventListener('touchmove', this, false);
                     this.removeEventListener('touchend', this, false);
                     if (!this.moved) {

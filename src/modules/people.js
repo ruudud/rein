@@ -1,8 +1,8 @@
 // This module handles the owner register
-(function(P){
+(function (P) {
     var _fillDB;
 
-    P.init = function() {
+    P.init = function () {
         P.Owners = P.Owners || new P.Collections.Owners();
         P.Owners.fetch();
 
@@ -29,9 +29,9 @@
     });
 
 
-    // Utility Functions
-    _fillDB = function(collection, rawData) {
-        _.each(rawData, function(p) {
+    // Utility function s
+    _fillDB = function (collection, rawData) {
+        _.each(rawData, function (p) {
             collection.create(p);
         });
     };

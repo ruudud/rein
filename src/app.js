@@ -1,7 +1,7 @@
-var REINMERKE = (function() {
+var REINMERKE = (function () {
     var modules = {}, init, module;
 
-    module = function(name) {
+    module = function (name) {
         if (modules[name]) {
             return modules[name];
         }
