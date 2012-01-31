@@ -35,7 +35,7 @@
         tagName: 'li',
         className: 'district',
         events: {
-            'click .filterByDistrict': '_onFilterClick'
+            'click': '_onFilterClick'
         },
 
         render: function () {

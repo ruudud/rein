@@ -20,6 +20,7 @@ li {
 }
 
 #header {
+    padding: 19px 0;
     background-color: #EDC951;
     color: #FFF;
     text-shadow: 1px 1px 0px #333;
@@ -34,6 +35,7 @@ li {
     text-align: left;
 }
 .district {
+    cursor: pointer;
     padding: 6px;
     margin: 3px;
 }
