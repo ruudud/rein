@@ -33,14 +33,17 @@ li {
     margin: 0 auto;
     text-align: left;
 }
-.districts:first-child {
-    padding-top: 1em;
-}
 .district {
-    padding-bottom: 1em;
+    padding: 0.5em;
 }
-.district a {
-    display: inline-block;
+.selected a {
+    color: #F6F6F6;
+}
+.selected {
+    text-align: center;
+    background-color: #00A0B0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 1px #333;
 }
 
 .marks .mark {

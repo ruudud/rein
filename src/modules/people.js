@@ -16,7 +16,7 @@
         72: 'VA 7 - GASKEN-LAANTE',
         73: 'VF 8 - SKÆHKERE',
         74: 'VG 9 - LÅARTE',
-        75: 'VJ 10 - Tjåehkere sijte',
+        75: 'VJ 10 - TJÅEHKERE SIJTE',
         76: 'VM 11 - ÅARJEL-NJAARKE',
         77: 'VR 6 - FOVSEN-NJAARKE'
     };
