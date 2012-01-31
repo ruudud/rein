@@ -34,7 +34,8 @@ li {
     text-align: left;
 }
 .district {
-    padding: 0.5em;
+    padding: 6px;
+    margin: 3px;
 }
 .selected a {
     color: #F6F6F6;
