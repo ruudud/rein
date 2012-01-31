@@ -35,31 +35,28 @@
         <h1 class="header">Velg distrikt:</h1>
     </header>
 
-    <div id="districts">
-        <ul class="districts">
-            <li class="district"><a href="#">VA 7 - GASKEN-LAANTE</a></li>
-            <li class="district"><a href="#">VF 8 - SKÆHKERE</a></li>
-            <li class="district"><a href="#">VG 9 - LÅARTE</a></li>
-            <li class="district"><a href="#">VJ 10 - Tjåehkere sijte</a></li>
-            <li class="district"><a href="#">VM 11 - ÅARJEL-NJAARKE</a></li>
-            <li class="district"><a href="#">VR 6 - FOVSEN-NJAARKE</a></li>
-        </ul>
-    </div>
+    <div id="districts"></div>
+
     <div id="marks"></div>
 
     <script type="text/template" id="mark_template">
+        {{#owner}}
         <div class="image">
-            <div class="content sprite-marks-<%= owner.get('cutId') %>"></div>
+            <div class="content sprite-marks-{{cutId}}"></div>
         </div>
         <div class="information">
             <div class="content">
-                <%= owner.get('firstName') %> <%= owner.get('lastName') %><br/>
-                <strong><%= district %></strong><br/>
+                {{firstName}} {{lastName}}<br/>
+                <strong>{{districtName}}</strong><br/>
                 <em>
-                    <%= owner.get('address') %> <%= owner.get('place') %>
+                    {{address}} {{place}}
                 </em>
             </div>
         </div>
+        {{/owner}}
+    </script>
+    <script type="text/template" id="district_template">
+        <a href="#" class="filterByDistrict">{{districtName}}</a>
     </script>
 
     <script src="lib/zepto.min.js" type="text/javascript"></script>
