@@ -1,4 +1,4 @@
-(function (L, P) {
+(function (L, P, E) {
     var addOnClick;
 
     L.init = function () {
@@ -37,6 +37,7 @@
         events: {
             'click': '_onFilterClick'
         },
+        _active: false,
 
         render: function () {
             this.$el.html(this.options.template.render({
@@ -48,6 +49,13 @@
         _onFilterClick: function (event) {
             event.preventDefault();
             this.$el.toggleClass('selected');
+            if (this._active) {
+                this._active = false;
+                E.trigger('filter:district', false, this.model.get('id'));
+            } else {
+                this._active = true;
+                E.trigger('filter:district', true, this.model.get('id'));
+            }
         }
 
     });
@@ -144,4 +152,4 @@
         }
     };
 
-}(REINMERKE.module('list'), REINMERKE.module('people')));
+}(REINMERKE.module('list'), REINMERKE.module('people'), REINMERKE.events));
