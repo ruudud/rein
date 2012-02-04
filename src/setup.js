@@ -1,4 +1,4 @@
-Zepto(function($) {
+$(document).ready(function () {
     REINMERKE.module('people').init();
     REINMERKE.module('list').init();
 

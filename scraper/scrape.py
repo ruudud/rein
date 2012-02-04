@@ -138,28 +138,28 @@ def run(*args):
 
     sys.stderr.write('Skriver ut resultat ..\n')
 
-    print '(function(People) {'
-    print '    People.register = ['
+    print '(function (People) {'
+    print ' '*3, 'People.register = ['
     for i, owner in enumerate(people):
-        print "{"
-        print "    %s: %s," % ('id', owner['id'])
-        print "    %s: %s," % ('cutId', owner['cutId'])
-        print "    %s: %s," % ('district', owner['district'])
-        print "    %s: '%s'," % ('firstName', owner['firstName'].encode('utf-8'))
-        print "    %s: '%s'," % ('lastName', owner['lastName'].encode('utf-8'))
-        print "    %s: '%s'," % ('address', owner['address'].encode('utf-8') or "")
-        print "    %s: '%s'," % ('place', owner['place'].encode('utf-8') or "")
-        print "    %s: '%s'," % ('c1', owner['c1'] or "")
-        print "    %s: '%s'," % ('c2', owner['c2'] or "")
-        print "    %s: '%s'," % ('c3', owner['c3'] or "")
-        print "    %s: '%s'," % ('c4', owner['c4'] or "")
-        print "    %s: '%s'," % ('c5', owner['c5'] or "")
-        print "    %s: '%s'" % ('c6', owner['c6'] or "")
+        print ' '*7, "{"
+        print ' '*7, "    %s: %s," % ('id', owner['id'])
+        print ' '*7, "    %s: %s," % ('cutId', owner['cutId'])
+        print ' '*7, "    %s: %s," % ('district', owner['district'])
+        print ' '*7, "    %s: '%s'," % ('firstName', owner['firstName'].encode('utf-8'))
+        print ' '*7, "    %s: '%s'," % ('lastName', owner['lastName'].encode('utf-8'))
+        print ' '*7, "    %s: '%s'," % ('address', owner['address'].encode('utf-8') or "")
+        print ' '*7, "    %s: '%s'," % ('place', owner['place'].encode('utf-8') or "")
+        print ' '*7, "    %s: '%s'," % ('c1', owner['c1'] or "")
+        print ' '*7, "    %s: '%s'," % ('c2', owner['c2'] or "")
+        print ' '*7, "    %s: '%s'," % ('c3', owner['c3'] or "")
+        print ' '*7, "    %s: '%s'," % ('c4', owner['c4'] or "")
+        print ' '*7, "    %s: '%s'," % ('c5', owner['c5'] or "")
+        print ' '*7, "    %s: '%s'" % ('c6', owner['c6'] or "")
         if i == (len(people) - 1):
-            print "}"
+            print ' '*7, "}"
         else:
-            print "},"
-    print '];'
+            print ' '*7, "},"
+    print ' '*3, '];'
     print "}(REINMERKE.module('people')));"
 
 if __name__ == '__main__':

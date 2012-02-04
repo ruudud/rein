@@ -1,7 +1,9 @@
-var REINMERKE = (function() {
-    var modules = {}, init, module;
+var REINMERKE = (function () {
+    var modules = {}, events = {}, init, module;
 
-    module = function(name) {
+    _.extend(events, Backbone.Events); 
+
+    module = function (name) {
         if (modules[name]) {
             return modules[name];
         }
@@ -12,6 +14,7 @@ var REINMERKE = (function() {
 
     return {
         module: module,
+        events: events
     };
 }());
 

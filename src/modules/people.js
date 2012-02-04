@@ -1,8 +1,8 @@
 // This module handles the owner register
-(function(P){
+(function (P, E) {
     var _fillDB;
 
-    P.init = function() {
+    P.init = function () {
         P.Owners = P.Owners || new P.Collections.Owners();
         P.Owners.fetch();
 
@@ -16,7 +16,7 @@
         72: 'VA 7 - GASKEN-LAANTE',
         73: 'VF 8 - SKÆHKERE',
         74: 'VG 9 - LÅARTE',
-        75: 'VJ 10 - Tjåehkere sijte',
+        75: 'VJ 10 - TJÅEHKERE SIJTE',
         76: 'VM 11 - ÅARJEL-NJAARKE',
         77: 'VR 6 - FOVSEN-NJAARKE'
     };
@@ -28,12 +28,11 @@
         localStorage: new Store('ReindeerOwners'),
     });
 
-
-    // Utility Functions
-    _fillDB = function(collection, rawData) {
-        _.each(rawData, function(p) {
+    // Utility function s
+    _fillDB = function (collection, rawData) {
+        _.each(rawData, function (p) {
             collection.create(p);
         });
     };
 
-}(REINMERKE.module('people')));
+}(REINMERKE.module('people'), REINMERKE.events));

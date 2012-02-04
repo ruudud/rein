@@ -1,8 +1,8 @@
 var config = module.exports;
 
 config['Browser tests'] = {
-    libs: ['lib/jquery-1.7.1.min.js', 'lib/underscore.js', 'lib/backbone.js', 
-           'lib/backbone.localStorage.js'],
+    libs: ['lib/zepto.min.js', 'lib/underscore.min.js', 'lib/backbone.min.js', 
+           'lib/backbone.localStorage.min.js', 'lib/hogan.min.js'],
     sources: ['src/app.js', 'src/**/*.js'],
     tests: ['test/*_test.js'],
     environment: 'browser'
