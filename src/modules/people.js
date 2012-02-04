@@ -26,41 +26,7 @@
     P.Collections.Owners = Backbone.Collection.extend({
         model: P.Models.Owner,
         localStorage: new Store('ReindeerOwners'),
-        _activeDistricts: [],
-
-        initialize: function () {
-            E.on('filter:district', this.filterByDistrict, this);
-        },
-
-        filterByDistrict: function (enable, districtId) {
-            if (arguments.length < 2) {
-                return this.models;
-            }
-            var activeDistricts = this._updateActiveDistricts(enable, districtId);
-
-            return this.filter(function (owner) {
-                var match = _.indexOf(activeDistricts, owner.get('district')); 
-                return match > -1;
-            });
-        },
-        
-        _updateActiveDistricts: function (enable, districtId) {
-            var districtIndex = _.indexOf(this._activeDistricts, districtId);
-            if (enable) {
-                if (districtIndex < 0) {
-                    this._activeDistricts.push(districtId);
-                }
-            } else {
-                if (districtIndex > -1) {
-                    this._activeDistricts = _.without(this._activeDistricts,
-                                                      districtId);
-                }
-            }
-            return this._activeDistricts;
-        }
-
     });
-
 
     // Utility function s
     _fillDB = function (collection, rawData) {

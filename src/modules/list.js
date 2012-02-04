@@ -1,11 +1,32 @@
 (function (L, P, E) {
-    var addOnClick;
+    var addOnClick, districtList, markList,
+        _activeDistricts = [];
 
     L.init = function () {
-        var districtList = new L.Views.Districts({collection: P.Districts});
-        var markList = new L.Views.MarkList({collection: P.Owners});
-        $('#marks').append(markList.render().el);
-        $('#districts').append(districtList.render().el);
+        this.districtList = new L.Views.Districts({collection: P.Districts});
+        this.markList = new L.Views.MarkList({collection: P.Owners});
+        $('#districts').append(this.districtList.render().el);
+        $('#marks').append(this.markList.render().el);
+
+        E.on('filter:district', L.updateActiveDistricts, this);
+    };
+
+    L.updateActiveDistricts = function (enable, districtId) {
+        if (arguments.length < 2) {
+            return _activeDistricts;
+        }
+        var districtIndex = _.indexOf(_activeDistricts, districtId);
+        if (enable) {
+            if (districtIndex < 0) {
+                _activeDistricts.push(districtId);
+            }
+        } else {
+            if (districtIndex > -1) {
+                _activeDistricts = _.without(_activeDistricts, districtId);
+            }
+        }
+        E.trigger('activeDistricts', _activeDistricts);
+        return _activeDistricts;
     };
 
     L.Views.Districts = Backbone.View.extend({
@@ -51,10 +72,10 @@
             this.$el.toggleClass('selected');
             if (this._active) {
                 this._active = false;
-                E.trigger('filter:district', false, this.model.get('id'));
+                E.trigger('filter:district', false, parseInt(this.model.get('id')));
             } else {
                 this._active = true;
-                E.trigger('filter:district', true, this.model.get('id'));
+                E.trigger('filter:district', true, parseInt(this.model.get('id')));
             }
         }
 
@@ -71,7 +92,6 @@
         },
 
         render: function () {
-            this.$el.empty();
             var self = this;
             this.collection.each(function (owner) {
                 var markItem = new L.Views.Mark({
@@ -93,10 +113,13 @@
         model: new Backbone.Model({}),
 
         _isOpen: false,
+        _visible: false,
 
         initialize: function () {
             _.bindAll(this, '_onClick');
             addOnClick.call(this.el, this._onClick);
+
+            E.on('activeDistricts', this._toggleVisibility, this);
         },
 
         render: function () {
@@ -105,7 +128,36 @@
                 districtName: districtName,
                 owner: this.model.toJSON()
             }));
+            this.show();
             return this;
+        },
+
+        show: function () {
+            this.$el.show();
+            this._visible = true;
+        },
+
+        hide: function () {
+            this.$el.hide();
+            this._visible = false;
+        },
+
+        _toggleVisibility: function (activeDistricts) {
+            if (activeDistricts.length === 0) {
+                this.show();
+                return;
+            }
+
+            var district = this.model.get('district');
+            if (_.indexOf(activeDistricts, district) < 0) {
+                if (this._visible) {
+                    this.hide();
+                }
+            } else {
+                if (!this._visible) {
+                    this.show();
+                }
+            }
         },
 
         _onClick: function (event) {
