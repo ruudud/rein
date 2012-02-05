@@ -1,8 +1,12 @@
 List of stuff to do
 ===================
 
-[ ] Browse based on district
+[ ] Save Registration date
 [ ] Add offline mainifest file, *disable* cache on this file
+[ ] Browse based on county
+[ ] Search by owner name
+[ ] Bigger picture experiment
+[ ] Scroll down when opening last mark
 [-] Speed testing on search
 [-] Add support to draw all cuts, on both ears
 [-] Canvas on most of the cuts
@@ -23,3 +27,4 @@ List of stuff to do
 [x] Conditionally update owners in local storage
 [x] Save images
 [x] Create sprite of all marks
+[x] Browse based on district

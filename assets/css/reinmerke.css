@@ -62,6 +62,9 @@ li {
 .marks .image .content {
     margin: 0 auto;
 }
+.marks .image .owner {
+    text-shadow: 1px 1px 0px #CCC;
+}
 
 .marks .selected {
     background-image: -webkit-linear-gradient(#ededed,#dadada);
