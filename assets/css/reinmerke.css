@@ -19,7 +19,7 @@ li {
     list-style-type: none;
 }
 
-#header {
+.header {
     padding: 19px 0;
     background-color: #EDC951;
     color: #FFF;
@@ -29,12 +29,12 @@ li {
 
 /*-- Listing --*/
 
-.districts {
+.list {
     width: 190px;
     margin: 0 auto;
     text-align: left;
 }
-.district {
+.item {
     cursor: pointer;
     padding: 6px;
     margin: 3px;

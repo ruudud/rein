@@ -1,86 +1,58 @@
-(function (L, P, E) {
-    var addOnClick, districtList, markList,
-        _activeDistricts = [];
+(function (L, P, W, E) {
 
     L.init = function () {
-        this.districtList = new L.Views.Districts({collection: P.Districts});
+        this.areaList = new L.Views.Areas({collection: P.Areas});
         this.markList = new L.Views.MarkList({collection: P.Owners});
-        $('#districts').append(this.districtList.render().el);
-        $('#marks').append(this.markList.render().el);
+        this.markList.setElement('#marks');
 
-        E.on('filter:district', L.updateActiveDistricts, this);
+        $('#areas').append(this.areaList.render().el);
+
+        E.on('filter:area', L.showArea, this);
     };
 
-    L.updateActiveDistricts = function (enable, districtId) {
-        if (arguments.length < 2) {
-            return _activeDistricts;
-        }
-        var districtIndex = _.indexOf(_activeDistricts, districtId);
-        if (enable) {
-            if (districtIndex < 0) {
-                _activeDistricts.push(districtId);
-            }
-        } else {
-            if (districtIndex > -1) {
-                _activeDistricts = _.without(_activeDistricts, districtId);
-            }
-        }
-        E.trigger('activeDistricts', _activeDistricts);
-        return _activeDistricts;
+    L.showArea = function (areaId) {
+        this.markList.render(areaId);
     };
 
-    L.clearActiveDistricts = function () {
-        _activeDistricts = [];
-    };
+    L.Views.Areas = W.Views.List.extend({
 
-    L.Views.Districts = Backbone.View.extend({
+        initialize: function () {
+            this.options.singleElementActive = true;
+            this.on('item:click', this._onAreaClick, this);
+        },
 
-        tagName: 'ul',
-        className: 'districts',
-        collection: {},
-        template: Hogan.compile($('#district_template').html() || ''),
-
-        render: function () {
-            this.$el.empty();
-            var self = this;
-            _.each(this.collection, function (districtName, id) {
-                var district = new L.Views.District({
-                    model: new Backbone.Model({id: id, name: districtName}),
-                    template: self.template
-                });
-                self.$el.append(district.render().el);
-            });
-            return this;
+        _onAreaClick: function (active, id) {
+            this.districtList = new L.Views.Districts({collection: this.collection[id].districts});
+            $('#districts').html(this.districtList.render().el);
+            E.trigger('filter:area', id);
         }
 
     });
 
-    L.Views.District = Backbone.View.extend({
+    L.Views.Districts = W.Views.List.extend({
 
-        tagName: 'li',
-        className: 'district',
-        events: {
-            'click': '_onFilterClick'
-        },
-        _active: false,
+        _activeDistricts: [],
 
-        render: function () {
-            this.$el.html(this.options.template.render({
-                districtName: this.model.get('name')
-            }));
-            return this;
+        initialize: function () {
+            this.on('item:click', this._updateDistricts, this);
         },
 
-        _onFilterClick: function (event) {
-            event.preventDefault();
-            this.$el.toggleClass('selected');
-            if (this._active) {
-                this._active = false;
-                E.trigger('filter:district', false, parseInt(this.model.get('id')));
-            } else {
-                this._active = true;
-                E.trigger('filter:district', true, parseInt(this.model.get('id')));
+        _updateDistricts: function (enable, districtId) {
+            if (arguments.length < 2) {
+                return this._activeDistricts;
             }
+            var districtIndex = _.indexOf(this._activeDistricts, districtId);
+            if (enable) {
+                if (districtIndex < 0) {
+                    this._activeDistricts.push(districtId);
+                }
+            } else {
+                if (districtIndex > -1) {
+                    this._activeDistricts = _.without(this._activeDistricts, districtId);
+                }
+            }
+
+            E.trigger('activeDistricts', this._activeDistricts);
         }
 
     });
@@ -92,12 +64,11 @@
         collection: new Backbone.Collection.extend({}),
         template: Hogan.compile($('#mark_template').html() || ''),
 
-        initialize: function () {
-        },
-
-        render: function () {
+        render: function (areaId) {
             var self = this;
-            this.collection.each(function (owner) {
+            this.collection.chain().filter(function (owner) {
+                return owner.get('area') === areaId;
+            }).each(function (owner) {
                 var markItem = new L.Views.Mark({
                     model: owner,
                     template: self.template
@@ -127,7 +98,8 @@
         },
 
         render: function () {
-            var districtName = P.Districts[this.model.get('district')];
+            var districtName = P.Areas[this.model.get('area')]
+                .districts[this.model.get('district')].name;
             this.$el.html(this.options.template.render({
                 districtName: districtName,
                 owner: this.model.toJSON()
@@ -185,4 +157,4 @@
         }
     });
 
-}(REINMERKE.module('list'), REINMERKE.module('people'), REINMERKE.events));
+}(REINMERKE.module('list'), REINMERKE.module('people'), REINMERKE.module('widget'), REINMERKE.events));
