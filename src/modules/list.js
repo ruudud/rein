@@ -2,17 +2,24 @@
 
     L.init = function () {
         this.areaList = new L.Views.Areas({collection: P.Areas});
-        this.navigation = new L.Views.Navigation({el: '#nav'});
-        this.markList = new L.Views.MarkList({collection: P.Owners});
-        this.markList.setElement('#marks');
+        $('#areas').html(this.areaList.render().el);
 
-        $('#areas').append(this.areaList.render().el);
+        this.navigation = new L.Views.Navigation({el: '#nav'});
+        this.markList = new L.Views.MarkList({
+            el: '#marks',
+            collection: P.register
+        });
 
         E.on('filter:area', L.showArea, this);
+        E.on('filter:districts', L.showMarksInDistricts, this);
     };
 
     L.showArea = function (areaId) {
-        this.markList.render(areaId);
+        this.markList.filterOnArea(areaId);
+    };
+
+    L.showMarksInDistricts = function (districts) {
+        this.markList.render(districts);
     };
 
     L.Views.Navigation = Backbone.View.extend({
@@ -68,7 +75,7 @@
                 }
             }
 
-            E.trigger('activeDistricts', this._activeDistricts);
+            E.trigger('filter:districts', this._activeDistricts);
         }
 
     });
@@ -80,12 +87,13 @@
         collection: new Backbone.Collection.extend({}),
         template: Hogan.compile($('#mark_template').html() || ''),
         _markViews: [],
+        _currentCollection: [],
 
-        render: function (areaId) {
+        render: function (districts) {
             this._clearExistingViews();
             var self = this;
-            this.collection.chain().filter(function (owner) {
-                    return owner.get('area') === areaId;
+            _.chain(this._currentCollection).filter(function (owner) {
+                    return _.indexOf(districts, owner.district) > -1;
                 }).each(function (owner) {
                     var markItem = new L.Views.Mark({
                         model: owner,
@@ -95,6 +103,13 @@
                     self.$el.append(markItem.render().el);
             });
             return this;
+        },
+
+        filterOnArea: function (areaId) {
+            this._clearExistingViews();
+            this._currentCollection = _.filter(this.collection, function (owner) {
+                return owner.area === areaId;
+            });
         },
 
         _clearExistingViews: function () {
@@ -113,67 +128,39 @@
         model: new Backbone.Model({}),
 
         _isOpen: false,
-        _visible: false,
 
         initialize: function () {
             _.bindAll(this, '_onClick');
             this.$el.onpress(this._onClick);
-
-            E.on('activeDistricts', this._toggleVisibility, this);
         },
 
         render: function () {
-            var districtName = P.Areas[this.model.get('area')]
-                .districts[this.model.get('district')].name;
+            var districtName = P.Areas[this.model.area]
+                .districts[this.model.district].name;
             this.$el.html(this.options.template.render({
                 districtName: districtName,
-                owner: this.model.toJSON()
+                owner: this.model
             }));
             return this;
         },
 
-        show: function () {
-            this.$el.show();
-            this._visible = true;
+        _open: function () {
+            this.$('.information').show();
+            this.$el.addClass('selected');
+            this._isOpen = true;
         },
 
-        hide: function () {
-            this.$el.hide();
-            this._visible = false;
-        },
-
-        _toggleVisibility: function (activeDistricts) {
-            var district = this.model.get('district');
-            if (_.indexOf(activeDistricts, district) < 0) {
-                if (this._visible) {
-                    this.hide();
-                }
-            } else {
-                if (!this._visible) {
-                    this.show();
-                }
-            }
+        _close: function () {
+            this.$('.information').hide();
+            this.$el.removeClass('selected');
+            this._isOpen = false;
         },
 
         _onClick: function (event) {
-            if (this._isOpen) {
-                this._closeInformation();
-                this.$el.removeClass('selected');
-                this._isOpen = false;
-            } else {
-                this._openInformation();
-                this.$el.addClass('selected');
-                this._isOpen = true;
-            }
-        },
-
-        _closeInformation: function () {
-            this.$('.information').hide();
-        },
-
-        _openInformation: function () {
-            this.$('.information').show();
+            event.preventDefault();
+            this._isOpen ? this._close() : this._open();
         }
+
     });
 
 }(REINMERKE.module('list'), REINMERKE.module('people'), REINMERKE.module('widget'), REINMERKE.events));

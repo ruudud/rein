@@ -5,11 +5,10 @@
         tagName: 'ul',
         className: 'list',
         collection: {},
-        template: Hogan.compile('<a href="#">{{ name }}</a>'),
+        template: Hogan.compile('{{ name }}'),
 
         render: function () {
             var self = this;
-            this.$el.empty();
             _.each(this.collection, function (item, id) {
                 var listItem = new W.Views.ListItem(_.extend(self.options, {
                     app: self,
@@ -27,9 +26,6 @@
 
         tagName: 'li',
         className: 'item',
-        events: {
-            'click': '_onClick'
-        },
         _active: false,
         _defaultOptions: {
             singleElementActive: false
@@ -37,6 +33,8 @@
 
         initialize: function () {
             this.options = _.defaults(this.options, this._defaultOptions);
+            _.bindAll(this, '_onClick');
+            this.$el.onpress(this._onClick);
         },
 
         render: function () {
@@ -49,17 +47,17 @@
         _onClick: function (event) {
             event.preventDefault();
             if (this.options.singleElementActive) {
-                this.options.app.trigger('item:click', true, parseInt(this.model.get('id'), 10));
                 this.$el.addClass('selected').siblings('.selected').removeClass('selected');
+                this.options.app.trigger('item:click', true, parseInt(this.model.get('id'), 10));
                 return;
             }
             this.$el.toggleClass('selected');
             if (this._active) {
-                this._active = false;
                 this.options.app.trigger('item:click', false, parseInt(this.model.get('id'), 10));
+                this._active = false;
             } else {
-                this._active = true;
                 this.options.app.trigger('item:click', true, parseInt(this.model.get('id'), 10));
+                this._active = true;
             }
         }
 

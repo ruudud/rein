@@ -48,25 +48,25 @@ li {
     text-align: left;
 }
 .item {
+    color: #00A0B0;
     cursor: pointer;
     padding: 6px;
     margin: 3px;
 }
-.selected a {
+
+.list .selected {
     color: #F6F6F6;
-}
-.selected {
     text-align: center;
-    background-color: #00A0B0;
+    background-color: #EB6841;
     border-radius: 5px;
     box-shadow: 2px 2px 1px #333;
+    -webkit-box-shadow: 2px 2px 1px #333;
 }
 
 .marks .mark {
     border-bottom: 1px solid #999;
     background-image: -webkit-linear-gradient(#fdfdfd,#eee);
     background-image: linear-gradient(#fdfdfd,#eee);
-    display: none;
 }
 
 .marks .image {
