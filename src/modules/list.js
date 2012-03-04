@@ -2,6 +2,7 @@
 
     L.init = function () {
         this.areaList = new L.Views.Areas({collection: P.Areas});
+        this.navigation = new L.Views.Navigation({el: '#nav'});
         this.markList = new L.Views.MarkList({collection: P.Owners});
         this.markList.setElement('#marks');
 
@@ -13,6 +14,19 @@
     L.showArea = function (areaId) {
         this.markList.render(areaId);
     };
+
+    L.Views.Navigation = Backbone.View.extend({
+
+        initialize: function () {
+            _.bindAll(this, '_onClick');
+            this.$('.toTop').onpress(this._onClick);
+        },
+
+        _onClick: function () {
+            window.scrollTo(0, 1);
+        }
+
+    });
 
     L.Views.Areas = W.Views.List.extend({
         

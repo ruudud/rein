@@ -27,6 +27,19 @@ li {
     text-transform: uppercase;
 }
 
+.nav {
+    margin: 20px auto;
+}
+
+/*-- Buttons --*/
+.charButton {
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFF;
+    background: #EB6841;
+    border-radius: 30px;
+}
+
 /*-- Listing --*/
 
 .list {
