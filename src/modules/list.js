@@ -15,6 +15,8 @@
     };
 
     L.Views.Areas = W.Views.List.extend({
+        
+        districtList: null,
 
         initialize: function () {
             this.options.singleElementActive = true;
@@ -63,19 +65,28 @@
         className: 'marks',
         collection: new Backbone.Collection.extend({}),
         template: Hogan.compile($('#mark_template').html() || ''),
+        _markViews: [],
 
         render: function (areaId) {
+            this._clearExistingViews();
             var self = this;
             this.collection.chain().filter(function (owner) {
-                return owner.get('area') === areaId;
-            }).each(function (owner) {
-                var markItem = new L.Views.Mark({
-                    model: owner,
-                    template: self.template
-                });
-                self.$el.append(markItem.render().el);
+                    return owner.get('area') === areaId;
+                }).each(function (owner) {
+                    var markItem = new L.Views.Mark({
+                        model: owner,
+                        template: self.template
+                    });
+                    self._markViews.push(markItem);
+                    self.$el.append(markItem.render().el);
             });
             return this;
+        },
+
+        _clearExistingViews: function () {
+            _.each(this._markViews, function(markView) {
+                markView.remove();
+            });
         }
 
     });
@@ -104,7 +115,6 @@
                 districtName: districtName,
                 owner: this.model.toJSON()
             }));
-            this.show();
             return this;
         },
 
@@ -119,11 +129,6 @@
         },
 
         _toggleVisibility: function (activeDistricts) {
-            if (activeDistricts.length === 0) {
-                this.show();
-                return;
-            }
-
             var district = this.model.get('district');
             if (_.indexOf(activeDistricts, district) < 0) {
                 if (this._visible) {

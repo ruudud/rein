@@ -53,6 +53,7 @@ li {
     border-bottom: 1px solid #999;
     background-image: -webkit-linear-gradient(#fdfdfd,#eee);
     background-image: linear-gradient(#fdfdfd,#eee);
+    display: none;
 }
 
 .marks .image {
