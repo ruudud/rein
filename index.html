@@ -15,7 +15,6 @@
     <link rel="apple-touch-icon" href="./touch_icon.png"/>
     <link rel="stylesheet" href="assets/css/inuit.css" type="text/css">
     <link rel="stylesheet" href="assets/css/reinmerke.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/marks.css" type="text/css">
 
     <script type="text/javascript">
         var ADAPT_CONFIG = {
@@ -48,12 +47,13 @@
     <script type="text/template" id="mark_template">
         {{#owner}}
         <div class="image">
-            <div class="content sprite-marks-{{cutId}}"></div>
-            <strong class="owner">{{firstName}} {{lastName}}</strong>
+            <img src="http://cdn.palfashion.no/{{cutId}}.png" class="image-content" />
+            <p>
+                <strong class="owner">{{firstName}} {{lastName}}</strong>
+            </p>
         </div>
         <div class="information">
             <div class="content">
-                {{firstName}} {{lastName}}<br/>
                 <strong>{{districtName}}</strong><br/>
                 <em>
                     {{address}} {{place}}

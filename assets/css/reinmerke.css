@@ -59,9 +59,12 @@ li {
     padding: 1em 0;
 }
 
-.marks .image .content {
+.marks .image-content {
     margin: 0 auto;
+    width: 422px;
+    height: 150px;
 }
+
 .marks .image .owner {
     text-shadow: 1px 1px 0px #CCC;
 }
