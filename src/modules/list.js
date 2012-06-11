@@ -1,4 +1,4 @@
-(function (L, P, W, E) {
+(function (L, P, W, REIN) {
 
     L.init = function () {
         this.areaList = new L.Views.Areas({collection: P.Areas});
@@ -10,8 +10,8 @@
             collection: P.register
         });
 
-        E.on('filter:area', L.showArea, this);
-        E.on('filter:districts', L.showMarksInDistricts, this);
+        REIN.events.on('filter:area', L.showArea, this);
+        REIN.events.on('filter:districts', L.showMarksInDistricts, this);
     };
 
     L.showArea = function (areaId) {
@@ -22,11 +22,12 @@
         this.markList.render(districts);
     };
 
-    L.Views.Navigation = Backbone.View.extend({
+    L.Views.Navigation = REIN.View.extend({
 
-        initialize: function () {
-            _.bindAll(this, '_onClick');
-            this.$('.toTop').onpress(this._onClick);
+        events: function () {
+            return this.formatEvents([
+                '.toTop, _onClick'
+            ]);
         },
 
         _onClick: function () {
@@ -36,7 +37,7 @@
     });
 
     L.Views.Areas = W.Views.List.extend({
-        
+
         districtList: null,
 
         initialize: function () {
@@ -47,7 +48,7 @@
         _onAreaClick: function (active, id) {
             this.districtList = new L.Views.Districts({collection: this.collection[id].districts});
             $('#districts').html(this.districtList.render().el);
-            E.trigger('filter:area', id);
+            REIN.events.trigger('filter:area', id);
         }
 
     });
@@ -75,12 +76,12 @@
                 }
             }
 
-            E.trigger('filter:districts', this._activeDistricts);
+            REIN.events.trigger('filter:districts', this._activeDistricts);
         }
 
     });
 
-    L.Views.MarkList = Backbone.View.extend({
+    L.Views.MarkList = REIN.View.extend({
 
         tagName: 'ul',
         className: 'marks',
@@ -120,18 +121,14 @@
 
     });
 
-    L.Views.Mark = Backbone.View.extend({
+    L.Views.Mark = REIN.View.extend({
 
         className: 'mark',
         tagName: 'li',
-
         model: new Backbone.Model({}),
-
         _isOpen: false,
-
-        initialize: function () {
-            _.bindAll(this, '_onClick');
-            this.$el.onpress(this._onClick);
+        events: function () {
+            return this.formatEvents([',_onClick']);
         },
 
         render: function () {
@@ -158,9 +155,13 @@
 
         _onClick: function (event) {
             event.preventDefault();
-            this._isOpen ? this._close() : this._open();
+            if (this._isOpen) {
+                this._close();
+            } else {
+                this._open();
+            }
         }
 
     });
 
-}(REINMERKE.module('list'), REINMERKE.module('people'), REINMERKE.module('widget'), REINMERKE.events));
+}(REINMERKE.module('list'), REINMERKE.module('people'), REINMERKE.module('widget'), REINMERKE));

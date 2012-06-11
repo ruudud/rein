@@ -1,6 +1,6 @@
-(function (W) {
+(function (W, REIN) {
 
-    W.Views.List = Backbone.View.extend({
+    W.Views.List = REIN.View.extend({
 
         tagName: 'ul',
         className: 'list',
@@ -22,7 +22,7 @@
 
     });
 
-    W.Views.ListItem = Backbone.View.extend({
+    W.Views.ListItem = REIN.View.extend({
 
         tagName: 'li',
         className: 'item',
@@ -30,11 +30,12 @@
         _defaultOptions: {
             singleElementActive: false
         },
+        events: function () {
+            return this.formatEvents([',_onClick']);
+        },
 
         initialize: function () {
             this.options = _.defaults(this.options, this._defaultOptions);
-            _.bindAll(this, '_onClick');
-            this.$el.onpress(this._onClick);
         },
 
         render: function () {
@@ -62,4 +63,4 @@
         }
 
     });
-}(REINMERKE.module('widget')));
+}(REINMERKE.module('widget'), REINMERKE));
