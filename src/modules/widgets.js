@@ -30,8 +30,8 @@
         _defaultOptions: {
             singleElementActive: false
         },
-        events: function () {
-            return this.formatEvents([',_onClick']);
+        events: {
+            'click': '_onClick'
         },
 
         initialize: function () {

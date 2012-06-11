@@ -24,10 +24,8 @@
 
     L.Views.Navigation = REIN.View.extend({
 
-        events: function () {
-            return this.formatEvents([
-                '.toTop, _onClick'
-            ]);
+        events: {
+            'click .toTop': '_onClick'
         },
 
         _onClick: function () {
@@ -127,8 +125,8 @@
         tagName: 'li',
         model: new Backbone.Model({}),
         _isOpen: false,
-        events: function () {
-            return this.formatEvents([',_onClick']);
+        events: {
+            'click': '_onClick'
         },
 
         render: function () {
