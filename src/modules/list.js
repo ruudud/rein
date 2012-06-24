@@ -4,11 +4,12 @@
         this.areaList = new L.Views.Areas({collection: P.Areas});
         $('#areas').html(this.areaList.render().el);
 
-        this.navigation = new L.Views.Navigation({el: '#nav'});
         this.markList = new L.Views.MarkList({
-            el: '#marks',
             collection: P.register
         });
+        $('#marks').html(this.markList.render().el);
+
+        this.navigation = new L.Views.Navigation({el: '#nav'});
 
         REIN.events.on('filter:area', L.showArea, this);
         REIN.events.on('filter:districts', L.showMarksInDistricts, this);
@@ -23,15 +24,8 @@
     };
 
     L.Views.Navigation = REIN.View.extend({
-
-        events: {
-            'click .toTop': '_onClick'
-        },
-
-        _onClick: function () {
-            window.scrollTo(0, 1);
-        }
-
+        events: { 'click .toTop': '_onClick' },
+        _onClick: function () { window.scrollTo(0, 1); }
     });
 
     L.Views.Areas = W.Views.List.extend({
@@ -52,7 +46,6 @@
     });
 
     L.Views.Districts = W.Views.List.extend({
-
         _activeDistricts: [],
 
         initialize: function () {
@@ -76,17 +69,45 @@
 
             REIN.events.trigger('filter:districts', this._activeDistricts);
         }
+    });
 
+    L.Views.Progress = REIN.View.extend({
+        className: 'progress',
+        template: Hogan.compile('<div class="bar" style="width: {{ progress }}%;"></div>'),
+
+        initialize: function () {
+            _.bindAll(this, '_onProgressUpdate', '_onCachingComplete');
+            window.applicationCache.onprogress = this._onProgressUpdate;
+            window.applicationCache.oncached = this._onCachingComplete;
+        },
+
+        render: function () {
+            this.$el.html(this.template.render({progress: 0.1}));
+            return this;
+        },
+
+        _onProgressUpdate: function (event) {
+            var progress = (event.loaded / event.total) * 100;
+            this.$('.bar').css({width: progress + '%'});
+        },
+
+        _onCachingComplete: function () {
+            this.remove();
+        }
     });
 
     L.Views.MarkList = REIN.View.extend({
-
         tagName: 'ul',
         className: 'marks',
         collection: new Backbone.Collection.extend({}),
         template: Hogan.compile($('#mark_template').html() || ''),
         _markViews: [],
         _currentCollection: [],
+
+        initialize: function () {
+            this._loadProgressView = new L.Views.Progress();
+            $('#loader').html(this._loadProgressView.render().el);
+        },
 
         render: function (districts) {
             this._clearExistingViews();
@@ -98,8 +119,8 @@
                         model: owner,
                         template: self.template
                     });
-                    self._markViews.push(markItem);
                     self.$el.append(markItem.render().el);
+                    self._markViews.push(markItem);
             });
             return this;
         },
@@ -116,11 +137,9 @@
                 markView.remove();
             });
         }
-
     });
 
     L.Views.Mark = REIN.View.extend({
-
         className: 'mark',
         tagName: 'li',
         model: new Backbone.Model({}),
@@ -159,7 +178,5 @@
                 this._open();
             }
         }
-
     });
-
 }(REINMERKE.module('list'), REINMERKE.module('people'), REINMERKE.module('widget'), REINMERKE));
