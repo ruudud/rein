@@ -1,7 +1,4 @@
 /*--- Main ---*/
-a {
-    color: #00A0B0;
-}
 html {
     font-size: 100%;
     background-color: #F6F6F6;
@@ -42,24 +39,15 @@ header .title {
 }
 
 header .appcache {
-    display: none;
     position: absolute;
     right: 15px;
     top: 50%;
     margin-top: -9px;
-    width: 300px;
-}
-
-.appcache .text {
-    display: inline-block;
-    line-height: 18px;
-    height: 18px;
-    vertical-align: top;
 }
 
 .appcache .progress {
-    display: inline-block;
-    width: 210px;
+    display: none;
+    width: 150px;
 }
 
 nav {
@@ -82,19 +70,23 @@ nav {
     text-align: left;
 }
 .item {
-    color: #00A0B0;
     cursor: pointer;
     padding: 6px;
     margin: 3px;
 }
 
-.list .selected {
+.list .selected:before {
+    /*
     color: #F6F6F6;
     text-align: center;
     background-color: #EB6841;
     border-radius: 5px;
     box-shadow: 2px 2px 1px #333;
     -webkit-box-shadow: 2px 2px 1px #333;
+    */
+    content: "✔ ";
+    margin-left: -14px;
+    
 }
 
 .marks .mark {

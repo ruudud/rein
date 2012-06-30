@@ -2,9 +2,8 @@
 
     L.init = function () {
 
-        this.loadProgressView = new W.Views.AppCacheProgress({
-            $holding: $('#appcacheLoader')
-        });
+        this.loadProgressView = new W.Views.AppCacheProgress();
+        $('#appcacheLoader').append(this.loadProgressView.render().el);
 
         this.areaList = new L.Views.Areas({collection: P.Areas});
         $('#areas').html(this.areaList.render().el);
