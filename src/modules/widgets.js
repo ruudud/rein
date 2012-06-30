@@ -1,7 +1,6 @@
 (function (W, REIN) {
 
     W.Views.List = REIN.View.extend({
-
         tagName: 'ul',
         className: 'list',
         collection: {},
@@ -19,11 +18,9 @@
             });
             return this;
         }
-
     });
 
     W.Views.ListItem = REIN.View.extend({
-
         tagName: 'li',
         className: 'item',
         _active: false,
@@ -61,6 +58,44 @@
                 this._active = true;
             }
         }
-
     });
+
+    W.Views.AppCacheProgress = REIN.View.extend({
+        className: 'progress',
+        template: Hogan.compile('<div class="bar" style="width: {{ progress }}%;"></div>'),
+        isVisible: false,
+
+        initialize: function () {
+            _.bindAll(this, '_onProgressUpdate', '_onCachingComplete');
+            window.applicationCache.onprogress = this._onProgressUpdate;
+            window.applicationCache.oncached = this._onCachingComplete;
+        },
+
+        render: function () {
+            this.$el.html(this.template.render({progress: this.progress}));
+            return this;
+        },
+
+        _display: function () {
+            this.options.$holding.append(this.render().el);
+            this.options.$holding.show();
+        },
+
+        _onProgressUpdate: function (event) {
+            this.progress = (event.loaded / event.total) * 100;
+            if (!this.isVisible) {
+                this._display();
+                this.isVisible = true;
+            } else {
+                this.$('.bar').css({width: this.progress + '%'});
+            }
+        },
+
+        _onCachingComplete: function () {
+            // TODO: Display information caching complete
+            this.options.$holding.hide();
+            this.remove();
+        }
+    });
+
 }(REINMERKE.module('widget'), REINMERKE));

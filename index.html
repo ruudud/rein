@@ -18,22 +18,30 @@
 
 </head>
 <body>
-    <div id="loader"></div>
-    <header class="header">
-        <h1>Velg område:</h1>
+    <header>
+        <h1 class="title">Reinmerker</h1>
+        <div id="appcacheLoader" class="appcache">
+            <div class="text">Lagrer merker…</div>
+        </div>
     </header>
+    <section class="information">
+    </section>
+
+    <section class="header">
+        <h1>Velg område:</h1>
+    </section>
 
     <div id="areas"></div>
 
-    <header class="header">
+    <section class="header">
         <h1>Velg distrikt:</h1>
-    </header>
+    </section>
 
     <div id="districts"></div>
 
     <div id="marks"></div>
 
-    <nav id="nav" class="nav"><button class="charButton toTop">↑</button></nav>
+    <nav id="nav"><button class="toTop">↑</button></nav>
 
     <script type="text/template" id="mark_template">
         {{#owner}}

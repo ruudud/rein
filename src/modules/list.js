@@ -1,6 +1,11 @@
 (function (L, P, W, REIN) {
 
     L.init = function () {
+
+        this.loadProgressView = new W.Views.AppCacheProgress({
+            $holding: $('#appcacheLoader')
+        });
+
         this.areaList = new L.Views.Areas({collection: P.Areas});
         $('#areas').html(this.areaList.render().el);
 
@@ -71,31 +76,6 @@
         }
     });
 
-    L.Views.Progress = REIN.View.extend({
-        className: 'progress',
-        template: Hogan.compile('<div class="bar" style="width: {{ progress }}%;"></div>'),
-
-        initialize: function () {
-            _.bindAll(this, '_onProgressUpdate', '_onCachingComplete');
-            window.applicationCache.onprogress = this._onProgressUpdate;
-            window.applicationCache.oncached = this._onCachingComplete;
-        },
-
-        render: function () {
-            this.$el.html(this.template.render({progress: 0.1}));
-            return this;
-        },
-
-        _onProgressUpdate: function (event) {
-            var progress = (event.loaded / event.total) * 100;
-            this.$('.bar').css({width: progress + '%'});
-        },
-
-        _onCachingComplete: function () {
-            this.remove();
-        }
-    });
-
     L.Views.MarkList = REIN.View.extend({
         tagName: 'ul',
         className: 'marks',
@@ -103,11 +83,6 @@
         template: Hogan.compile($('#mark_template').html() || ''),
         _markViews: [],
         _currentCollection: [],
-
-        initialize: function () {
-            this._loadProgressView = new L.Views.Progress();
-            $('#loader').html(this._loadProgressView.render().el);
-        },
 
         render: function (districts) {
             this._clearExistingViews();
