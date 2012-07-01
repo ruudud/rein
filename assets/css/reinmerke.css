@@ -53,6 +53,11 @@ nav {
     padding: 10px;
 }
 
+.districts {
+    opacity: 0;
+    -webkit-transition: opacity 1s ease-in-out;
+}
+
 /*--- Appcache Loader ---*/
 .topHeading .appcache {
     position: absolute;
