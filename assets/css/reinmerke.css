@@ -18,12 +18,19 @@ li {
 
 /*-- Common --*/
 section {
-    padding: 10px;
+    padding: 0;
     margin: 0 auto;
 }
 
+.separator {
+    margin-left: -150px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-image: -webkit-linear-gradient(#DADADA, #F6F6F6);
+}
+
 /*--- Main elements ---*/
-header {
+.topHeading {
     width: 100%;
     padding: 15px;
     background-color: #303030;
@@ -33,12 +40,21 @@ header {
     position: relative;
 }
 
-header .title {
+.topHeading .title {
     text-align: left;
     text-transform: uppercase;
 }
 
-header .appcache {
+nav {
+    margin: 20px auto;
+}
+
+.information {
+    padding: 10px;
+}
+
+/*--- Appcache Loader ---*/
+.topHeading .appcache {
     position: absolute;
     right: 15px;
     top: 50%;
@@ -50,18 +66,6 @@ header .appcache {
     width: 150px;
 }
 
-nav {
-    margin: 20px auto;
-}
-
-.header {
-    padding: 19px 0;
-    background-color: #EDC951;
-    color: #FFF;
-    text-shadow: 1px 1px 0px #333;
-    text-transform: uppercase;
-}
-
 /*-- Listing --*/
 
 .list {
@@ -69,24 +73,21 @@ nav {
     margin: 0 auto;
     text-align: left;
 }
+
 .item {
+    text-decoration: underline;
     cursor: pointer;
     padding: 6px;
     margin: 3px;
 }
 
+.list .selected {
+    text-decoration: none;
+}
+
 .list .selected:before {
-    /*
-    color: #F6F6F6;
-    text-align: center;
-    background-color: #EB6841;
-    border-radius: 5px;
-    box-shadow: 2px 2px 1px #333;
-    -webkit-box-shadow: 2px 2px 1px #333;
-    */
     content: "✔ ";
     margin-left: -14px;
-    
 }
 
 .marks .mark {
@@ -161,6 +162,7 @@ button:active {
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+/** From Twitter bootstrap **/
 .progress {
   height: 18px;
   overflow: hidden;
