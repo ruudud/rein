@@ -1,13 +1,14 @@
 List of stuff to do
 ===================
 
-[ ] Browse based on county
-[ ] Add offline mainifest file, *disable* cache on this file
+[ ] Choose default area/districts
+[ ] Remove Hogan.JS
+[ ] Add offline mainifest file for all but Analytics
 [ ] Search by owner name
+[ ] Canvas/SVG on most of the cuts
 [ ] Scroll down when opening last mark
 [-] Speed testing on search
 [-] Add support to draw all cuts, on both ears
-[-] Canvas on most of the cuts
 [x] More test data
 [x] Create backbone models
 [x] Templates

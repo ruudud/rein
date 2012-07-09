@@ -4,6 +4,9 @@
         this.loadProgressView = new W.Views.AppCacheProgress();
         $('#appcacheLoader').append(this.loadProgressView.render().el);
 
+        this.search = new L.Views.Search({collection: P.register});
+        $('#search').html(this.search.render().el);
+
         this.areaList = new L.Views.Areas({collection: P.Areas});
         $('#areas').html(this.areaList.render().el);
 
@@ -13,22 +16,27 @@
         $('#marks').html(this.markList.render().el);
 
         this.navigation = new L.Views.Navigation({el: '#nav'});
-
-        REIN.events.on('filter:area', L.showArea, this);
-        REIN.events.on('filter:districts', L.showMarksInDistricts, this);
-    };
-
-    L.showArea = function (areaId) {
-        this.markList.filterOnArea(areaId);
-    };
-
-    L.showMarksInDistricts = function (districts) {
-        this.markList.render(districts);
     };
 
     L.Views.Navigation = REIN.View.extend({
         events: { 'click .toTop': '_onClick' },
         _onClick: function () { window.scrollTo(0, 1); }
+    });
+
+    L.Views.Search = REIN.View.extend({
+        events: {'click .search': '_onSearchClick'},
+
+        render: function () {
+            this.$el.html(this.template());
+            return this;
+        },
+
+        _onSearchClick: function () {
+            var needle = this.$('input').val();
+            REIN.events.trigger('search', needle);
+        },
+
+        template: _.template('<input type="text"/><button class="search">Søk</button>')
     });
 
     L.Views.Areas = W.Views.List.extend({
@@ -40,7 +48,7 @@
         },
 
         _onAreaClick: function (active, id) {
-            $districts = $('.districts');
+            var $districts = $('.districts');
             $districts.css({opacity: 1});
             this.districtList = new L.Views.Districts({collection: this.collection[id].districts});
             $('#districts').html(this.districtList.render().el);
@@ -56,6 +64,11 @@
 
         initialize: function () {
             this.on('item:click', this._updateDistricts, this);
+            REIN.events.on('filter:area', this._clearDistricts, this);
+        },
+
+        _clearDistricts: function () {
+            this._activeDistricts = [];
         },
 
         _updateDistricts: function (enable, districtId) {
@@ -63,16 +76,12 @@
                 return this._activeDistricts;
             }
             var districtIndex = _.indexOf(this._activeDistricts, districtId);
-            if (enable) {
-                if (districtIndex < 0) {
-                    this._activeDistricts.push(districtId);
-                }
-            } else {
-                if (districtIndex > -1) {
-                    this._activeDistricts = _.without(this._activeDistricts, districtId);
-                }
+            if (enable  && districtIndex < 0) {
+                this._activeDistricts.push(districtId);
             }
-
+            if (!enable && districtIndex > -1) {
+                this._activeDistricts = _.without(this._activeDistricts, districtId);
+            }
             REIN.events.trigger('filter:districts', this._activeDistricts);
         }
     });
@@ -80,39 +89,51 @@
     L.Views.MarkList = REIN.View.extend({
         tagName: 'ul',
         className: 'marks',
-        collection: new Backbone.Collection.extend({}),
+        collection: new Backbone.Collection(),
         template: Hogan.compile($('#mark_template').html() || ''),
         _markViews: [],
-        _currentCollection: [],
+        _currentHits: new Backbone.Collection(),
 
-        render: function (districts) {
+        initialize: function () {
+            REIN.events.on('search', this.search, this);
+            REIN.events.on('filter:area', this.filterOnArea, this);
+            REIN.events.on('filter:districts', this.filterOnDistricts, this);
+            this._currentHits.on('reset', this.render, this);
+        },
+
+        render: function () {
             this._clearExistingViews();
-            var self = this;
-            _.chain(this._currentCollection).filter(function (owner) {
-                    return _.indexOf(districts, owner.district) > -1;
-                }).each(function (owner) {
-                    var markItem = new L.Views.Mark({
-                        model: owner,
-                        template: self.template
-                    });
-                    self.$el.append(markItem.render().el);
-                    self._markViews.push(markItem);
-            });
+            this._currentHits.each(function (owner) {
+                var markItem = new L.Views.Mark({
+                    model: owner,
+                    template: this.template
+                });
+                this.$el.append(markItem.render().el);
+                this._markViews.push(markItem);
+            }.bind(this));
             return this;
         },
 
-        filterOnArea: function (areaId) {
-            this._clearExistingViews();
-            this._currentCollection = _.filter(this.collection, function (owner) {
-                return owner.area === areaId;
+        filterOnDistricts: function (districts) {
+            var hits = this.collection.filter(function (o) {
+                return _.indexOf(districts, o.district) > -1;
             });
+            this._currentHits.reset(hits);
+        },
+
+        filterOnArea: function (areaId) {
+            this._currentHits.reset(this.collection.filter(function (o) {
+                return o.area === areaId;
+            }), {silent: true});
+            this._clearExistingViews();
         },
 
         search: function (needle) {
             needle = needle.toLowerCase();
-            return _.filter(this.collection, function (owner) {
-                return owner.lastName.toLowerCase().indexOf(needle) > -1 ||owner.firstName.toLowerCase().indexOf(needle) > -1;
-            });
+            this._currentHits.reset(this.collection.filter(function (o) {
+                return o.lastName.toLowerCase().indexOf(needle) > -1 ||
+                    o.firstName.toLowerCase().indexOf(needle) > -1;
+            }));
         },
 
         _clearExistingViews: function () {
@@ -127,16 +148,14 @@
         tagName: 'li',
         model: new Backbone.Model({}),
         _isOpen: false,
-        events: {
-            'click': '_onClick'
-        },
+        events: {'click': '_onClick'},
 
         render: function () {
-            var districtName = P.Areas[this.model.area]
-                .districts[this.model.district].name;
+            var districtName = P.Areas[this.model.get('area')]
+                .districts[this.model.get('district')].name;
             this.$el.html(this.options.template.render({
                 districtName: districtName,
-                owner: this.model
+                owner: this.model.toJSON()
             }));
             return this;
         },
