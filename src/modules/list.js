@@ -108,6 +108,13 @@
             });
         },
 
+        search: function (needle) {
+            needle = needle.toLowerCase();
+            return _.filter(this.collection, function (owner) {
+                return owner.lastName.toLowerCase().indexOf(needle) > -1 ||owner.firstName.toLowerCase().indexOf(needle) > -1;
+            });
+        },
+
         _clearExistingViews: function () {
             _.each(this._markViews, function(markView) {
                 markView.remove();
