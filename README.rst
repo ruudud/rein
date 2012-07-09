@@ -52,6 +52,16 @@ We use `Glue`_ with OptiPNG for creating sprites (and corresponding css)::
 .. _Glue: https://github.com/jorgebastida/glue
 
 
+Fooling around with SVG
+-----------------------
+
+::
+    pngtopnm 999.png | potrace --color="#303030" --blacklevel 0.9 --svg > 999.svg
+
+Or better maybe::
+
+    convert 998.png -bordercolor None -border 1x1 -negate pgm:- | potrace --tight --color="#303030" --svg > 998.svg
+
 Application Description (in Norwegian)
 ======================================
 
