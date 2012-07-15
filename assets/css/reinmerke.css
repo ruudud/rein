@@ -37,6 +37,7 @@ section {
     color: #FFF;
     box-shadow: 0 0 10px black;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
     position: relative;
 }
 
@@ -103,12 +104,7 @@ nav {
 
 .marks .image {
     padding: 1em 0;
-}
-
-.marks .image-content {
     margin: 0 auto;
-    width: 422px;
-    height: 150px;
 }
 
 .marks .image .owner {
@@ -126,7 +122,6 @@ nav {
 
 .marks .information .content {
     padding: 1em 0;
-    background-color: #FFF;
 }
 
 /*-- Widgets --*/
