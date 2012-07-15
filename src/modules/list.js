@@ -90,8 +90,7 @@
         tagName: 'ul',
         className: 'marks',
         collection: new Backbone.Collection(),
-        template: Hogan.compile($('#mark_template').html() || ''),
-        partials: { ear: Hogan.compile($('#ear_template').html() || '') },
+        template: _.template($('#mark_template').html() || ''),
         _markViews: [],
         _currentHits: new Backbone.Collection(),
 
@@ -107,8 +106,7 @@
             this._currentHits.each(function (owner) {
                 var markItem = new L.Views.Mark({
                     model: owner,
-                    template: this.template,
-                    partials: this.partials
+                    template: this.template
                 });
                 this.$el.append(markItem.render().el);
                 this._markViews.push(markItem);
@@ -153,14 +151,15 @@
         events: {'click': '_onClick'},
 
         render: function () {
-            var districtName = P.Areas[this.model.get('area')].districts[this.model.get('district')].name;
-            var ears = P.ears[this.model.get('cutId')];
-            this.$el.html(this.options.template.render({
+            var mark = this.model.toJSON();
+            var ears = P.ears[mark.cutId];
+            var districtName = P.Areas[mark.area].districts[mark.district].name;
+            this.$el.html(this.options.template({
                 districtName: districtName,
-                owner: this.model.toJSON(),
+                mark: mark,
                 left: ears[0],
                 right: ears[1]
-            }, this.options.partials));
+            }));
             return this;
         },
 

@@ -4,7 +4,7 @@
         tagName: 'ul',
         className: 'list',
         collection: {},
-        template: Hogan.compile('{{ name }}'),
+        template: _.template('<%= name %>'),
 
         render: function () {
             var self = this;
@@ -36,7 +36,7 @@
         },
 
         render: function () {
-            this.$el.html(this.options.template.render({
+            this.$el.html(this.options.template({
                 name: this.model.get('name')
             }));
             return this;
@@ -62,7 +62,7 @@
 
     W.Views.AppCacheProgress = REIN.View.extend({
         className: 'progress',
-        template: Hogan.compile('<div class="bar" style="width: {{ progress }}%;"></div>'),
+        template: _.template('<div class="bar" style="width: <%= progress %>%;"></div>'),
         isVisible: false,
         progress: 0,
 
@@ -74,7 +74,7 @@
         },
 
         render: function () {
-            this.$el.html(this.template.render({progress: this.progress}));
+            this.$el.html(this.template({progress: this.progress}));
             return this;
         },
 
