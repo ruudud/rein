@@ -1,8 +1,10 @@
 (function (L, P, W, REIN) {
 
     L.init = function () {
-        this.loadProgressView = new W.Views.AppCacheProgress();
-        $('#appcacheLoader').append(this.loadProgressView.render().el);
+        if (window.applicationCache) {
+            this.loadProgressView = new W.Views.AppCacheProgress();
+            $('#appcacheLoader').append(this.loadProgressView.render().el);
+        }
 
         this.search = new L.Views.Search({collection: P.register});
         $('#search').html(this.search.render().el);
@@ -90,7 +92,11 @@
         tagName: 'ul',
         className: 'marks',
         collection: new Backbone.Collection(),
-        template: _.template($('#mark_template').html() || ''),
+        templates: {
+            mark: _.template($('#mark_template').html() || ''),
+            svg: _.template($('#svg_template').html() || ''),
+            canvas: _.template('<canvas style="width:320px;height:160px;"></canvas>')
+        },
         _markViews: [],
         _currentHits: new Backbone.Collection(),
 
@@ -106,7 +112,7 @@
             this._currentHits.each(function (owner) {
                 var markItem = new L.Views.Mark({
                     model: owner,
-                    template: this.template
+                    templates: this.templates
                 });
                 this.$el.append(markItem.render().el);
                 this._markViews.push(markItem);
@@ -154,12 +160,20 @@
             var mark = this.model.toJSON();
             var ears = P.ears[mark.cutId];
             var districtName = P.Areas[mark.area].districts[mark.district].name;
-            this.$el.html(this.options.template({
-                districtName: districtName,
-                mark: mark,
+            var svg = this.options.templates.svg({
                 left: ears[0],
                 right: ears[1]
+            });
+            this.$el.html(this.options.templates.mark({
+                districtName: districtName,
+                mark: mark
             }));
+            if (Modernizr.inlinesvg) {
+                this.$('.image').prepend(svg);
+            } else {
+                this.$('.image').prepend(this.options.templates.canvas());
+                canvg(this.$('canvas')[0], svg.trim());
+            }
             return this;
         },
 

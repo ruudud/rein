@@ -1,9 +1,19 @@
 CACHE MANIFEST
-# v0.1
+# v0.11
 CACHE:
 /touch_icon.png
 /src/mark_register.js
 /src/cuts.js
+lib/modernizr.min.js
+lib/zepto.min.js
+lib/underscore.min.js
+lib/backbone.min.js
+src/app.js
+src/modules/widgets.js
+src/modules/list.js
+src/setup.js
+assets/css/inuit.css
+assets/css/reinmerke.css
 
 NETWORK:
 *
