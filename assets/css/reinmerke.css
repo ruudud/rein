@@ -1,165 +1,205 @@
 /*--- Main ---*/
 html {
-    font-size: 100%;
-    background-color: #F6F6F6;
-    color: #333;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  font-size: 100%;
+  background-color: #F6F6F6;
+  color: #333;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 body {
-    min-height: 100%;
-    font: normal 12px/20px helvetica,arial,sans-serif;
-    text-align: center;
+  min-height: 100%;
+  font: normal 12px/20px helvetica,arial,sans-serif;
+  text-align: center;
 }
 
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 /*-- Common --*/
 section {
-    padding: 0;
-    margin: 0 auto;
+  padding: 0;
+  margin: 15px auto 0;
 }
 
 .separator {
-    margin-left: -150px;
-    text-transform: uppercase;
-    font-weight: bold;
-    background-image: -webkit-linear-gradient(#DADADA, #F6F6F6);
+  margin-left: -150px;
+  font-weight: bold;
+  background-image: -webkit-linear-gradient(#DADADA, #F6F6F6);
+}
+
+.wide {
+    display: block;
+    margin: 10px auto;
+    width: 300px;
+}
+
+.boxed {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 /*--- Main elements ---*/
 .topHeading {
-    width: 100%;
-    padding: 15px;
-    background-color: #303030;
-    color: #FFF;
-    box-shadow: 0 0 10px black;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    position: relative;
+  width: 100%;
+  padding: 10px;
+  background-color: #303030;
+  color: #FFF;
+  box-shadow: 0 0 10px black;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
 }
 
 .topHeading .title {
-    text-align: left;
-    text-transform: uppercase;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-nav {
-    margin: 20px auto;
+.topHeading .menu {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  line-height: 36px;
+  margin-top: -18px;
+}
+
+.bottomNav {
+  margin: 20px auto;
 }
 
 .information {
-    padding: 10px;
+  padding: 10px;
 }
 
 .districts {
-    opacity: 0;
-    -webkit-transition: opacity 1s ease-in-out;
+  opacity: 0;
+  -webkit-transition: opacity 1s ease-in-out;
+}
+
+/*--- Search ---*/
+#search {
+    display: none;
 }
 
 /*--- Appcache Loader ---*/
 .topHeading .appcache {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    margin-top: -9px;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  margin-top: -9px;
 }
 
 .appcache .progress {
-    display: none;
-    width: 150px;
+  display: none;
+  width: 150px;
 }
 
 /*-- Listing --*/
 
 .list {
-    width: 190px;
-    margin: 0 auto;
-    text-align: left;
+  width: 190px;
+  margin: 0 auto;
+  text-align: left;
 }
 
 .item {
-    text-decoration: underline;
-    cursor: pointer;
-    padding: 6px;
-    margin: 3px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 6px;
+  margin: 3px;
 }
 
 .list .selected {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .list .selected:before {
-    content: "✔ ";
-    margin-left: -14px;
+  content: "✔ ";
+  margin-left: -14px;
 }
 
 .marks .mark {
-    border-bottom: 1px solid #999;
-    background-image: -webkit-linear-gradient(#fdfdfd,#eee);
-    background-image: linear-gradient(#fdfdfd,#eee);
+  border-bottom: 1px solid #999;
+  background-image: -webkit-linear-gradient(#fdfdfd,#eee);
+  background-image: linear-gradient(#fdfdfd,#eee);
 }
 
 .marks .image {
-    padding: 1em 0;
-    margin: 0 auto;
+  padding: 1em 0;
+  margin: 0 auto;
 }
 
 .marks .image .owner {
-    text-shadow: 1px 1px 0px #CCC;
+  text-shadow: 1px 1px 0px #CCC;
 }
 
 .marks .selected {
-    background-image: -webkit-linear-gradient(#ededed,#dadada);
-    background-image: linear-gradient(#ededed,#dadada);
+  background-image: -webkit-linear-gradient(#ededed,#dadada);
+  background-image: linear-gradient(#ededed,#dadada);
 }
 
 .marks .information {
-    display: none;
+  display: none;
 }
 
 .marks .information .content {
-    padding: 1em 0;
+  padding: 1em 0;
 }
 
 /*-- Widgets --*/
 
-button {
-    padding: 0 8px;
-    height: 27px;
-    line-height: 27px;
-    min-width: 54px;
-    background-color: #4D90FE;
-    background-image: -webkit-linear-gradient(top, #4D90FE, #4787ED);
-    background-image: -moz-linear-gradient(top, #4D90FE, #4787ED);
-    background-image: -ms-linear-gradient(top, #4D90FE, #4787ED);
-    background-image: -o-linear-gradient(top, #4D90FE, #4787ED);
-    background-image: linear-gradient(top, #4D90FE, #4787ED);
-    border: 1px solid #3079ED;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    color: white;
-    font-weight: bold;
-    text-alignt: center;
+.btnImg {
+  display: inline-block;
+  width: 48px;
+  height: 32px;
+  padding: 4px 8px;
+  -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+        box-sizing: border-box;
+}
+.btnImg img {
+    height: 20px;
+    width: 20px;
 }
 
-button:hover {
-    background-color: #357AE8;
-    background-image: -webkit-linear-gradient(top, #4D90FE, #357AE8);
-    background-image: -moz-linear-gradient(top, #4D90FE, #357AE8);
-    background-image: -ms-linear-gradient(top, #4D90FE, #357AE8);
-    background-image: -o-linear-gradient(top, #4D90FE, #357AE8);
-    background-image: linear-gradient(top, #4D90FE, #357AE8);
-    border: 1px solid #2F5BB7;
+.button {
+  background-color: #4D90FE;
+  background-image: -webkit-linear-gradient(top, #4D90FE, #4787ED);
+  background-image: -moz-linear-gradient(top, #4D90FE, #4787ED);
+  background-image: -ms-linear-gradient(top, #4D90FE, #4787ED);
+  background-image: -o-linear-gradient(top, #4D90FE, #4787ED);
+  background-image: linear-gradient(top, #4D90FE, #4787ED);
+  border: 1px solid #3079ED;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
 }
-
-button:active {
-    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+.button:hover {
+  background-color: #357AE8;
+  background-image: -webkit-linear-gradient(top, #4D90FE, #357AE8);
+  background-image: -moz-linear-gradient(top, #4D90FE, #357AE8);
+  background-image: -ms-linear-gradient(top, #4D90FE, #357AE8);
+  background-image: -o-linear-gradient(top, #4D90FE, #357AE8);
+  background-image: linear-gradient(top, #4D90FE, #357AE8);
+  border: 1px solid #2F5BB7;
+}
+.button:active {
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+button, .btnText {
+  padding: 0 8px;
+  height: 27px;
+  line-height: 27px;
+  min-width: 54px;
 }
 
 /** From Twitter bootstrap **/
@@ -176,8 +216,8 @@ button:active {
   background-repeat: repeat-x;
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#f9f9f9', GradientType=0);
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+   -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .progress .bar {
@@ -197,17 +237,17 @@ button:active {
   background-repeat: repeat-x;
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#149bdf', endColorstr='#0480be', GradientType=0);
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-     -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-          box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+   -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-      -ms-box-sizing: border-box;
-          box-sizing: border-box;
+   -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+        box-sizing: border-box;
   -webkit-transition: width 0.6s ease;
-     -moz-transition: width 0.6s ease;
-      -ms-transition: width 0.6s ease;
-       -o-transition: width 0.6s ease;
-          transition: width 0.6s ease;
+   -moz-transition: width 0.6s ease;
+    -ms-transition: width 0.6s ease;
+     -o-transition: width 0.6s ease;
+        transition: width 0.6s ease;
 }
 
 .progress .bar {
@@ -219,62 +259,62 @@ button:active {
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   -webkit-background-size: 40px 40px;
-     -moz-background-size: 40px 40px;
-       -o-background-size: 40px 40px;
-          background-size: 40px 40px;
+   -moz-background-size: 40px 40px;
+     -o-background-size: 40px 40px;
+        background-size: 40px 40px;
 }
 
 .progress .bar {
   -webkit-animation: progress-bar-stripes 2s linear infinite;
-     -moz-animation: progress-bar-stripes 2s linear infinite;
-      -ms-animation: progress-bar-stripes 2s linear infinite;
-       -o-animation: progress-bar-stripes 2s linear infinite;
-          animation: progress-bar-stripes 2s linear infinite;
+   -moz-animation: progress-bar-stripes 2s linear infinite;
+    -ms-animation: progress-bar-stripes 2s linear infinite;
+     -o-animation: progress-bar-stripes 2s linear infinite;
+        animation: progress-bar-stripes 2s linear infinite;
 }
 
 
 @-webkit-keyframes progress-bar-stripes {
   from {
-    background-position: 40px 0;
+  background-position: 40px 0;
   }
   to {
-    background-position: 0 0;
+  background-position: 0 0;
   }
 }
 
 @-moz-keyframes progress-bar-stripes {
   from {
-    background-position: 40px 0;
+  background-position: 40px 0;
   }
   to {
-    background-position: 0 0;
+  background-position: 0 0;
   }
 }
 
 @-ms-keyframes progress-bar-stripes {
   from {
-    background-position: 40px 0;
+  background-position: 40px 0;
   }
   to {
-    background-position: 0 0;
+  background-position: 0 0;
   }
 }
 
 @-o-keyframes progress-bar-stripes {
   from {
-    background-position: 0 0;
+  background-position: 0 0;
   }
   to {
-    background-position: 40px 0;
+  background-position: 40px 0;
   }
 }
 
 @keyframes progress-bar-stripes {
   from {
-    background-position: 40px 0;
+  background-position: 40px 0;
   }
   to {
-    background-position: 0 0;
+  background-position: 0 0;
   }
 }
 

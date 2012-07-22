@@ -1,13 +1,6 @@
 (function (L, P, W, REIN) {
 
     L.init = function () {
-        if (window.applicationCache) {
-            this.loadProgressView = new W.Views.AppCacheProgress();
-            $('#appcacheLoader').append(this.loadProgressView.render().el);
-        }
-
-        this.search = new L.Views.Search({collection: P.register});
-        $('#search').html(this.search.render().el);
 
         this.areaList = new L.Views.Areas({collection: P.Areas});
         $('#areas').html(this.areaList.render().el);
@@ -17,10 +10,28 @@
         });
         $('#marks').html(this.markList.render().el);
 
-        this.navigation = new L.Views.Navigation({el: '#nav'});
+        this.topNav = new L.Views.TopNav({el: '#menu'});
+        this.bottomNav = new L.Views.BottomNav({el: '#nav'});
+
+        if (false && window.applicationCache) {
+            // TODO: Move this to infobox
+            this.loadProgressView = new W.Views.AppCacheProgress();
+            $('#appcacheLoader').append(this.loadProgressView.render().el);
+        }
+
+        this.search = new L.Views.Search({collection: P.register, el: '#search'});
+        this.search.render();
     };
 
-    L.Views.Navigation = REIN.View.extend({
+    L.Views.TopNav = REIN.View.extend({
+        events: { 'click .search': '_onSearchClick' },
+        _onSearchClick: function (event) {
+            event.preventDefault();
+            REIN.events.trigger('click:toggleSearch');
+        }
+    });
+
+    L.Views.BottomNav = REIN.View.extend({
         events: { 'click .toTop': '_onClick' },
         _onClick: function () { window.scrollTo(0, 1); }
     });
@@ -28,17 +39,31 @@
     L.Views.Search = REIN.View.extend({
         events: {'click .search': '_onSearchClick'},
 
+        initialize: function () {
+            REIN.events.on('click:toggleSearch', this._onToggleSearch, this);
+        },
+
         render: function () {
-            this.$el.html(this.template());
+            this.$el.append(this.template());
             return this;
         },
 
-        _onSearchClick: function () {
+        _onSearchClick: function (event) {
+            event.preventDefault();
             var needle = this.$('input').val();
             REIN.events.trigger('search', needle);
         },
 
-        template: _.template('<input type="text"/><button class="search">Søk</button>')
+        _onToggleSearch: function () {
+            this.$el.toggle();
+        },
+
+        template: _.template([
+            '<form method="post" action=".">',
+            '  <input type="text" placeholder="Navn på eier" class="wide boxed">',
+            '  <input type="submit" class="wide button btnText search" value="Søk">',
+            '</form>',
+        ].join('\n'))
     });
 
     L.Views.Areas = W.Views.List.extend({
@@ -140,6 +165,10 @@
                 return o.lastName.toLowerCase().indexOf(needle) > -1 ||
                     o.firstName.toLowerCase().indexOf(needle) > -1;
             }));
+            if (this._currentHits.length === 0) {
+                // TODO: Inform user
+                console.log('No hits');
+            }
         },
 
         _clearExistingViews: function () {

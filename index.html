@@ -19,32 +19,37 @@
 <body>
   <header class="topHeading">
     <h1 class="title">Reinmerker</h1>
+    <nav class="menu" id="menu">
+      <a href="#" class="button btnImg search"><img src="assets/gfx/magnifier.png"/></a>
+    </nav>
+
     <div id="appcacheLoader" class="appcache"></div>
   </header>
-
-  <section class="information">
-    <p>
-      Etter at nedlastingen er ferdig, vil registeret også fungere uten
-      Internett.<br/>
-      Men det trenger du ikke vente på!
-    </p>
-  </section>
 
   <section id="search"></section>
 
   <section>
-    <h5 class="separator">Velg område</h5>
-    <div id="areas"></div>
+    <h1>Velg område</h1>
+    <div id="areas">
+      <ul class="list">
+        <li class="item">Sør-Trøndelag/Hedmark</li>
+        <li class="item">Nord-Trøndelag</li>
+        <li class="item">Nordland</li>
+        <li class="item">Troms</li>
+        <li class="item">Vest-Finnmark</li>
+        <li class="item">Øst-Finnmark</li>
+      </ul>
+    </div>
   </section>
 
   <section class="districts">
-    <h5 class="separator">Velg distrikt</h5>
+    <h5 class="separator">.. og så distrikt</h5>
     <div id="districts"></div>
   </section>
 
   <section id="marks"></section>
 
-  <nav id="nav"><button class="toTop">↑</button></nav>
+  <nav class="bottomNav" id="nav"><button class="button toTop">↑</button></nav>
 
   <script type="text/template" id="svg_template">
     <svg width="320px" height="160px" viewBox="0 0 430 150">
