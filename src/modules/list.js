@@ -27,6 +27,7 @@
         events: { 'click .search': '_onSearchClick' },
         _onSearchClick: function (event) {
             event.preventDefault();
+            this.$('.search').toggleClass('active');
             REIN.events.trigger('click:toggleSearch');
         }
     });

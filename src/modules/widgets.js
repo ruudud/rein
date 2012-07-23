@@ -62,7 +62,7 @@
 
     W.Views.AppCacheProgress = REIN.View.extend({
         className: 'progress',
-        template: _.template('<div class="bar" style="width: <%= progress %>%;"></div>'),
+        template: _.template('<div class="boxed bar" style="width: <%= progress %>%;"></div>'),
         isVisible: false,
         progress: 0,
 

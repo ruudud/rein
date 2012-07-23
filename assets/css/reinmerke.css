@@ -19,21 +19,13 @@ li {
 /*-- Common --*/
 section {
   padding: 0;
-  margin: 15px auto 0;
+  margin: 15px auto 15px;
 }
-
-.separator {
-  margin-left: -150px;
-  font-weight: bold;
-  background-image: -webkit-linear-gradient(#DADADA, #F6F6F6);
-}
-
 .wide {
     display: block;
     margin: 10px auto;
     width: 300px;
 }
-
 .boxed {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -42,15 +34,13 @@ section {
 
 /*--- Main elements ---*/
 .topHeading {
+  position: relative;
   width: 100%;
   padding: 10px;
   background-color: #303030;
   color: #FFF;
-  box-shadow: 0 0 10px black;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  position: relative;
+  -webkit-box-shadow: 0 0 10px black;
+          box-shadow: 0 0 10px black;
 }
 
 .topHeading .title {
@@ -81,7 +71,8 @@ section {
 
 /*--- Search ---*/
 #search {
-    display: none;
+  display: none;
+  border-bottom: 2px solid #D1D1D1;
 }
 
 /*--- Appcache Loader ---*/
@@ -151,15 +142,18 @@ section {
 
 /*-- Widgets --*/
 
+.uiBlock {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  top: 144px;
+}
 .btnImg {
   display: inline-block;
   width: 48px;
   height: 32px;
   padding: 4px 8px;
-  -webkit-box-sizing: border-box;
-   -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-        box-sizing: border-box;
 }
 .btnImg img {
     height: 20px;
@@ -190,7 +184,7 @@ section {
   background-image: linear-gradient(top, #4D90FE, #357AE8);
   border: 1px solid #2F5BB7;
 }
-.button:active {
+.button.active, .button:active {
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -237,17 +231,12 @@ button, .btnText {
   background-repeat: repeat-x;
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#149bdf', endColorstr='#0480be', GradientType=0);
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-   -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-  -webkit-box-sizing: border-box;
-   -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-        box-sizing: border-box;
+          box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   -webkit-transition: width 0.6s ease;
-   -moz-transition: width 0.6s ease;
-    -ms-transition: width 0.6s ease;
-     -o-transition: width 0.6s ease;
-        transition: width 0.6s ease;
+     -moz-transition: width 0.6s ease;
+      -ms-transition: width 0.6s ease;
+       -o-transition: width 0.6s ease;
+          transition: width 0.6s ease;
 }
 
 .progress .bar {
