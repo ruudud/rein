@@ -161,10 +161,10 @@
         },
 
         search: function (needle) {
-            needle = needle.toLowerCase();
+            needle = needle.toLowerCase().trim();
             this._currentHits.reset(this.collection.filter(function (o) {
-                return o.lastName.toLowerCase().indexOf(needle) > -1 ||
-                    o.firstName.toLowerCase().indexOf(needle) > -1;
+                var fullName = o.firstName + ' ' + o.lastName;
+                return fullName.toLowerCase().indexOf(needle) > -1;
             }));
             if (this._currentHits.length === 0) {
                 // TODO: Inform user
