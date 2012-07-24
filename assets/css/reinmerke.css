@@ -1,7 +1,7 @@
 /*--- Main ---*/
 html {
   font-size: 100%;
-  background-color: #F6F6F6;
+  background-color: #F1F1F1;
   color: #333;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -18,8 +18,9 @@ li {
 
 /*-- Common --*/
 section {
-  padding: 0;
-  margin: 15px auto 15px;
+  padding-top: 10px;
+  margin: 0 auto;
+  background-color: #FFFFFF;
 }
 .wide {
     display: block;
@@ -73,6 +74,7 @@ section {
 #search {
   display: none;
   border-bottom: 2px solid #D1D1D1;
+  background-color: transparent;
 }
 
 /*--- Appcache Loader ---*/
