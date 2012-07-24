@@ -76,6 +76,9 @@ section {
   border-bottom: 2px solid #D1D1D1;
   background-color: transparent;
 }
+.noHits {
+  padding-bottom: 10px;
+}
 
 /*--- Appcache Loader ---*/
 .topHeading .appcache {

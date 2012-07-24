@@ -1,17 +1,24 @@
 (function (L, P, W, REIN) {
 
     L.init = function () {
+        this.browse = new L.Views.Browse({el: '#browse'});
+        this.browse.render();
 
-        this.areaList = new L.Views.Areas({collection: P.Areas});
-        $('#areas').html(this.areaList.render().el);
-
+        this.topNav = new L.Views.TopNav({el: '#menu'});
+        this.bottomNav = new L.Views.BottomNav({el: '#nav'});
         this.markList = new L.Views.MarkList({
             collection: P.register
         });
         $('#marks').html(this.markList.render().el);
 
-        this.topNav = new L.Views.TopNav({el: '#menu'});
-        this.bottomNav = new L.Views.BottomNav({el: '#nav'});
+        REIN.events.on('toggleSearch', function (active) {
+            if (!active) {
+                this.browse.show();
+            }
+        }, this);
+        REIN.events.on('search', function () {
+            this.browse.hide();
+        }, this);
 
         if (false && window.applicationCache) {
             // TODO: Move this to infobox
@@ -24,11 +31,13 @@
     };
 
     L.Views.TopNav = REIN.View.extend({
+        searchActive: false,
         events: { 'click .search': '_onSearchClick' },
         _onSearchClick: function (event) {
             event.preventDefault();
             this.$('.search').toggleClass('active');
-            REIN.events.trigger('click:toggleSearch');
+            this.searchActive = !this.searchActive;
+            REIN.events.trigger('toggleSearch', this.searchActive);
         }
     });
 
@@ -41,7 +50,7 @@
         events: {'click .search': '_onSearchClick'},
 
         initialize: function () {
-            REIN.events.on('click:toggleSearch', this._onToggleSearch, this);
+            REIN.events.on('toggleSearch', this._onToggleSearch, this);
         },
 
         render: function () {
@@ -67,6 +76,39 @@
         ].join('\n'))
     });
 
+    L.Views.Browse = REIN.View.extend({
+        initialize: function () {
+            this.areas = new L.Views.Areas({collection: P.Areas});
+            this.areas.on('area', this._onBrowseArea, this);
+        },
+
+        render: function () {
+            this.$('.areas').html(this.areas.render().el);
+            return this;
+        },
+
+        hide: function () {
+            this.$el.hide();
+        },
+
+        show: function () {
+            this.$el.show();
+        },
+
+        _onBrowseArea: function (active, id) {
+            var $districts = this.$('.districts');
+            this.districtList = new L.Views.Districts({collection: P.Areas[id].districts});
+            $districts.html('<h2>.. og så distrikt</h2>');
+            $districts.append(this.districtList.render().el);
+
+            $districts.css({opacity: 1});
+            REIN.events.trigger('filter:area', id);
+
+            //TODO: Make smoother or remove
+            window.scrollTo(0, $districts.offset().top);
+        }
+    });
+
     L.Views.Areas = W.Views.List.extend({
         districtList: null,
 
@@ -76,15 +118,9 @@
         },
 
         _onAreaClick: function (active, id) {
-            var $districts = $('.districts');
-            $districts.css({opacity: 1});
-            this.districtList = new L.Views.Districts({collection: this.collection[id].districts});
-            $('#districts').html(this.districtList.render().el);
-            REIN.events.trigger('filter:area', id);
-
-            //TODO: Make smoother or remove
-            window.scrollTo(0, $districts.offset().top);
+            this.trigger('area', active, id);
         }
+
     });
 
     L.Views.Districts = W.Views.List.extend({
@@ -162,13 +198,13 @@
 
         search: function (needle) {
             needle = needle.toLowerCase().trim();
+            this.$el.html('');
             this._currentHits.reset(this.collection.filter(function (o) {
                 var fullName = o.firstName + ' ' + o.lastName;
                 return fullName.toLowerCase().indexOf(needle) > -1;
             }));
             if (this._currentHits.length === 0) {
-                // TODO: Inform user
-                console.log('No hits');
+                this.$el.html('<li class="noHits">Ingen treff på søket ditt.</li>');
             }
         },
 
