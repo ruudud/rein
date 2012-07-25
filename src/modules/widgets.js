@@ -5,6 +5,7 @@
         className: 'list',
         collection: new Backbone.Collection(),
         itemTemplate: _.template('<%= name %>'),
+        _listItems: [],
 
         render: function () {
             _.each(this.collection, function (item, id) {
@@ -14,8 +15,16 @@
                     template: this.itemTemplate
                 }));
                 this.$el.append(listItem.render().el);
+                this._listItems.push(listItem);
             }.bind(this));
             return this;
+        },
+
+        reset: function () {
+            this.$('.selected').removeClass('selected');
+            _.each(this._listItems, function (item) {
+                item.reset();
+            });
         }
     });
 
@@ -39,6 +48,10 @@
                 name: this.model.get('name')
             }));
             return this;
+        },
+
+        reset: function () {
+            this._active = false;
         },
 
         _onClick: function (event) {

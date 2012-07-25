@@ -22,6 +22,7 @@
         }, this);
         REIN.events.on('search', function () {
             this.browse.hide();
+            this.browse.reset();
         }, this);
 
         this.search = new L.Views.Search({collection: marks, el: '#search'});
@@ -78,11 +79,18 @@
         initialize: function () {
             this.areas = new L.Views.Areas({collection: P.Areas});
             this.areas.on('area', this._onBrowseArea, this);
+            this.districtList = new L.Views.Districts();
         },
 
         render: function () {
             this.$('.areas').html(this.areas.render().el);
             return this;
+        },
+
+        reset: function () {
+            this.areas.reset();
+            this.$('.districts').html('');
+            this.districtList.remove();
         },
 
         hide: function () {
@@ -96,7 +104,7 @@
         _onBrowseArea: function (active, id) {
             var $districts = this.$('.districts');
             this.districtList = new L.Views.Districts({collection: P.Areas[id].districts});
-            $districts.html('<h2>.. og så distrikt</h2>');
+            $districts.html('<h2>Velg distrikt</h2>');
             $districts.append(this.districtList.render().el);
 
             $districts.css({opacity: 1});
