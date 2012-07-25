@@ -14,6 +14,7 @@
         REIN.events.on('toggleSearch', function (active) {
             if (!active) {
                 this.browse.show();
+                this.markList.empty();
             }
         }, this);
         REIN.events.on('search', function () {
@@ -134,7 +135,7 @@
                 return this._activeDistricts;
             }
             var districtIndex = _.indexOf(this._activeDistricts, districtId);
-            if (enable  && districtIndex < 0) {
+            if (enable && districtIndex < 0) {
                 this._activeDistricts.push(districtId);
             }
             if (!enable && districtIndex > -1) {
@@ -192,7 +193,6 @@
 
         search: function (needle) {
             needle = needle.toLowerCase().trim();
-            this.$el.html('');
             this._currentHits.reset(this.collection.filter(function (o) {
                 var fullName = o.firstName + ' ' + o.lastName;
                 return fullName.toLowerCase().indexOf(needle) > -1;
@@ -202,10 +202,15 @@
             }
         },
 
+        empty: function () {
+            this._currentHits.reset();
+        },
+
         _clearExistingViews: function () {
             _.each(this._markViews, function(markView) {
                 markView.remove();
             });
+            this.$el.html('');
         }
     });
 
