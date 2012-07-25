@@ -1,3 +1,4 @@
+/*global REINMERKE: true*/
 (function (P) {
 
     P.Areas = {

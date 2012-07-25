@@ -1,3 +1,4 @@
+/*global REINMERKE: true, Modernizr: true, canvg: true*/
 (function (L, P, W, REIN) {
 
     L.init = function () {
@@ -115,7 +116,6 @@
         _onAreaClick: function (active, id) {
             this.trigger('area', active, id);
         }
-
     });
 
     L.Views.Districts = W.Views.List.extend({
@@ -222,13 +222,13 @@
         events: {'click': '_onClick'},
 
         render: function () {
-            var mark = this.model.toJSON();
-            var ears = P.ears[mark.cutId];
-            var districtName = P.Areas[mark.area].districts[mark.district].name;
-            var svg = this.options.templates.svg({
-                left: ears[0],
-                right: ears[1]
-            });
+            var mark = this.model.toJSON(),
+                ears = P.ears[mark.cutId],
+                districtName = P.Areas[mark.area].districts[mark.district].name,
+                svg = this.options.templates.svg({
+                    left: ears[0],
+                    right: ears[1]
+                });
             this.$el.html(this.options.templates.mark({
                 districtName: districtName,
                 mark: mark

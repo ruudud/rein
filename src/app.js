@@ -14,12 +14,14 @@ var REINMERKE = (function () {
 
     View = Backbone.View.extend({
         delegateEvents: function (events) {
-            if (!(events || (events = this.events))) return;
-            var isTouch = window.ontouchstart != null;
-            for (var key in events) {
+            if (!(events || (events = this.events))) {
+                return;
+            }
+            var key, isTouch = window.ontouchstart !== undefined;
+            for (key in events) {
                 if (isTouch) {
                     events[key.replace('click', 'tap')] = events[key];
-                    delete events[key]
+                    delete events[key];
                 }
             }
             Backbone.View.prototype.delegateEvents.call(this, events);
@@ -33,4 +35,20 @@ var REINMERKE = (function () {
     };
 }());
 
-''.trim||(String.prototype.trim=function(){return this.replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g,'')});
+// Shims
+''.trim||(String.prototype.trim=function(){return this.replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g,'');});
+if (!Function.prototype.bind) {
+  Function.prototype.bind = function (oThis) {
+    if (typeof this !== "function") {
+      throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+    }
+    var aArgs = Array.prototype.slice.call(arguments, 1), fToBind = this, FNOP = function () {},
+        fBound = function () {
+          return fToBind.apply(this instanceof FNOP ? this : oThis, aArgs.concat(Array.prototype.slice.call(arguments)));
+        };
+    FNOP.prototype = this.prototype;
+    fBound.prototype = new FNOP();
+
+    return fBound;
+  };
+}
