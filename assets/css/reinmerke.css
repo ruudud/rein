@@ -41,6 +41,7 @@ section {
   background-color: #303030;
   color: #FFF;
   -webkit-box-shadow: 0 0 10px black;
+     -moz-box-shadow: 0 0 10px black;
           box-shadow: 0 0 10px black;
 }
 
@@ -68,6 +69,9 @@ section {
 .districts {
   opacity: 0;
   -webkit-transition: opacity 1s ease-in-out;
+     -moz-transition: opacity 1s ease-in-out;
+       -o-transition: opacity 1s ease-in-out;
+          transition: opacity 1s ease-in-out;
 }
 
 /*--- Search ---*/
@@ -120,7 +124,9 @@ section {
 .marks .mark {
   border-bottom: 1px solid #999;
   background-image: -webkit-linear-gradient(#fdfdfd,#eee);
-  background-image: linear-gradient(#fdfdfd,#eee);
+  background-image:    -moz-linear-gradient(#fdfdfd,#eee);
+  background-image:      -o-linear-gradient(#fdfdfd,#eee);
+  background-image:         linear-gradient(#fdfdfd,#eee);
 }
 
 .marks .image {
@@ -134,7 +140,9 @@ section {
 
 .marks .selected {
   background-image: -webkit-linear-gradient(#ededed,#dadada);
-  background-image: linear-gradient(#ededed,#dadada);
+  background-image:    -moz-linear-gradient(#ededed,#dadada);
+  background-image:      -o-linear-gradient(#ededed,#dadada);
+  background-image:         linear-gradient(#ededed,#dadada);
 }
 
 .marks .information {
@@ -168,31 +176,29 @@ section {
 .button {
   background-color: #4D90FE;
   background-image: -webkit-linear-gradient(top, #4D90FE, #4787ED);
-  background-image: -moz-linear-gradient(top, #4D90FE, #4787ED);
-  background-image: -ms-linear-gradient(top, #4D90FE, #4787ED);
-  background-image: -o-linear-gradient(top, #4D90FE, #4787ED);
-  background-image: linear-gradient(top, #4D90FE, #4787ED);
-  border: 1px solid #3079ED;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
+  background-image:    -moz-linear-gradient(top, #4D90FE, #4787ED);
+  background-image:      -o-linear-gradient(top, #4D90FE, #4787ED);
+  background-image:         linear-gradient(top, #4D90FE, #4787ED);
   color: white;
   font-weight: bold;
   text-align: center;
+  border: 1px solid #3079ED;
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
 }
 .button:hover {
   background-color: #357AE8;
   background-image: -webkit-linear-gradient(top, #4D90FE, #357AE8);
-  background-image: -moz-linear-gradient(top, #4D90FE, #357AE8);
-  background-image: -ms-linear-gradient(top, #4D90FE, #357AE8);
-  background-image: -o-linear-gradient(top, #4D90FE, #357AE8);
-  background-image: linear-gradient(top, #4D90FE, #357AE8);
+  background-image:    -moz-linear-gradient(top, #4D90FE, #357AE8);
+  background-image:      -o-linear-gradient(top, #4D90FE, #357AE8);
+  background-image:         linear-gradient(top, #4D90FE, #357AE8);
   border: 1px solid #2F5BB7;
 }
 .button.active, .button:active {
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 button, .btnText {
   padding: 0 8px;
