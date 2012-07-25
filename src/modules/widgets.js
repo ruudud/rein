@@ -3,19 +3,18 @@
     W.Views.List = REIN.View.extend({
         tagName: 'ul',
         className: 'list',
-        collection: {},
-        template: _.template('<%= name %>'),
+        collection: new Backbone.Collection(),
+        itemTemplate: _.template('<%= name %>'),
 
         render: function () {
-            var self = this;
             _.each(this.collection, function (item, id) {
-                var listItem = new W.Views.ListItem(_.extend(self.options, {
-                    app: self,
+                var listItem = new W.Views.ListItem(_.extend(this.options, {
+                    app: this,
                     model: new Backbone.Model({id: id, name: item.name}),
-                    template: self.template
+                    template: this.itemTemplate
                 }));
-                self.$el.append(listItem.render().el);
-            });
+                this.$el.append(listItem.render().el);
+            }.bind(this));
             return this;
         }
     });
