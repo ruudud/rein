@@ -20,12 +20,6 @@
             this.browse.hide();
         }, this);
 
-        if (false && window.applicationCache) {
-            // TODO: Move this to infobox
-            this.loadProgressView = new W.Views.AppCacheProgress();
-            $('#appcacheLoader').append(this.loadProgressView.render().el);
-        }
-
         this.search = new L.Views.Search({collection: P.register, el: '#search'});
         this.search.render();
     };
