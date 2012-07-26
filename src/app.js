@@ -1,3 +1,4 @@
+/*global Modernizr: true*/
 var REINMERKE = (function () {
     var modules = {}, events = {}, init, module, View;
 
@@ -17,9 +18,8 @@ var REINMERKE = (function () {
             if (!(events || (events = this.events))) {
                 return;
             }
-            var key, isTouch = window.ontouchstart !== undefined;
-            for (key in events) {
-                if (isTouch) {
+            for (var key in events) {
+                if (Modernizr.touch) {
                     events[key.replace('click', 'tap')] = events[key];
                     delete events[key];
                 }
@@ -35,7 +35,7 @@ var REINMERKE = (function () {
     };
 }());
 
-// Shims
+// Polyfills
 ''.trim||(String.prototype.trim=function(){return this.replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g,'');});
 if (!Function.prototype.bind) {
   Function.prototype.bind = function (oThis) {
