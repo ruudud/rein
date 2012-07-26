@@ -7,10 +7,8 @@
 
         this.topNav = new L.Views.TopNav({el: '#menu'});
         this.bottomNav = new L.Views.BottomNav({el: '#nav'});
-
-        var marks = new L.Collections.Marks();
         this.markList = new L.Views.MarkList({
-            collection: marks.reset(P.register)
+            collection: P.register
         });
         $('#marks').html(this.markList.render().el);
 
@@ -25,7 +23,7 @@
             this.browse.reset();
         }, this);
 
-        this.search = new L.Views.Search({collection: marks, el: '#search'});
+        this.search = new L.Views.Search({collection: P.register, el: '#search'});
         this.search.render();
     };
 
@@ -116,7 +114,8 @@
     });
 
     L.Views.Areas = W.Views.List.extend({
-        //itemTemplate: _.template('<a href="#"><%= name %></a>'),
+        districtList: null,
+
         initialize: function () {
             this.options.singleElementActive = true;
             this.on('item:click', this._onAreaClick, this);
@@ -154,12 +153,6 @@
         }
     });
 
-    L.Models.Mark = Backbone.Model.extend({
-        fullName: function () {
-            return this.get('firstName') + ' ' + this.get('lastName');
-        }
-    });
-
     L.Views.MarkList = REIN.View.extend({
         tagName: 'ul',
         className: 'marks',
@@ -174,8 +167,8 @@
 
         initialize: function () {
             REIN.events.on('search', this.search, this);
-            REIN.events.on('filter:area', this.filterByArea, this);
-            REIN.events.on('filter:districts', this.filterByDistricts, this);
+            REIN.events.on('filter:area', this.filterOnArea, this);
+            REIN.events.on('filter:districts', this.filterOnDistricts, this);
             this._currentHits.on('reset', this.render, this);
         },
 
@@ -192,16 +185,26 @@
             return this;
         },
 
-        filterByDistricts: function (districts) {
-            this._currentHits.reset(this.collection.filterByDistricts(districts));
+        filterOnDistricts: function (districts) {
+            var hits = this.collection.filter(function (o) {
+                return _.indexOf(districts, o.district) > -1;
+            });
+            this._currentHits.reset(hits);
         },
 
-        filterByArea: function (areaId) {
+        filterOnArea: function (areaId) {
+            this._currentHits.reset(this.collection.filter(function (o) {
+                return o.area === areaId;
+            }), {silent: true});
             this._clearExistingViews();
         },
 
         search: function (needle) {
-            this._currentHits.reset(this.collection.search(needle));
+            needle = needle.toLowerCase().trim();
+            this._currentHits.reset(this.collection.filter(function (o) {
+                var fullName = o.firstName + ' ' + o.lastName;
+                return fullName.toLowerCase().indexOf(needle) > -1;
+            }));
             if (this._currentHits.length === 0) {
                 this.$el.html('<li class="noHits">Ingen treff på søket ditt.</li>');
             }
@@ -268,22 +271,4 @@
             }
         }
     });
-
-    L.Collections.Marks = Backbone.Collection.extend({
-        model: L.Models.Mark,
-
-        filterByDistricts: function (districts) {
-            return this.filter(function (o) {
-                return _.indexOf(districts, o.get('district')) > -1;
-            });
-        },
-
-        search: function (needle) {
-            needle = needle.toLowerCase().trim();
-            return this.filter(function (o) {
-                return o.fullName().toLowerCase().indexOf(needle) > -1;
-            });
-        }
-    });
-
 }(REINMERKE.module('list'), REINMERKE.module('people'), REINMERKE.module('widget'), REINMERKE));
