@@ -14,7 +14,6 @@ CACHE:
 /src/setup.js
 /assets/css/inuit.css
 /assets/css/reinmerke.css
-/assets/gfx/magnifier.png
 
 NETWORK:
 *
