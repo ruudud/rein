@@ -1,7 +1,7 @@
 /*--- Main ---*/
 html {
   font-size: 100%;
-  background-color: #F1F1F1;
+  background-color: #F5F5F5;
   color: #333;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -28,19 +28,58 @@ li {
 
 /*-- Common --*/
 section {
+  overflow: hidden;
   padding-top: 10px;
   margin: 0 auto;
   background-color: #FFFFFF;
 }
 .wide {
-    display: block;
-    margin: 10px auto;
-    width: 300px;
+  display: block;
+  margin: 10px auto;
+  width: 300px;
+}
+.island {
+  position: relative;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: #F5F5F5;
+  margin: 5px;
+  padding: 20px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.island h2 {
+  line-height: 1.5;
+}
+.island .close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: #000;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 25px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+}
+.island .close:active {
+  background-color: #E4E4E4;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
 }
 .boxed {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
+}
+.grey {
+  color: #757575;
 }
 
 /*--- Main elements ---*/
@@ -74,6 +113,11 @@ section {
 
 .information {
   padding: 10px;
+}
+.ctaBox {
+  margin-top: 20px;
+  text-align: right;
+  font-weight: bold;
 }
 
 .districts {
@@ -195,6 +239,7 @@ footer {
   background-image:      -o-linear-gradient(top, #4D90FE, #4787ED);
   background-image:         linear-gradient(top, #4D90FE, #4787ED);
   color: white;
+  cursor: pointer;
   font-weight: bold;
   text-align: center;
   border: 1px solid #3079ED;
@@ -214,6 +259,23 @@ footer {
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
      -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
           box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.cta {
+  text-transform: uppercase;
+  border: 1px solid #DA9907;
+  background-color: #EAA407;
+  background-image: -webkit-linear-gradient(top, #EAA407, #DD9B06);
+  background-image:    -moz-linear-gradient(top, #EAA407, #DD9B06);
+  background-image:      -o-linear-gradient(top, #EAA407, #DD9B06);
+  background-image:         linear-gradient(top, #EAA407, #DD9B06);
+}
+.cta:hover {
+  background-color: #BB8304;
+  background-image: -webkit-linear-gradient(top, #EAA407, #BB8304);
+  background-image:    -moz-linear-gradient(top, #EAA407, #BB8304);
+  background-image:      -o-linear-gradient(top, #EAA407, #BB8304);
+  background-image:         linear-gradient(top, #EAA407, #BB8304);
+  border: 1px solid #A57A1A;
 }
 button, .btnText {
   padding: 0 8px;

@@ -28,6 +28,26 @@
 
   <section id="search"></section>
 
+  <section id="welcome">
+    <div class="island boxed">
+      <a href="#" class="close">×</a>
+      <h2>Vi trenger din tilbakemelding!</h2>
+      <p>
+        Hei! Ved første besøk, vil siden lagres i din nettleser og også
+        være tilgjengelig når du er utenfor dekning.<br>
+        Vi er i en tidlig utviklingsfase og trenger din hjelp for å gjøre
+        denne tjenesten så bra som mulig.
+      </p>
+      <div class="ctaBox">
+        <a href="https://reinmerker.uservoice.com/">
+          <button class="cta button">Gi oss tilbakemelding!</button>
+        </a>
+        <p>
+          <span class="grey">eller ring oss på telefon</span> <strong>906 21 906</strong>
+        </p>
+      </div>
+    </div>
+  </section>
   <section id="browse">
     <h1>Velg område</h1>
     <div class="areas">
@@ -41,7 +61,7 @@
       </ul>
     </div>
     <section class="districts">
-      <h2>.. og så distrikt</h2>
+      <h2>Velg distrikt</h2>
       <div id="districts"></div>
     </section>
   </section>
@@ -107,7 +127,7 @@
     Modernizr.load({
       test: Modernizr.inlinesvg,
       nope: ['lib/rgbcolor.min.js', 'lib/canvg.min.js'],
-      complete: function () {
+      callback: function (url, result, key) {
         REINMERKE.tools.trackEvent('device', 'svgRenderer', 'canvg');
       }
     });

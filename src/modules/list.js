@@ -5,6 +5,8 @@
         this.browse = new L.Views.Browse({el: '#browse'});
         this.browse.render();
 
+        this.welcome = new L.Views.Welcome({el: '#welcome'});
+
         this.topNav = new L.Views.TopNav({el: '#menu'});
         this.bottomNav = new L.Views.BottomNav({el: '#nav'});
         this.markList = new L.Views.MarkList({
@@ -27,6 +29,18 @@
         this.search.render();
     };
 
+    L.Views.Welcome = REIN.View.extend({
+        events: { 'click .close': '_onClose' },
+        initialize: function () {
+        },
+        _onClose: function (event) {
+            event.preventDefault();
+            this.$el.hide();
+            if (Modernizr.localstorage) {
+                localStorage.setItem('welcomeClosed', '1');
+            }
+        }
+    });
     L.Views.TopNav = REIN.View.extend({
         searchActive: false,
         events: { 'click .search': '_onSearchClick' },
