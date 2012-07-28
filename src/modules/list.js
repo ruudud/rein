@@ -44,7 +44,7 @@
     });
 
     L.Views.Search = REIN.View.extend({
-        events: {'click .search': '_onSearchClick'},
+        events: {'submit form': '_onSearch'},
 
         initialize: function () {
             REIN.events.on('toggleSearch', this._onToggleSearch, this);
@@ -55,7 +55,8 @@
             return this;
         },
 
-        _onSearchClick: function (event) {
+        _onSearch: function (event) {
+            event.stopImmediatePropagation();
             event.preventDefault();
             var needle = this.$('input').val();
             REIN.events.trigger('search', needle);

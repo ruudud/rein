@@ -14,18 +14,21 @@ var REINMERKE = (function () {
     };
 
     View = Backbone.View.extend({
-        //delegateEvents: function (events) {
-        //    if (!(events || (events = this.events))) {
-        //        return;
-        //    }
-        //    for (var key in events) {
-        //        if (Modernizr.touch) {
-        //            events[key.replace('click', 'tap')] = events[key];
-        //            delete events[key];
-        //        }
-        //    }
-        //    Backbone.View.prototype.delegateEvents.call(this, events);
-        //}
+        delegateEvents: function (events) {
+            if (!(events || (events = this.events))) {
+                return;
+            }
+            var key, tapEvents = _.extend({}, events);
+            if (Modernizr.touch) {
+                for (key in tapEvents) {
+                    if (key.indexOf('click') > -1) {
+                        tapEvents[key.replace('click', 'tap')] = tapEvents[key];
+                        delete tapEvents[key];
+                    }
+                }
+            }
+            Backbone.View.prototype.delegateEvents.call(this, tapEvents);
+        }
     });
 
     return {
