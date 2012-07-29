@@ -86,6 +86,7 @@
   <script src="lib/underscore.min.js" type="text/javascript"></script>
   <script src="lib/backbone.min.js" type="text/javascript"></script>
   <script src="src/app.js" type="text/javascript"></script>
+  <script src="src/utils.js" type="text/javascript"></script>
   <script src="src/mark_register.js" type="text/javascript"></script>
   <script src="src/cuts.js" type="text/javascript"></script>
   <script src="src/modules/widgets.js" type="text/javascript"></script>
@@ -94,7 +95,10 @@
   <script type="text/javascript">
     Modernizr.load({
       test: Modernizr.inlinesvg,
-      nope: ['lib/rgbcolor.min.js', 'lib/canvg.min.js']
+      nope: ['lib/rgbcolor.min.js', 'lib/canvg.min.js'],
+      complete: function () {
+        REIN.trackEvent('device', 'svgRenderer', 'canvg');
+      }
     });
   </script>
   <script type="text/javascript">

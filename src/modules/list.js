@@ -35,6 +35,7 @@
             this.$('.search').toggleClass('active');
             this.searchActive = !this.searchActive;
             REIN.events.trigger('toggleSearch', this.searchActive);
+            REIN.trackEvent('nav', 'toggle', 'search');
         }
     });
 
@@ -60,6 +61,7 @@
             event.preventDefault();
             var needle = this.$('input').val();
             REIN.events.trigger('search', needle);
+            REIN.trackEvent('nav', 'search', needle);
         },
 
         _onToggleSearch: function () {
@@ -124,6 +126,7 @@
 
         _onAreaClick: function (active, id) {
             this.trigger('area', active, id);
+            REIN.trackEvent('nav', 'browseArea', this.collection[id].name);
         }
     });
 
@@ -146,6 +149,8 @@
             var districtIndex = _.indexOf(this._activeDistricts, districtId);
             if (enable && districtIndex < 0) {
                 this._activeDistricts.push(districtId);
+                REIN.trackEvent('nav', 'browseDistrict',
+                                this.collection[districtId].name);
             }
             if (!enable && districtIndex > -1) {
                 this._activeDistricts = _.without(this._activeDistricts, districtId);
