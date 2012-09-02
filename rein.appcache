@@ -1,13 +1,16 @@
 CACHE MANIFEST
-# v0.152
+# 0.5-47-gdb24647
 CACHE:
 /touch_icon.png
-/src/mark_register.js
-/src/cuts.js
 /lib/modernizr.min.js
 /lib/zepto.min.js
 /lib/underscore.min.js
 /lib/backbone.min.js
+/lib/canvg.min.js
+/lib/rgbcolor.min.js
+/src/utils.js
+/src/mark_register.js
+/src/cuts.js
 /src/app.js
 /src/modules/widgets.js
 /src/modules/list.js
