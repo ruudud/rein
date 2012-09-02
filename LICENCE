@@ -1,0 +1,66 @@
+Reinmerker
+----------
+
+Copyright 2011-2012 Pål Ruud
+
+License: AGPLv3+
+
+    Reinmerker is free software: you can redistribute it and/or modify
+    it under the terms of the Affero GNU General Public License as
+    published by the Free Software Foundation, either version 3 of
+    the License, or (at your option) any later version.
+
+    Reinmerker is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    Affero GNU General Public License for more details.
+
+    You should have received a copy of the Affero GNU General Public
+    License along with Reinmerker. If not, see <http://www.gnu.org/licenses/>.
+
+See COPYING for full license.
+
+The following license information covers the external libraries directly
+included in this distrubtion:
+
+Zepto
+-----
+Copyright (c) 2010-2012 Thomas Fuchs
+http://zeptojs.com/
+License: MIT
+
+Underscore
+----------
+Copyright (c) 2009-2012 Jeremy Ashkenas, DocumentCloud Inc.
+http://documentcloud.github.com/underscore
+License: MIT
+
+Backbone
+--------
+Copyright (c) 2010-2012 Jeremy Ashkenas, DocumentCloud Inc.
+http://backbonejs.org
+License: MIT
+
+InuitCSS
+--------
+Copyright (c) 2011 Harry Roberts
+http://inuitcss.com
+Licence: Apache License, Version 2.0
+
+jQuery
+------
+Copyright (c) 2009 John Resig
+http://www.jquery.com/
+License: MIT/GPL
+
+canvg
+-----
+Copyright (c) Gabe Lerner (gabelerner@gmail.com)
+http://code.google.com/p/canvg/
+License: MIT
+
+rgbcolor
+--------
+Copyright (c) Stoyan Stefanov <sstoo@gmail.com>
+http://www.phpied.com/rgb-color-parser-in-javascript/
+License: Use it if you like it

@@ -1,7 +1,7 @@
 /* Set some widths for non-mobile screens */
 @media only screen and (min-width : 1224px) {
   body {
-    width: 320px;
+    width: 370px;
     margin: 0 auto;
   }
 }
@@ -134,7 +134,7 @@ section {
        -o-transition: opacity 1s ease-in-out;
           transition: opacity 1s ease-in-out;
 }
-footer {
+footer p {
   font-size: 0.75em;
 }
 
