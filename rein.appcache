@@ -1,7 +1,6 @@
 CACHE MANIFEST
-# 0.5-52-gee5e09f
+# 0.5-54-g6ed3a58
 CACHE:
-/touch_icon.png
 /lib/modernizr.min.js
 /lib/zepto.min.js
 /lib/underscore.min.js
@@ -17,6 +16,8 @@ CACHE:
 /src/setup.js
 /assets/css/inuit.css
 /assets/css/reinmerke.css
+/assets/gfx/apple-touch-icon-precomposed.png
+/assets/gfx/apple-touch-startup-image.png
 
 NETWORK:
 *
