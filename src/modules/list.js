@@ -1,5 +1,5 @@
-/*global REINMERKE: true, Modernizr: true, canvg: true*/
-(function (L, W, REIN) {
+/*global Modernizr: true, canvg: true*/
+(function (L, W, REIN, $) {
 
     L.init = function () {
         this.browse = new L.Views.Browse({el: '#browse'});
@@ -86,7 +86,7 @@
             '<form method="post" action=".">',
             '  <input type="text" placeholder="Navn på eier" class="wide boxed">',
             '  <input type="submit" class="wide button btnText search" value="Søk">',
-            '</form>',
+            '</form>'
         ].join('\n'))
     });
 
@@ -178,8 +178,8 @@
         className: 'marks',
         collection: new Backbone.Collection(),
         templates: {
-            mark: _.template($('#mark_template').html() || ''),
-            svg: _.template($('#svg_template').html() || ''),
+            mark: REIN.templates.mark,
+            svg: REIN.templates.svg,
             canvas: _.template('<canvas style="width:320px;height:160px;"></canvas>')
         },
         _markViews: [],
@@ -291,4 +291,4 @@
             }
         }
     });
-}(REINMERKE.module('list'),  REINMERKE.module('widget'), REINMERKE));
+}(REINMERKE.module('list'),  REINMERKE.module('widget'), REINMERKE, jQuery));

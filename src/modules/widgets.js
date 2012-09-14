@@ -1,4 +1,3 @@
-/*global REINMERKE: true*/
 (function (W, REIN) {
 
     W.Views.List = REIN.View.extend({

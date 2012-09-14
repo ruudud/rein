@@ -8,7 +8,7 @@ REINMERKE.Areas = {
                 8: {'name': 'UW 3 - ELGÅ'},
                 9: {'name': 'UX 2 - RIAST/HYLLING'},
                 10: {'name': 'UY 4 - FEMUND (VINTERDISTRIKT)'},
-                11: {'name': 'UZ 1 - ESSAND'},
+                11: {'name': 'UZ 1 - ESSAND'}
             }
         },
         3: {
@@ -19,7 +19,7 @@ REINMERKE.Areas = {
                 74: {'name': 'VG 9 - LÅARTE'},
                 75: {'name': 'VJ 10 - TJÅEHKERE SIJTE'},
                 76: {'name': 'VM 11 - ÅARJEL-NJAARKE'},
-                77: {'name': 'VR 6 - FOVSEN-NJAARKE'},
+                77: {'name': 'VR 6 - FOVSEN-NJAARKE'}
             }
         },
         4: {
@@ -36,7 +36,7 @@ REINMERKE.Areas = {
                 68: {'name': 'WR 26 - DUOKTA'},
                 69: {'name': 'WS 27 - STAJGGO/HÁBMER'},
                 70: {'name': 'WX 28 - FROSTISEN'},
-                71: {'name': 'WZ 29 - SKJOMEN'},
+                71: {'name': 'WZ 29 - SKJOMEN'}
             }
         },
         5: {
@@ -55,7 +55,7 @@ REINMERKE.Areas = {
                 56: {'name': 'XP 10 - VANNØY'},
                 57: {'name': 'XU 17/18 - TROMSDALEN'},
                 58: {'name': 'XW 24 - BASSEVUOVDI'},
-                59: {'name': 'XZ 20 - HJERTTIND'},
+                59: {'name': 'XZ 20 - HJERTTIND'}
             }
         },
         6: {
@@ -88,7 +88,7 @@ REINMERKE.Areas = {
                 45: {'name': 'YY 42 - BEAHCEGEALLI'},
                 78: {'name': 'YY 30 A OARBEALLI'},
                 79: {'name': 'YY 30 B GUOVDAJOHTOLAT'},
-                80: {'name': 'YY 30 C NUORTABEALLI'},
+                80: {'name': 'YY 30 C NUORTABEALLI'}
             }
         },
         7: {
