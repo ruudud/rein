@@ -100,6 +100,9 @@ module.exports = function (grunt) {
                 }
             }
         },
+        buster: {
+            test: { config: 'test/buster.js' }
+        },
         watch: {
             templates: {
                 files: ['src/templates/*.html'],
@@ -108,11 +111,16 @@ module.exports = function (grunt) {
             scripts: {
                 files: ['<config:min.dist.src>'],
                 tasks: 'lint:browser'
+            },
+            tests: {
+                files: ['<config:min.dist.src>', 'test/**/*_test.js'],
+                tasks: 'buster'
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-bump');
+    grunt.loadNpmTasks('grunt-buster');
     grunt.loadNpmTasks('grunt-contrib');
     grunt.loadNpmTasks('grunt-replace');
     grunt.loadNpmTasks('grunt-targethtml');

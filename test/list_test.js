@@ -1,7 +1,4 @@
 (function (L) {
-    'use strict';
-    var assert = buster.assertions.assert, refute = buster.assertions.refute;
-
     buster.assertions.add('contains', {
         assert: function (needle, haystack) {
             return _.indexOf(needle, haystack) > -1;
@@ -12,7 +9,9 @@
     buster.testCase('List Module', {
         'active districts': {
             setUp: function () {
-                this.districtView = new L.Views.Districts({});
+                this.districtView = new L.Views.Districts({
+                    collection: { 13: {'name': 'test'}, 14: {'name': 'test'} }
+                });
             },
             tearDown: function () {
                 this.districtView.remove();
