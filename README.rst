@@ -8,27 +8,14 @@ Technical notes
 Developer Setup
 ---------------
 
-To run the tests, you need `Buster.JS`_, installable with ``npm``::
-    
-    npm install buster
+To install dependencies, use `npm`_:
+
+    npm install --dev
 
 See `ruudud/jsboilerplate`_ for more info.
 
-.. _Buster.JS: http://busterjs.org/
+.. _npm: https://npmjs.org/
 .. _ruudud/jsboilerplate: https://github.com/ruudud/jsboilerplate
-
-Colors
-------
-
-The palette in use, is `Ocean Five`_:
-
-  * Blue: #00A0B0
-  * Brown: #6A4A3C
-  * Red: #CC333F
-  * Orange: #EB6841
-  * Yellow: #EDC951
-
-.. _Ocean Five: http://www.colourlovers.com/palette/1473/Ocean_Five
 
 Scraping
 --------
@@ -42,25 +29,10 @@ ImageMagic)::
 
     for fl in `ls`; do convert `echo $fl` -fuzz 20% -transparent white $fl; done
 
-Spriting
---------
+Then, to convert to SVG::
 
-We use `Glue`_ with OptiPNG for creating sprites (and corresponding css)::
+    for fl in `ls`; do convert $fl -bordercolor None -border 1x1 -negate pgm:- | potrace --tight --color="#303030" --svg > $fl.svg; done
 
-   glue assets/img/marks --img=assets/img/ --css=assets/css/ --simple --crop --optipng
-
-.. _Glue: https://github.com/jorgebastida/glue
-
-
-Fooling around with SVG
------------------------
-
-::
-    pngtopnm 999.png | potrace --color="#303030" --blacklevel 0.9 --svg > 999.svg
-
-Or better maybe::
-
-    convert 998.png -bordercolor None -border 1x1 -negate pgm:- | potrace --tight --color="#303030" --svg > 998.svg
 
 Application Description (in Norwegian)
 ======================================
@@ -94,10 +66,3 @@ Merkenummer (registreringsnummer)
 
 .. _Merkedetaljer: https://merker.reindrift.no/Merkedetaljer.aspx?merkenr=<nr>
 .. _Snittkombinasjoner: https://merker.reindrift.no/filer/Snittkombinasjoner.pdf
-
-
-Funksjonalitet
---------------
-
-1. Opplistning av alle merker.
-2. Filtrering basert på snitt i posisjoner.
