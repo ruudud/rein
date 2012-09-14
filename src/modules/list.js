@@ -1,5 +1,5 @@
 /*global REINMERKE: true, Modernizr: true, canvg: true*/
-(function (L, P, W, REIN) {
+(function (L, W, REIN) {
 
     L.init = function () {
         this.browse = new L.Views.Browse({el: '#browse'});
@@ -10,7 +10,7 @@
         this.topNav = new L.Views.TopNav({el: '#menu'});
         this.bottomNav = new L.Views.BottomNav({el: '#nav'});
         this.markList = new L.Views.MarkList({
-            collection: P.register
+            collection: REIN.Register
         });
         $('#marks').html(this.markList.render().el);
 
@@ -25,7 +25,7 @@
             this.browse.reset();
         }, this);
 
-        this.search = new L.Views.Search({collection: P.register, el: '#search'});
+        this.search = new L.Views.Search({collection: REIN.Register, el: '#search'});
         this.search.render();
     };
 
@@ -92,7 +92,7 @@
 
     L.Views.Browse = REIN.View.extend({
         initialize: function () {
-            this.areas = new L.Views.Areas({collection: P.Areas});
+            this.areas = new L.Views.Areas({collection: REIN.Areas});
             this.areas.on('area', this._onBrowseArea, this);
             this.districtList = new L.Views.Districts();
         },
@@ -118,7 +118,7 @@
 
         _onBrowseArea: function (active, id) {
             var $districts = this.$('.districts');
-            this.districtList = new L.Views.Districts({collection: P.Areas[id].districts});
+            this.districtList = new L.Views.Districts({collection: REIN.Areas[id].districts});
             $districts.html('<h2>Velg distrikt</h2>');
             $districts.append(this.districtList.render().el);
 
@@ -251,8 +251,8 @@
 
         render: function () {
             var mark = this.model.toJSON(),
-                ears = P.ears[mark.cutId],
-                districtName = P.Areas[mark.area].districts[mark.district].name,
+                ears = REIN.Ears[mark.cutId],
+                districtName = REIN.Areas[mark.area].districts[mark.district].name,
                 svg = this.options.templates.svg({
                     left: ears[0],
                     right: ears[1]
@@ -291,4 +291,4 @@
             }
         }
     });
-}(REINMERKE.module('list'), REINMERKE.module('people'), REINMERKE.module('widget'), REINMERKE));
+}(REINMERKE.module('list'),  REINMERKE.module('widget'), REINMERKE));

@@ -18,10 +18,10 @@ if (!Function.prototype.bind) {
 
 REINMERKE.tools = {
     trackEvent: function (category, action, opt_label, opt_value) {
-        _gaq.push(['_trackEvent', category, action, opt_label, opt_value]);
+        window._gaq && window._gaq.push(['_trackEvent', category, action, opt_label, opt_value]);
     },
 
     trackPageView: function (url) {
-        _gaq.push(['_trackPageview', url]);
+        window._gaq && window._gaq.push(['_trackPageview', url]);
     }
-}
+};

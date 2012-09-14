@@ -1,7 +1,6 @@
 /*global REINMERKE: true*/
-(function (P) {
-
-    P.Areas = {
+REINMERKE = REINMERKE || {};
+REINMERKE.Areas = {
         2: {
             name: 'Sør-Trøndelag/Hedmark',
             districts: {
@@ -108,9 +107,9 @@
                 81: {'name': '17 KARASJOK ØSTRE VÅR/HØST/VINTERBEITE'}
             }
         }
-    };
+};
 
-    P.register = [
+REINMERKE.Register = [
         {
             id: 2738,
             cutId: 3363,
@@ -43583,6 +43582,4 @@
             c5: 'th',
             c6: 'lh'
         }
-    ];
-
-}(REINMERKE.module('people')));
+];

@@ -1,0 +1,28 @@
+{
+    "name": "reindeerfinder",
+    "version": "0.5.0",
+    "homepage": "http://rein.ligretto.no",
+    "description": "Find the owner of a reindeer based on its ear markings",
+    "keywords": ["reindeer", "norway"],
+    "author": {
+        "name": "Pål Ruud",
+        "email": "ruudud@gmail.com",
+        "url": "http://github.com/ruudud"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/ruudud/ReindeerFinder.git"
+    },
+    "licences": [{
+        "type": "AGPLv3+",
+        "url": "https://github.com/ruudud/ReindeerFinder/blob/master/LICENCE"
+    }],
+    "devDependencies": {
+        "grunt": ">0.3",
+        "grunt-contrib": "*",
+        "grunt-css": ">0.2",
+        "grunt-replace": ">0.2",
+        "grunt-targethtml": ">0.1",
+        "buster": ">0.6"
+    }
+}

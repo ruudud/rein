@@ -1,23 +1,14 @@
 CACHE MANIFEST
-# 0.5-54-g6ed3a58
+# @@version
+
 CACHE:
-/lib/modernizr.min.js
 /lib/zepto.min.js
-/lib/underscore.min.js
-/lib/backbone.min.js
 /lib/canvg.min.js
 /lib/rgbcolor.min.js
-/src/utils.js
-/src/mark_register.js
-/src/cuts.js
-/src/app.js
-/src/modules/widgets.js
-/src/modules/list.js
-/src/setup.js
-/assets/css/inuit.css
-/assets/css/reinmerke.css
-/assets/gfx/apple-touch-icon-precomposed.png
-/assets/gfx/apple-touch-startup-image.png
+/reindeerfinder.min.js
+/reindeerfinder.min.css
+/gfx/apple-touch-icon-precomposed.png
+/gfx/apple-touch-startup-image.png
 
 NETWORK:
 *
