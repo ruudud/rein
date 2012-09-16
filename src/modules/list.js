@@ -292,4 +292,4 @@
             }
         }
     });
-}(REINMERKE.module('list'),  REINMERKE.module('widget'), REINMERKE, jQuery));
+}(REINMERKE.module('list'),  REINMERKE.module('widget'), REINMERKE, $));

@@ -1,4 +1,4 @@
-jQuery(document).ready(function () {
+$(document).ready(function () {
     REINMERKE.module('list').init();
     window.scrollTo(0, 1);
 });

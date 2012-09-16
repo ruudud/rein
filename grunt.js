@@ -24,21 +24,17 @@ module.exports = function (grunt) {
         min: {
             dist: {
                 src: ['src/app.js', 'src/utils.js', 'src/mark_register.js',
-                      'src/cuts.js',
+                      'src/cuts.js', 'src/templates/compiled.js',
                       'src/modules/widgets.js', 'src/modules/list.js',
                       'src/setup.js'],
                 dest: 'dist/temp/<%= pkg.name %>.min.js'
-            },
-            templates: {
-                src: ['src/templates/compiled.js'],
-                dest: 'dist/temp/templates.min.js'
             }
         },
         concat: {
             dist: {
                 src: ['<banner>', 'lib/modernizr.min.js',
                       'lib/underscore.min.js', 'lib/backbone.min.js',
-                      '<config:min.dist.dest>', '<config:min.templates.dest>'],
+                      '<config:min.dist.dest>'],
                 dest: 'dist/<%= pkg.name %>.min.js'
             }
         },
@@ -76,26 +72,20 @@ module.exports = function (grunt) {
         clean: ['dist/temp'],
         lint: {
             node: ['grunt.js'],
-            browser: ['<config:min.dist.src>']
+            browser: ['src/app.js', 'src/utils.js', 'src/mark_register.js',
+                      'src/cuts.js', 'src/modules/widgets.js',
+                      'src/modules/list.js', 'src/setup.js']
         },
         jshint: {
             options: {
-                browser: true,
-                undef: true,
-                expr: true,
-                trailing: true,
-                eqeqeq: true,
-                onevar: true,
-                curly: true
+                browser: true, undef: true, expr: true, trailing: true,
+                eqeqeq: true, onevar: true, curly: true
             },
             globals: {},
             node: { options: { node: true } },
             browser: { 
                 globals: {
-                    REINMERKE: true,
-                    Backbone: true,
-                    _: true,
-                    jQuery: true,
+                    REINMERKE: true, Backbone: true, _: true, $: true,
                     localStorage: true
                 }
             }
@@ -108,7 +98,11 @@ module.exports = function (grunt) {
                 files: ['src/templates/*.html'],
                 tasks: 'jst:compile'
             },
-            scripts: {
+            nodescripts: {
+                files: ['<config:lint.node>'],
+                tasks: 'lint:node'
+            },
+            browserscripts: {
                 files: ['<config:min.dist.src>'],
                 tasks: 'lint:browser'
             },
