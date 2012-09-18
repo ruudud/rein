@@ -7,19 +7,42 @@ Technical notes
 
 Developer Setup
 ---------------
-
-To install dependencies, use `npm`_:
+To install dependencies, use `npm`_::
 
     npm install --dev
 
-See `ruudud/jsboilerplate`_ for more info.
+This should also install the tools `grunt.js`_. Run ``grunt watch`` in a
+separate window to make grunt automatically compile templates, run tests and
+`jshint`_ when files change.
 
 .. _npm: https://npmjs.org/
-.. _ruudud/jsboilerplate: https://github.com/ruudud/jsboilerplate
+.. _grunt.js: http://gruntjs.com/
+.. _jshint: http://jshint.com/
+
+
+Versioning
+----------
+We follow the specification from http://semver.org/ -- and as soon as we have
+an API this makes more sense.
+
+
+Releasing
+---------
+By the aid of `Fabric`_ the webapp gets released. The process is defined in
+``fabfile.py``. Use `pip`_ to install it::
+
+  pip install fabric
+
+Example (reads your SSH config)::
+
+  fab -H my.host.com deploy
+
+.. _Fabric: http://fabfile.org/
+.. _pip: http://www.pip-installer.org/
+
 
 Scraping
 --------
-
 Simply run::
 
     python scraper/scrape.py > mark_register.js
@@ -57,7 +80,7 @@ Merke
     både høyre og venstre øre.
 
 Merkenummer (registreringsnummer)
-    Et merke har et unikt merkenummer. 
+    Et merke har et unikt merkenummer.
 
     Via merkenummeret kan man også finne fram til registreringsdato, distrikt
     og navn og adresse på eier, gjennom `Merkedetaljer`_. Merkenummer er *ikke*
