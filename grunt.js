@@ -83,7 +83,7 @@ module.exports = function (grunt) {
             },
             globals: {},
             node: { options: { node: true } },
-            browser: { 
+            browser: {
                 globals: {
                     REINMERKE: true, Backbone: true, _: true, $: true,
                     localStorage: true
