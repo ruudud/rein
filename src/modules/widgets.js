@@ -5,7 +5,7 @@
         className: 'list',
         _listItems: [],
         collection: {},
-        template: _.template('<%= name %>'),
+        template: _.template('<%= name %><br><span class="subText"></span><i class="follow">❯</i>'),
 
         render: function () {
             _.each(this.collection, function (item, id) {

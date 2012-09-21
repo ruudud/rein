@@ -40,6 +40,10 @@ section {
   margin: 0 auto;
   background-color: #FFFFFF;
 }
+.sectionHeader {
+  padding: 20px;
+  background-color: #F5F5F5;
+}
 .wide {
   display: block;
   margin: 10px auto;
@@ -148,41 +152,46 @@ footer p {
   padding-bottom: 10px;
 }
 
-/*--- Appcache Loader ---*/
-.topHeading .appcache {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  margin-top: -9px;
-}
-
-.appcache .progress {
-  display: none;
-  width: 150px;
-}
-
 /*-- Listing --*/
 
 .list {
-  width: 190px;
   margin: 0 auto;
   text-align: left;
 }
-
+.list .item:last-child {
+  border-bottom: none;
+}
 .item {
-  text-decoration: underline;
   cursor: pointer;
-  padding: 6px;
-  margin: 3px;
+  padding: 5px 10px;
+  border-bottom: 2px solid #CCC;
+  font-weight: bolder;
+  position: relative;
+}
+.item .subText {
+  color: #CCC;
+}
+.item .follow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -10px;
+  font-size: 20px;
+  font-style: normal;
+  color: #CCC;
 }
 
-.list .selected {
-  text-decoration: none;
+.list .selected .follow {
+  display: none;
 }
-
-.list .selected:before {
+.list .selected:after {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -10px;
   content: "✔ ";
-  margin-left: -14px;
+  font-size: 20px;
+  font-style: normal;
 }
 
 .marks .mark {
@@ -191,6 +200,10 @@ footer p {
   background-image:    -moz-linear-gradient(#fdfdfd,#eee);
   background-image:      -o-linear-gradient(#fdfdfd,#eee);
   background-image:         linear-gradient(#fdfdfd,#eee);
+}
+
+.marks .mark:last-child {
+  border-bottom: none;
 }
 
 .marks .image {

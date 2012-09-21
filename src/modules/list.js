@@ -119,7 +119,7 @@
         _onBrowseArea: function (active, id) {
             var $districts = this.$('.districts');
             this.districtList = new L.Views.Districts({collection: REIN.Areas[id].districts});
-            $districts.html('<h2>Velg distrikt</h2>');
+            $districts.html('<h2 class="sectionHeader">Velg distrikt</h2>');
             $districts.append(this.districtList.render().el);
 
             $districts.css({opacity: 1});
