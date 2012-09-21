@@ -1,5 +1,17 @@
 this['REINMERKE']['templates'] = this['REINMERKE']['templates'] || {};
 
+this['REINMERKE']['templates']['area'] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+=''+
+(m.name)+
+'<br>\n<span class="subText">Antall merker: '+
+(m.count)+
+'</span>\n<i class="follow">❯</i>\n';
+}
+return __p;
+};
+
 this['REINMERKE']['templates']['mark'] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){

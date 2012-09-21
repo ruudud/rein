@@ -42,7 +42,9 @@ section {
 }
 .sectionHeader {
   padding: 20px;
-  background-color: #F5F5F5;
+  background-color: #303030;
+  color: #FFF;
+  text-align: left;
 }
 .wide {
   display: block;

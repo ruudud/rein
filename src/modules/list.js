@@ -119,7 +119,7 @@
         _onBrowseArea: function (active, id) {
             var $districts = this.$('.districts');
             this.districtList = new L.Views.Districts({collection: REIN.Areas[id].districts});
-            $districts.html('<h2 class="sectionHeader">Velg distrikt</h2>');
+            $districts.html('<h2 class="sectionHeader">Velg distrikter</h2>');
             $districts.append(this.districtList.render().el);
 
             $districts.css({opacity: 1});
@@ -131,6 +131,7 @@
     });
 
     L.Views.Areas = W.Views.List.extend({
+        itemTemplate: REIN.templates.area,
         districtList: null,
 
         initialize: function () {
@@ -151,6 +152,16 @@
             this._clearDistricts();
             this.on('item:click', this._updateDistricts, this);
             REIN.events.on('filter:area', this._clearDistricts, this);
+        },
+
+        getModel: function (id, item) {
+            var model = _.extend({
+                id: id,
+                count: REIN.Register.filter(function (m) {
+                    return m.district === parseInt(id, 10);
+                }).length
+            }, item);
+            return model;
         },
 
         _clearDistricts: function () {

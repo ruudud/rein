@@ -3,6 +3,7 @@ REINMERKE = REINMERKE || {};
 REINMERKE.Areas = {
         2: {
             name: 'Sør-Trøndelag/Hedmark',
+            count: 119,
             districts: {
                 7: {'name': 'ØG TROLLHEIMEN'},
                 8: {'name': 'UW 3 - ELGÅ'},
@@ -13,6 +14,7 @@ REINMERKE.Areas = {
         },
         3: {
             name: 'Nord-Trøndelag',
+            count: 169,
             districts: {
                 72: {'name': 'VA 7 - GASKEN-LAANTE'},
                 73: {'name': 'VF 8 - SKÆHKERE'},
@@ -24,6 +26,7 @@ REINMERKE.Areas = {
         },
         4: {
             name: 'Nordland',
+            count: 185,
             districts: {
                 60: {'name': 'WA 18 - VOENGELH-NJAARKE'},
                 61: {'name': 'WB 20 - JILLEN-NJAARKE'},
@@ -41,6 +44,7 @@ REINMERKE.Areas = {
         },
         5: {
             name: 'Troms',
+            count: 173,
             districts: {
                 46: {'name': 'XA 34 - KANSTADFJORD/VESTRE HINNØY'},
                 47: {'name': 'XD 36 - TJELDØY'},
@@ -60,6 +64,7 @@ REINMERKE.Areas = {
         },
         6: {
             name: 'Vest-Finnmark',
+            count: 1523,
             districts: {
                 21: {'name': 'YA 19 - SÁLLAN'},
                 22: {'name': 'YB 20 - FÁLÁ/KVALØY'},
@@ -93,6 +98,7 @@ REINMERKE.Areas = {
         },
         7: {
             name: 'Øst-Finnmark',
+            count: 548,
             districts: {
                 1: {'name': 'ZA 1/2/3 - ØSTRE SØR-VARANGER'},
                 2: {'name': 'ZB 5A - PASVIK'},

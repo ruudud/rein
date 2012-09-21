@@ -5,14 +5,14 @@
         className: 'list',
         _listItems: [],
         collection: {},
-        template: _.template('<%= name %><br><span class="subText"></span><i class="follow">❯</i>'),
+        itemTemplate: REIN.templates.area,
 
         render: function () {
             _.each(this.collection, function (item, id) {
                 var listItem = new W.Views.ListItem(_.extend(this.options, {
                     app: this,
-                    model: new Backbone.Model({id: id, name: item.name}),
-                    template: this.template
+                    model: this.getModel(id, item),
+                    template: this.itemTemplate
                 }));
                 this.$el.append(listItem.render().el);
                 this._listItems.push(listItem);
@@ -25,6 +25,10 @@
             _.each(this._listItems, function (item) {
                 item.reset();
             });
+        },
+
+        getModel: function (id, item) {
+            return _.extend({ id: id }, item);
         }
     });
 
@@ -45,7 +49,7 @@
 
         render: function () {
             this.$el.html(this.options.template({
-                name: this.model.get('name')
+                m: this.model
             }));
             return this;
         },
@@ -58,15 +62,15 @@
             event.preventDefault();
             if (this.options.singleElementActive) {
                 this.$el.addClass('selected').siblings('.selected').removeClass('selected');
-                this.options.app.trigger('item:click', true, parseInt(this.model.get('id'), 10));
+                this.options.app.trigger('item:click', true, parseInt(this.model.id, 10));
                 return;
             }
             this.$el.toggleClass('selected');
             if (this._active) {
-                this.options.app.trigger('item:click', false, parseInt(this.model.get('id'), 10));
+                this.options.app.trigger('item:click', false, parseInt(this.model.id, 10));
                 this._active = false;
             } else {
-                this.options.app.trigger('item:click', true, parseInt(this.model.get('id'), 10));
+                this.options.app.trigger('item:click', true, parseInt(this.model.id, 10));
                 this._active = true;
             }
         }
