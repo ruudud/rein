@@ -23,12 +23,12 @@
     }
   ],
   "devDependencies": {
+    "buster": ">0.6",
     "grunt": ">0.3",
-    "grunt-bump": ">0.0.1",
+    "grunt-bump": "0.0.1",
     "grunt-buster": ">0.1",
-    "grunt-contrib": "*",
-    "grunt-replace": ">0.2",
-    "grunt-targethtml": ">0.1",
-    "buster": ">0.6"
+    "grunt-contrib": "0.2",
+    "grunt-replace": "0.3",
+    "grunt-targethtml": "0.1"
   }
 }

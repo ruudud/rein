@@ -1,6 +1,7 @@
-this['REINMERKE']['templates'] = this['REINMERKE']['templates'] || {};
+this["REINMERKE"] = this["REINMERKE"] || {};
+this["REINMERKE"]["templates"] = this["REINMERKE"]["templates"] || {};
 
-this['REINMERKE']['templates']['area'] = function(obj){
+this["REINMERKE"]["templates"]["area"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+=''+
@@ -12,7 +13,7 @@ __p+=''+
 return __p;
 };
 
-this['REINMERKE']['templates']['mark'] = function(obj){
+this["REINMERKE"]["templates"]["mark"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+='<figure class="image">\n  <p>\n    <strong class="owner">'+
@@ -30,7 +31,7 @@ __p+='<figure class="image">\n  <p>\n    <strong class="owner">'+
 return __p;
 };
 
-this['REINMERKE']['templates']['svg'] = function(obj){
+this["REINMERKE"]["templates"]["svg"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+='<svg width="320px" height="160px" viewBox="0 0 430 150">\n<g transform="translate(0,150) scale(0.1,-0.1)" fill="#303030">\n  <path d="'+

@@ -11,7 +11,7 @@ module.exports = function (grunt) {
         jst: {
             compile: {
                 options: {
-                    namespace: 'REINMERKE\'][\'templates',
+                    namespace: 'REINMERKE.templates',
                     processName: function (filename) {
                         return filename.split('/').pop().split('.')[0];
                     }
@@ -54,17 +54,21 @@ module.exports = function (grunt) {
         },
         replace: {
             dist: {
-                src: ['rein.appcache', 'dist/temp/index.html'],
-                dest: 'dist/',
-                variables: {version: '<%= pkg.version %>'}
+                options: {
+                    variables: {'version': '<%= pkg.version %>'}
+                },
+                files: {
+                    'dist/temp/index.html': 'dist/temp/index.html',
+                    'dist/': ['rein.appcache']
+                }
             }
         },
         copy: {
             dist: {
                 files: {
-                    'dist/gfx': 'gfx/*',
+                    'dist/gfx/': 'gfx/*',
                     'dist/': ['favicon.ico', 'people.txt'],
-                    'dist/lib': ['lib/zepto.min.js', 'lib/jquery.min.js',
+                    'dist/lib/': ['lib/zepto.min.js', 'lib/jquery.min.js',
                                  'lib/rgbcolor.min.js', 'lib/canvg.min.js']
                 }
             }
