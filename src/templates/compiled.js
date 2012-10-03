@@ -8,7 +8,7 @@ __p+=''+
 (m.name)+
 '<br>\n<span class="subText">Antall merker: '+
 (m.count)+
-'</span>\n<i class="follow">❯</i>\n';
+'</span>\n<i class="follow">➤</i>\n';
 }
 return __p;
 };

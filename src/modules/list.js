@@ -131,7 +131,6 @@
     });
 
     L.Views.Areas = W.Views.List.extend({
-        itemTemplate: REIN.templates.area,
         districtList: null,
 
         initialize: function () {

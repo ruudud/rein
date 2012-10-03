@@ -58,7 +58,7 @@ module.exports = function (grunt) {
                     variables: {'version': '<%= pkg.version %>'}
                 },
                 files: {
-                    'dist/temp/index.html': 'dist/temp/index.html',
+                    'dist/index.html': 'dist/temp/index.html',
                     'dist/': ['rein.appcache']
                 }
             }
