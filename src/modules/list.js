@@ -59,7 +59,7 @@
     });
 
     L.Views.Search = REIN.View.extend({
-        events: {'submit form': '_onSearch'},
+        events: {'click .search': '_onSearch'},
 
         initialize: function () {
             REIN.events.on('toggleSearch', this._onToggleSearch, this);
@@ -71,7 +71,6 @@
         },
 
         _onSearch: function (event) {
-            event.stopImmediatePropagation();
             event.preventDefault();
             var needle = this.$('input').val();
             REIN.events.trigger('search', needle);
@@ -83,10 +82,8 @@
         },
 
         template: _.template([
-            '<form method="post" action=".">',
-            '  <input type="text" placeholder="Navn på eier" class="wide boxed">',
-            '  <input type="submit" class="wide button btnText search" value="Søk">',
-            '</form>'
+            '<input type="text" placeholder="Navn på eier" class="wide boxed">',
+            '<button class="wide button btnText search">Søk</button>',
         ].join('\n'))
     });
 
