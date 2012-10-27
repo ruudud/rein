@@ -198,10 +198,7 @@ footer p {
 
 .marks .mark {
   border-bottom: 1px solid #999;
-  background-image: -webkit-linear-gradient(#fdfdfd,#eee);
-  background-image:    -moz-linear-gradient(#fdfdfd,#eee);
-  background-image:      -o-linear-gradient(#fdfdfd,#eee);
-  background-image:         linear-gradient(#fdfdfd,#eee);
+  background-color: #F5F5F5;
 }
 
 .marks .mark:last-child {
