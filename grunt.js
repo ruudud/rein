@@ -100,19 +100,20 @@ module.exports = function (grunt) {
         watch: {
             templates: {
                 files: ['src/templates/*.html'],
-                tasks: 'jst:compile'
+                tasks: ['jst:compile']
             },
             nodescripts: {
                 files: ['<config:lint.node>'],
-                tasks: 'lint:node'
+                tasks: ['lint:node']
             },
             browserscripts: {
                 files: ['<config:min.dist.src>'],
-                tasks: 'lint:browser'
+                tasks: ['lint:browser']
             },
             tests: {
-                files: ['<config:min.dist.src>', 'test/**/*_test.js'],
-                tasks: 'buster'
+                files: ['src/**/*.js', 'test/**/*_test.js',
+                        '!src/templates/compiled.js'],
+                tasks: ['buster']
             }
         }
     });
@@ -122,6 +123,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib');
     grunt.loadNpmTasks('grunt-replace');
     grunt.loadNpmTasks('grunt-targethtml');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', 'lint jst min concat mincss targethtml replace copy clean');
 };
