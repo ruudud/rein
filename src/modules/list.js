@@ -66,7 +66,7 @@
         },
 
         render: function () {
-            this.$el.append(this.template());
+            this.$el.append(REIN.templates.search());
             return this;
         },
 
@@ -79,14 +79,7 @@
 
         _onToggleSearch: function () {
             this.$el.toggle();
-        },
-
-        template: _.template([
-            '<form method="post" action=".">',
-            '  <input type="text" placeholder="Navn på eier" class="wide boxed">',
-            '  <input type="submit" class="wide button btnText search" value="Søk">',
-            '</form>'
-        ].join('\n'))
+        }
     });
 
     L.Views.Browse = REIN.View.extend({

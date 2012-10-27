@@ -46,11 +46,6 @@ section {
   color: #FFF;
   text-align: left;
 }
-.wide {
-  display: block;
-  margin: 10px auto;
-  width: 300px;
-}
 .island {
   position: relative;
   text-align: left;
@@ -99,25 +94,21 @@ section {
 .topHeading {
   position: relative;
   width: 100%;
+  height: 52px; /* 32px + 10x2 */
   padding: 10px;
   background-color: #303030;
+  text-align: left;
   color: #FFF;
   -webkit-box-shadow: 0 0 10px black;
      -moz-box-shadow: 0 0 10px black;
           box-shadow: 0 0 10px black;
 }
 
-.topHeading .title {
-  text-align: center;
-  text-transform: uppercase;
-}
-
 .topHeading .menu {
   position: absolute;
-  right: 15px;
+  right: 10px;
   top: 50%;
-  line-height: 36px;
-  margin-top: -18px;
+  margin-top: -16px;
 }
 
 .bottomNav {
@@ -149,6 +140,13 @@ footer p {
   display: none;
   border-bottom: 2px solid #D1D1D1;
   background-color: transparent;
+}
+.searchForm {
+  margin: 10px;
+}
+input {
+  width: 100%;
+  display: block;
 }
 .noHits {
   padding-bottom: 10px;
@@ -250,6 +248,7 @@ footer p {
 }
 
 .button {
+  line-height: 32px;
   background-color: #4D90FE;
   background-image: -webkit-linear-gradient(top, #4D90FE, #4787ED);
   background-image:    -moz-linear-gradient(top, #4D90FE, #4787ED);
