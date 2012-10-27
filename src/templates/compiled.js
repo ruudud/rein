@@ -1,6 +1,14 @@
 this["REINMERKE"] = this["REINMERKE"] || {};
 this["REINMERKE"]["templates"] = this["REINMERKE"]["templates"] || {};
 
+this["REINMERKE"]["templates"]["canvas"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<canvas width="430" height="150"></canvas>\n';
+}
+return __p;
+};
+
 this["REINMERKE"]["templates"]["area"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
@@ -34,7 +42,7 @@ return __p;
 this["REINMERKE"]["templates"]["svg"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<svg width="320px" height="160px" viewBox="0 0 430 150">\n<g transform="translate(0,150) scale(0.1,-0.1)" fill="#303030">\n  <path d="'+
+__p+='<svg style="max-height: 130px" preserveAspectRatio="xMinYMin meet" width="100%" viewBox="0 0 430 150">\n<g transform="translate(0,150) scale(0.1,-0.1)" fill="#303030">\n  <path d="'+
 (left)+
 '"/>\n  <path d="'+
 (right)+

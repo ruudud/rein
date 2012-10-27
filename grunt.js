@@ -107,12 +107,11 @@ module.exports = function (grunt) {
                 tasks: ['lint:node']
             },
             browserscripts: {
-                files: ['<config:min.dist.src>'],
+                files: ['src/**/*.js'],
                 tasks: ['lint:browser']
             },
             tests: {
-                files: ['src/**/*.js', 'test/**/*_test.js',
-                        '!src/templates/compiled.js'],
+                files: ['src/**/*.js', 'test/**/*_test.js'],
                 tasks: ['buster']
             }
         }

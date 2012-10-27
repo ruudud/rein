@@ -208,6 +208,7 @@ footer p {
 .marks .image {
   padding: 1em 0;
   margin: 0 auto;
+  max-height: 150px;
 }
 
 .marks .image .owner {
@@ -215,10 +216,7 @@ footer p {
 }
 
 .marks .selected {
-  background-image: -webkit-linear-gradient(#ededed,#dadada);
-  background-image:    -moz-linear-gradient(#ededed,#dadada);
-  background-image:      -o-linear-gradient(#ededed,#dadada);
-  background-image:         linear-gradient(#ededed,#dadada);
+  background-color: #FFF;
 }
 
 .marks .information {

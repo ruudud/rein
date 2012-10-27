@@ -190,7 +190,7 @@
         templates: {
             mark: REIN.templates.mark,
             svg: REIN.templates.svg,
-            canvas: _.template('<canvas style="width:320px;height:160px;"></canvas>')
+            canvas: REIN.templates.canvas
         },
         _markViews: [],
         _currentHits: new Backbone.Collection(),
@@ -274,10 +274,26 @@
             if (Modernizr.inlinesvg) {
                 this.$('.image').prepend(svg);
             } else {
-                this.$('.image').prepend(this.options.templates.canvas());
-                canvg(this.$('canvas')[0], svg.trim());
+                this.renderSvgInCanvas(svg);
             }
             return this;
+        },
+
+        renderSvgInCanvas: function (svg) {
+            this.$('.image').prepend(this.options.templates.canvas());
+            // canvg requires fixed width and height to scale correctly:
+            // http://code.google.com/p/canvg/issues/detail?id=74
+            var $canvas = this.$('canvas'),
+                viewPortWidth = $(window).width(),
+                canvasWidth = viewPortWidth > 320 ? 320 : viewPortWidth,
+                canvasHeight = canvasWidth * 0.35;
+
+            $canvas.width(canvasWidth + 'px').height(canvasHeight + 'px');
+            canvg($canvas[0], svg.trim(), {
+                ignoreMouse: true,
+                ignoreDimensions: true,
+                scaleWidth: canvasWidth
+            });
         },
 
         _open: function () {
