@@ -192,7 +192,7 @@ def _output(people, area_id):
         else:
             print ' '*7, "},"
     print ' '*3, '];'
-    print "}(REINMERKE.module('people')));"
+    print "}(REIN.module('people')));"
 
 if __name__ == '__main__':
     run(sys.argv[1:])

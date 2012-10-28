@@ -1,7 +1,7 @@
-this["REINMERKE"] = this["REINMERKE"] || {};
-this["REINMERKE"]["templates"] = this["REINMERKE"]["templates"] || {};
+this["REIN"] = this["REIN"] || {};
+this["REIN"]["templates"] = this["REIN"]["templates"] || {};
 
-this["REINMERKE"]["templates"]["canvas"] = function(obj){
+this["REIN"]["templates"]["canvas"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+='<canvas width="430" height="150"></canvas>\n';
@@ -9,7 +9,7 @@ __p+='<canvas width="430" height="150"></canvas>\n';
 return __p;
 };
 
-this["REINMERKE"]["templates"]["area"] = function(obj){
+this["REIN"]["templates"]["area"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+=''+
@@ -21,7 +21,7 @@ __p+=''+
 return __p;
 };
 
-this["REINMERKE"]["templates"]["search"] = function(obj){
+this["REIN"]["templates"]["search"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+='<form method="post" action="." class="searchForm">\n  <input type="text" placeholder="Navn på eier" class="wide boxed">\n  <input type="submit" class="wide button btnText search" value="Søk">\n</form>\n';
@@ -29,7 +29,7 @@ __p+='<form method="post" action="." class="searchForm">\n  <input type="text" p
 return __p;
 };
 
-this["REINMERKE"]["templates"]["mark"] = function(obj){
+this["REIN"]["templates"]["mark"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+='<figure class="image">\n  <p>\n    <strong class="owner">'+
@@ -47,7 +47,7 @@ __p+='<figure class="image">\n  <p>\n    <strong class="owner">'+
 return __p;
 };
 
-this["REINMERKE"]["templates"]["svg"] = function(obj){
+this["REIN"]["templates"]["svg"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+='<svg style="max-height: 130px" preserveAspectRatio="xMinYMin meet" width="100%" viewBox="0 0 430 150">\n<g transform="translate(0,150) scale(0.1,-0.1)" fill="#303030">\n  <path d="'+

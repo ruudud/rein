@@ -11,7 +11,7 @@ module.exports = function (grunt) {
         jst: {
             compile: {
                 options: {
-                    namespace: 'REINMERKE.templates',
+                    namespace: 'REIN.templates',
                     processName: function (filename) {
                         return filename.split('/').pop().split('.')[0];
                     }
@@ -25,8 +25,8 @@ module.exports = function (grunt) {
             dist: {
                 src: ['src/app.js', 'src/utils.js', 'src/mark_register.js',
                       'src/cuts.js', 'src/templates/compiled.js',
-                      'src/modules/widgets.js', 'src/modules/list.js',
-                      'src/setup.js'],
+                      'src/modules/widgets.js', 'src/modules/main.js',
+                      'src/modules/list.js', 'src/setup.js'],
                 dest: 'dist/temp/<%= pkg.name %>.min.js'
             }
         },
@@ -81,7 +81,8 @@ module.exports = function (grunt) {
             node: ['grunt.js'],
             browser: ['src/app.js', 'src/utils.js', 'src/mark_register.js',
                       'src/cuts.js', 'src/modules/widgets.js',
-                      'src/modules/list.js', 'src/setup.js']
+                      'src/modules/list.js', 'src/modules/list.js',
+                      'src/setup.js']
         },
         jshint: {
             options: {
@@ -92,7 +93,7 @@ module.exports = function (grunt) {
             node: { options: { node: true } },
             browser: {
                 globals: {
-                    REINMERKE: true, Backbone: true, _: true, $: true,
+                    REIN: true, Backbone: true, _: true, $: true,
                     localStorage: true
                 }
             }

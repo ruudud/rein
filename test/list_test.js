@@ -36,4 +36,4 @@
             }
         }
     });
-}(REINMERKE.module('list')));
+}(REIN.module('list')));

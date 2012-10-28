@@ -1,63 +1,6 @@
 /*global Modernizr: true, canvg: true*/
 (function (L, W, REIN, $) {
 
-    L.init = function () {
-        this.browse = new L.Views.Browse({el: '#browse'});
-        this.browse.render();
-
-        this.welcome = new L.Views.Welcome({el: '#welcome'});
-
-        this.topNav = new L.Views.TopNav({el: '#menu'});
-        this.bottomNav = new L.Views.BottomNav({el: '#nav'});
-        this.markList = new L.Views.MarkList({
-            collection: REIN.Register
-        });
-        $('#marks').html(this.markList.render().el);
-
-        REIN.events.on('toggleSearch', function (active) {
-            if (!active) {
-                this.browse.show();
-                this.markList.empty();
-            }
-        }, this);
-        REIN.events.on('search', function () {
-            this.browse.hide();
-            this.browse.reset();
-        }, this);
-
-        this.search = new L.Views.Search({collection: REIN.Register, el: '#search'});
-        this.search.render();
-    };
-
-    L.Views.Welcome = REIN.View.extend({
-        events: { 'click .close': '_onClose' },
-        initialize: function () {
-        },
-        _onClose: function (event) {
-            event.preventDefault();
-            this.$el.hide();
-            if (Modernizr.localstorage) {
-                localStorage.setItem('welcomeClosed', '1');
-            }
-        }
-    });
-    L.Views.TopNav = REIN.View.extend({
-        searchActive: false,
-        events: { 'click .search': '_onSearchClick' },
-        _onSearchClick: function (event) {
-            event.preventDefault();
-            this.$('.search').toggleClass('active');
-            this.searchActive = !this.searchActive;
-            REIN.events.trigger('toggleSearch', this.searchActive);
-            REIN.tools.trackEvent('nav', 'toggle', 'search');
-        }
-    });
-
-    L.Views.BottomNav = REIN.View.extend({
-        events: { 'click .toTop': '_onClick' },
-        _onClick: function () { window.scrollTo(0, 1); }
-    });
-
     L.Views.Search = REIN.View.extend({
         events: {'submit form': '_onSearch'},
 
@@ -87,6 +30,8 @@
             this.areas = new L.Views.Areas({collection: REIN.Areas});
             this.areas.on('area', this._onBrowseArea, this);
             this.districtList = new L.Views.Districts();
+            REIN.events.on('toggleSearch', this._onToggleSearch, this);
+            REIN.events.on('search', this._onSearch, this);
         },
 
         render: function () {
@@ -119,6 +64,17 @@
 
             //TODO: Make smoother or remove
             window.scrollTo(0, $districts.offset().top);
+        },
+
+        _onSearch: function () {
+            this.hide();
+            this.reset();
+        },
+
+        _onToggleSearch: function (active) {
+            if (!active) {
+                this.show();
+            }
         }
     });
 
@@ -189,6 +145,7 @@
         _currentHits: new Backbone.Collection(),
 
         initialize: function () {
+            REIN.events.on('toggleSearch', this._onToggleSearch, this);
             REIN.events.on('search', this.search, this);
             REIN.events.on('filter:area', this.filterOnArea, this);
             REIN.events.on('filter:districts', this.filterOnDistricts, this);
@@ -235,6 +192,12 @@
 
         empty: function () {
             this._currentHits.reset();
+        },
+
+        _onToggleSearch: function (active) {
+            if (!active) {
+                this.empty();
+            }
         },
 
         _clearExistingViews: function () {
@@ -310,4 +273,4 @@
             }
         }
     });
-}(REINMERKE.module('list'),  REINMERKE.module('widget'), REINMERKE, $));
+}(REIN.module('list'), REIN.module('widget'), REIN, $));

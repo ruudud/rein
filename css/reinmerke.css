@@ -36,7 +36,6 @@ li {
 /*-- Common --*/
 section {
   overflow: hidden;
-  padding-top: 10px;
   margin: 0 auto;
   background-color: #FFFFFF;
 }
@@ -131,6 +130,10 @@ section {
        -o-transition: opacity 1s ease-in-out;
           transition: opacity 1s ease-in-out;
 }
+footer {
+  background-color: #303030;
+  color: #FFF;
+}
 footer p {
   font-size: 0.75em;
 }
@@ -145,6 +148,8 @@ footer p {
   margin: 10px;
 }
 input {
+  height: 40px;
+  line-height: 40px;
   width: 100%;
   display: block;
 }
@@ -295,7 +300,7 @@ input {
 }
 .btnText {
   padding: 0 8px;
-  height: 27px;
+  height: 40px;
   line-height: 27px;
-  min-width: 54px;
+  min-width: 70px;
 }

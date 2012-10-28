@@ -1,6 +1,6 @@
-/*global REINMERKE: true*/
-REINMERKE = REINMERKE || {};
-REINMERKE.Areas = {
+/*global REIN: true*/
+REIN = REIN || {};
+REIN.Areas = {
         2: {
             name: 'Sør-Trøndelag/Hedmark',
             count: 119,
@@ -115,7 +115,7 @@ REINMERKE.Areas = {
         }
 };
 
-REINMERKE.Register = [
+REIN.Register = [
         {
             id: 2738,
             cutId: 3363,

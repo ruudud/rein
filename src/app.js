@@ -1,5 +1,5 @@
 /*global Modernizr: true*/
-var REINMERKE = (function () {
+var REIN = (function () {
     var modules = {}, events = {}, init, module, View;
 
     _.extend(events, Backbone.Events);

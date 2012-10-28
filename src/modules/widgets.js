@@ -1,5 +1,4 @@
 (function (W, REIN) {
-
     W.Views.List = REIN.View.extend({
         tagName: 'ul',
         className: 'list',
@@ -75,5 +74,4 @@
             }
         }
     });
-
-}(REINMERKE.module('widget'), REINMERKE));
+}(REIN.module('widget'), REIN));

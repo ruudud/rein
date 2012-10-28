@@ -16,7 +16,7 @@ if (!Function.prototype.bind) {
   };
 }
 
-REINMERKE.tools = {
+REIN.tools = {
     trackEvent: function (category, action, opt_label, opt_value) {
         window._gaq && window._gaq.push(['_trackEvent', category, action, opt_label, opt_value]);
     },
