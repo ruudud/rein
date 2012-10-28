@@ -1,6 +1,5 @@
 /*global Modernizr: true, canvg: true*/
 (function (L, W, REIN, $) {
-
     L.Views.Browse = REIN.View.extend({
         initialize: function () {
             this.areas = new L.Views.Areas({collection: REIN.Areas});
@@ -121,10 +120,12 @@
         _currentHits: new Backbone.Collection(),
 
         initialize: function () {
-            REIN.events.on('toggleSearch', this._onToggleSearch, this);
-            REIN.events.on('search', this.search, this);
-            REIN.events.on('filter:area', this.filterOnArea, this);
-            REIN.events.on('filter:districts', this.filterOnDistricts, this);
+            REIN.events.onMultiple({
+                'toggleSearch': this._onToggleSearch,
+                'search': this.search,
+                'filter:area': this.filterOnArea,
+                'filter:districts': this.filterOnDistricts
+            }, this);
             this._currentHits.on('reset', this.render, this);
         },
 
