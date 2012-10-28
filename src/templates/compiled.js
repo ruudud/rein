@@ -32,7 +32,7 @@ return __p;
 this["REIN"]["templates"]["mark"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<figure class="image">\n  <p>\n    <strong class="owner">'+
+__p+='<figure class="image">\n  <p class="owner">\n    <strong>'+
 (mark.firstName)+
 ' '+
 (mark.lastName)+

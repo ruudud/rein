@@ -215,6 +215,8 @@ input {
 }
 
 .marks .image .owner {
+  line-height: 12px;
+  margin-bottom: 10px;
   text-shadow: 1px 1px 0px #CCC;
 }
 
