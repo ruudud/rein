@@ -25,4 +25,30 @@
         events: { 'click .toTop': '_onClick' },
         _onClick: function () { window.scrollTo(0, 1); }
     });
+
+    M.Views.Search = REIN.View.extend({
+        events: {'submit form': '_onSearch'},
+
+        initialize: function () {
+            REIN.events.on('toggleSearch', this._onToggleSearch, this);
+        },
+
+        render: function () {
+            this.$el.append(REIN.templates.search());
+            return this;
+        },
+
+        _onSearch: function (event) {
+            event.preventDefault();
+            var needle = this.$('input').val();
+            if (needle.length !== 0) {
+                REIN.events.trigger('search', needle);
+                REIN.tools.trackEvent('nav', 'search', needle);
+            }
+        },
+
+        _onToggleSearch: function () {
+            this.$el.toggle();
+        }
+    });
 }(REIN.module('main'), REIN, $));

@@ -1,30 +1,6 @@
 /*global Modernizr: true, canvg: true*/
 (function (L, W, REIN, $) {
 
-    L.Views.Search = REIN.View.extend({
-        events: {'submit form': '_onSearch'},
-
-        initialize: function () {
-            REIN.events.on('toggleSearch', this._onToggleSearch, this);
-        },
-
-        render: function () {
-            this.$el.append(REIN.templates.search());
-            return this;
-        },
-
-        _onSearch: function (event) {
-            event.preventDefault();
-            var needle = this.$('input').val();
-            REIN.events.trigger('search', needle);
-            REIN.tools.trackEvent('nav', 'search', needle);
-        },
-
-        _onToggleSearch: function () {
-            this.$el.toggle();
-        }
-    });
-
     L.Views.Browse = REIN.View.extend({
         initialize: function () {
             this.areas = new L.Views.Areas({collection: REIN.Areas});

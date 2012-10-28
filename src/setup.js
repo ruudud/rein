@@ -14,7 +14,7 @@ $(document).ready(function () {
     });
     $('#marks').html(markList.render().el);
 
-    search = new L.Views.Search({collection: REIN.Register, el: '#search'});
+    search = new M.Views.Search({collection: REIN.Register, el: '#search'});
     search.render();
 
     window.scrollTo(0, 1);
