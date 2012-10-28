@@ -293,7 +293,7 @@ input {
   background-image:         linear-gradient(top, #EAA407, #BB8304);
   border: 1px solid #A57A1A;
 }
-button, .btnText {
+.btnText {
   padding: 0 8px;
   height: 27px;
   line-height: 27px;
