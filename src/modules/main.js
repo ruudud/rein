@@ -41,7 +41,7 @@
         _onSearch: function (event) {
             event.preventDefault();
             var needle = this.$('input').val();
-            if (needle.length !== 0) {
+            if (needle.length > 1 ) {
                 REIN.events.trigger('search', needle);
                 REIN.tools.trackEvent('nav', 'search', needle);
             }
