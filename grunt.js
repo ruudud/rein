@@ -73,7 +73,10 @@ module.exports = function (grunt) {
                 }
             }
         },
-        clean: ['dist/temp'],
+        clean: {
+            dist: ['dist'],
+            temp: ['dist/temp']
+        },
         lint: {
             node: ['grunt.js'],
             browser: ['src/app.js', 'src/utils.js', 'src/mark_register.js',
@@ -124,5 +127,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-targethtml');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', 'lint jst min concat mincss targethtml replace copy clean');
+    grunt.registerTask('default', 'lint jst clean:dist min concat mincss targethtml replace copy clean:temp');
 };
