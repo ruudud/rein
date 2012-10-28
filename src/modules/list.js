@@ -157,11 +157,18 @@
         },
 
         search: function (needle) {
+            var tElapsed, tPerChar, tBefore = +(new Date());
+
             needle = needle.toLowerCase().trim();
             this._currentHits.reset(this.collection.filter(function (o) {
                 var fullName = o.firstName + ' ' + o.lastName;
                 return fullName.toLowerCase().indexOf(needle) > -1;
             }));
+
+            tElapsed = +(new Date()) - tBefore;
+            tPerChar = tElapsed / needle.length;
+            REIN.tools.trackEvent('time', 'search', tPerChar);
+
             if (this._currentHits.length === 0) {
                 this.$el.html('<li class="noHits">Ingen treff på søket ditt.</li>');
             }
