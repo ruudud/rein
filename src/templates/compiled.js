@@ -24,7 +24,7 @@ return __p;
 this["REIN"]["templates"]["search"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<form method="post" action="." class="searchForm">\n  <input type="text" placeholder="Navn på eier" class="wide boxed">\n  <input type="submit" class="wide button btnText search" value="Søk">\n</form>\n';
+__p+='<form method="post" action="." class="searchForm">\n  <input type="text" placeholder="Navn på eier" class="wide boxed" x-webkit-speech>\n  <input type="submit" class="wide button btnText search" value="Søk">\n</form>\n';
 }
 return __p;
 };
