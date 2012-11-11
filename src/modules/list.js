@@ -212,7 +212,7 @@
                 mark: mark
             }));
             if (Modernizr.inlinesvg) {
-                this.$('.image').prepend(svg);
+                this.$('.image').append(svg);
             } else {
                 this.renderSvgInCanvas(svg);
             }
