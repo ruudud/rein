@@ -1,6 +1,6 @@
 {
   "name": "reindeerfinder",
-  "version": "0.5.12",
+  "version": "0.5.13",
   "homepage": "http://rein.ligretto.no",
   "description": "Find the owner of a reindeer based on its ear markings",
   "keywords": [
