@@ -17,6 +17,26 @@ if (!Function.prototype.bind) {
 }
 
 REIN.tools = {
+    debug: function (firstText) {
+        var $debug = $('<section class="debug"/>'),
+            template = _.template('<div><%= t %></div>'),
+            debugFn = function (text) {
+                console.log(text);
+                $debug.append(template({t: text}));
+            };
+        $('body').append($debug);
+        debugFn(firstText);
+        return debugFn;
+    },
+
+    defer: function (object, method, delay) {
+        var args = Array.prototype.slice.call(arguments, 3),
+            fnBind = function () {
+                object[method].apply(object, args);
+            };
+        setTimeout(fnBind, delay);
+    },
+
     trackEvent: function (category, action, opt_label, opt_value) {
         window._gaq && window._gaq.push(['_trackEvent', category, action, opt_label, opt_value]);
     },
