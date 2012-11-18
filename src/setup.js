@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var browse, welcome, topNav, bottomNav, markList, search,
+    var browse, welcome, topNav, bottomNav, markList, search, loading,
         L = REIN.module('list'), M = REIN.module('main');
 
     browse = new L.Views.Browse({el: '#browse'});
@@ -16,6 +16,8 @@ $(document).ready(function () {
 
     search = new M.Views.Search({collection: REIN.Register, el: '#search'});
     search.render();
+
+    loading = new M.Views.Loading();
 
     window.scrollTo(0, 1);
 });

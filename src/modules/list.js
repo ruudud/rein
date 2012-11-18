@@ -116,7 +116,6 @@
             svg: REIN.templates.svg,
             canvas: REIN.templates.canvas
         },
-        _markViews: [],
         _currentHits: new Backbone.Collection(),
 
         initialize: function () {
@@ -137,33 +136,38 @@
                     templates: this.templates
                 });
                 this.$el.append(markItem.render().el);
-                this._markViews.push(markItem);
             }.bind(this));
+            REIN.events.trigger('loading:end');
             return this;
         },
 
-        filterOnDistricts: function (districts) {
-            var hits = this.collection.filter(function (o) {
-                return _.indexOf(districts, o.district) > -1;
-            });
-            this._currentHits.reset(hits);
-        },
-
         filterOnArea: function (areaId) {
-            this._currentHits.reset(this.collection.filter(function (o) {
+            var hits = this.collection.filter(function (o) {
                 return o.area === areaId;
-            }), {silent: true});
+            });
+            this._currentHits.reset(hits, {silent: true});
             this._clearExistingViews();
         },
 
+        filterOnDistricts: function (districts) {
+            REIN.events.trigger('loading:start');
+            var hits = this.collection.filter(function (o) {
+                return _.indexOf(districts, o.district) > -1;
+            });
+            // Need to delay by 200ms to ensure animation start
+            REIN.tools.defer(this._currentHits, 'reset', 200, hits);
+        },
+
         search: function (needle) {
-            var tElapsed, tPerChar, tBefore = +(new Date());
+            var hits, tElapsed, tPerChar, tBefore = +(new Date());
+            REIN.events.trigger('loading:start');
 
             needle = needle.toLowerCase().trim();
-            this._currentHits.reset(this.collection.filter(function (o) {
+            hits = this.collection.filter(function (o) {
                 var fullName = o.firstName + ' ' + o.lastName;
                 return fullName.toLowerCase().indexOf(needle) > -1;
-            }));
+            });
+            REIN.tools.defer(this._currentHits, 'reset', 200, hits);
 
             tElapsed = +(new Date()) - tBefore;
             tPerChar = tElapsed / needle.length;
@@ -185,10 +189,7 @@
         },
 
         _clearExistingViews: function () {
-            _.each(this._markViews, function(markView) {
-                markView.remove();
-            });
-            this.$el.html('');
+            this.$el.empty();
         }
     });
 

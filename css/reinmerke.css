@@ -92,6 +92,7 @@ section {
 /*--- Main elements ---*/
 .topHeading {
   position: relative;
+  z-index: 100;
   width: 100%;
   height: 52px; /* 32px + 10x2 */
   padding: 10px;
@@ -131,6 +132,8 @@ section {
           transition: opacity 1s ease-in-out;
 }
 footer {
+  position: relative;
+  z-index: 100;
   background-color: #303030;
   color: #FFF;
 }
@@ -305,4 +308,43 @@ input {
   height: 40px;
   line-height: 27px;
   min-width: 70px;
+}
+.loading {
+  display: none;
+  position: fixed;
+  z-index: 90;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(48, 48, 48, 0.9);
+}
+.loading .spinn {
+  position: absolute;
+  -webkit-transform: rotate(360deg);
+  -webkit-animation: spin 0.5s linear 0s infinite normal;
+  -moz-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-animation: spin 1s linear 0s infinite normal;
+  -o-animation: spin 1s linear 0s infinite normal;
+  border: 0;
+  width: 32px;
+  height: 32px;
+  top: 50%;
+  left: 50%;
+  margin-left: -16px;
+  margin-top: -16px;
+}
+@-webkit-keyframes spin {
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+@-moz-keyframes spin {
+    from {-moz-transform: rotate(0deg);}
+    to {-moz-transform: rotate(360deg);}
+}
+@-o-keyframes spin {
+    from {-o-transform: rotate(0deg);}
+    to {-o-transform: rotate(360deg);}
 }
