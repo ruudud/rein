@@ -81,5 +81,6 @@
     M.Views.Loading.prototype._eventHandler = function (e) {
         e.preventDefault();
         e.stopImmediatePropagation();
+        return false;
     };
 }(REIN.module('main'), REIN, $, window));

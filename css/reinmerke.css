@@ -337,14 +337,74 @@ input {
   margin-top: -16px;
 }
 @-webkit-keyframes spin {
-    from {-webkit-transform: rotate(0deg);}
-    to {-webkit-transform: rotate(360deg);}
+  from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}
 }
 @-moz-keyframes spin {
-    from {-moz-transform: rotate(0deg);}
-    to {-moz-transform: rotate(360deg);}
+  from {-moz-transform: rotate(0deg);}
+  to {-moz-transform: rotate(360deg);}
 }
 @-o-keyframes spin {
-    from {-o-transform: rotate(0deg);}
-    to {-o-transform: rotate(360deg);}
+  from {-o-transform: rotate(0deg);}
+  to {-o-transform: rotate(360deg);}
 }
+
+/* Install */
+.homescreen {
+  background: url("/gfx/apple-touch-icon-precomposed.png");
+  background-size: 114px 114px;
+  border-radius: 20px;
+  height: 114px;
+  width: 114px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -57px;
+  margin-left: -57px;
+  box-shadow: rgba(255, 255, 255, 0.9) 0px 1px 0px inset, #636a82 0px 143px 109px, rgba(0,0,0,0.5) 0px 57px 30px;
+  box-shadow: rgba(255, 255, 255, 0.9) 0px 1px 0px inset, rgba(0,0,0,0.5) 0px 31px 30px, #636a82 0px 103px 109px;
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  box-sizing: border-box;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-animation: comeDown 1s ease both;
+}
+.desc {
+  background-color: transparent;
+  position: absolute;
+  width: 320px;
+  bottom: -80px;
+  left: 50%;
+  text-align: center;
+  font-family: HelveticaNeue-Light, Helvetica;
+  font-weight: normal;
+  color: rgba(247, 247, 226, 0.4);
+  margin: 0px;
+  margin-left: -160px;
+  -webkit-animation: fadeInSmall 0.5s ease both;
+  -webkit-animation-delay: 0.4s;
+}
+.help {
+  margin-top: 10px;
+}
+.add {
+  font-size: 14px;
+}
+.add strong {
+  font-family: HelveticaNeue, Helvetica;
+  font-weight: bold;
+  color: rgba(247, 247, 226, 0.6);
+}
+@-webkit-keyframes comeDown {
+  0% {
+    -webkit-transform: translateY(-500px) scale(1.9);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(1);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+    opacity: 1;
+  }
+}
+

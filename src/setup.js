@@ -1,6 +1,31 @@
+/*global window: true*/
+/*
+* Borrowed from http://pattern.dk/sun/.
+*/
+REIN.install = function () {
+    $('body')
+        .addClass('loading')
+        .show()
+        .html(['<div><div class="homescreen">',
+               '  <section class="desc">',
+               '  <h2 class="add">Legg til på <strong>Hjem-skjermen</strong></h2>',
+               '  <h4 class="help">',
+               '    <a href="http://www.apple.com/no/ios/add-to-home-screen/">',
+               '      Hvordan?',
+               '    </a>',
+               '  </h4>',
+               '  </section>',
+               '</div></div>'].join('\n'));
+};
 $(document).ready(function () {
     var browse, welcome, topNav, bottomNav, markList, search, loading,
         L = REIN.module('list'), M = REIN.module('main');
+
+    if (!window.navigator.standalone &&
+            navigator.userAgent.match(/like Mac OS X/i)) {
+        REIN.install();
+        return false;
+    }
 
     browse = new L.Views.Browse({el: '#browse'});
     browse.render();
