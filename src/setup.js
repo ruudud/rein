@@ -21,10 +21,15 @@ $(document).ready(function () {
     var browse, welcome, topNav, bottomNav, markList, search, loading,
         L = REIN.module('list'), M = REIN.module('main');
 
-    if (!window.navigator.standalone &&
-            navigator.userAgent.match(/like Mac OS X/i)) {
-        REIN.install();
-        return false;
+
+    if (navigator.userAgent.match(/like Mac OS X/i)) {
+        if (!window.navigator.standalone) {
+            REIN.install();
+            REIN.tools.trackPageView('iphone_install/start');
+            return false;
+        } else {
+            REIN.tools.trackPageView('iphone_install/complete');
+        }
     }
 
     browse = new L.Views.Browse({el: '#browse'});
