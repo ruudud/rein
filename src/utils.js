@@ -21,7 +21,6 @@ REIN.tools = {
         var $debug = $('<section class="debug"/>'),
             template = _.template('<div><%= t %></div>'),
             debugFn = function (text) {
-                console.log(text);
                 $debug.append(template({t: text}));
             };
         $('body').append($debug);
