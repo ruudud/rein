@@ -19,9 +19,27 @@ var REIN = (function () {
         return modules[name];
     };
 
+    View = Backbone.View.extend({
+        delegateEvents: function (events) {
+            if (!(events || (events = this.events))) {
+                return;
+            }
+            var key, tapEvents = _.extend({}, events);
+            if (Modernizr.touch) {
+                for (key in tapEvents) {
+                    if (key.indexOf('click') > -1) {
+                        tapEvents[key.replace('click', 'tap')] = tapEvents[key];
+                        delete tapEvents[key];
+                    }
+                }
+            }
+            Backbone.View.prototype.delegateEvents.call(this, tapEvents);
+        }
+    });
+
     return {
         module: module,
-        View: Backbone.View,
+        View: View,
         events: events
     };
 }());
