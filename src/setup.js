@@ -42,7 +42,7 @@ $(document).ready(function () {
         window.scrollTo(0, 1);
     };
 
-    if (navigator.userAgent.match(/like Mac OS X/i)) {
+    if ($.os.ios) {
         if (!window.navigator.standalone) {
             REIN.install();
             REIN.tools.trackPageView('iphone_install/start');
