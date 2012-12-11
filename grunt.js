@@ -67,7 +67,8 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     'dist/gfx/': 'gfx/*',
-                    'dist/': ['favicon.ico', 'people.txt'],
+                    'dist/': ['favicon.ico', 'people.txt', 'robots.txt',
+                              'sitemap.xml'],
                     'dist/lib/': ['lib/zepto.min.js', 'lib/jquery.min.js',
                                  'lib/rgbcolor.min.js', 'lib/canvg.min.js']
                 }
