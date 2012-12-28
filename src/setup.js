@@ -1,22 +1,4 @@
 /*global window: true*/
-/*
-* Borrowed from http://pattern.dk/sun/.
-*/
-REIN.install = function () {
-    $('body')
-        .addClass('loading')
-        .show()
-        .html(['<div><div class="homescreen">',
-               '  <section class="desc">',
-               '  <h2 class="add">Legg til på <strong>Hjem-skjermen</strong></h2>',
-               '  <h4 class="help">',
-               '    <a href="http://www.apple.com/no/ios/add-to-home-screen/">',
-               '      Hvordan?',
-               '    </a>',
-               '  </h4>',
-               '  </section>',
-               '</div></div>'].join('\n'));
-};
 $(document).ready(function () {
     var setupMainViews = function () {
         var browse, welcome, topNav, bottomNav, markList, search, loading,
@@ -44,7 +26,10 @@ $(document).ready(function () {
 
     if ($.os && $.os.ios) {
         if (!window.navigator.standalone) {
-            REIN.install();
+            $('body')
+                .addClass('loading')
+                .show()
+                .html(REIN.templates.install());
             REIN.tools.trackPageView('iphone_install/start');
             return false;
         } else {

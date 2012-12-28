@@ -55,7 +55,7 @@
     M.Views.Loading = function () {
         this.$body = $('body');
         this.$el = $(REIN.templates.loading());
-        this.$body.append(this.$el);
+        this.$body.prepend(this.$el);
 
         REIN.events.on('loading:start', this._onLoading, this);
         REIN.events.on('loading:end', this._onLoadingEnd, this);
