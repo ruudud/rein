@@ -2,8 +2,8 @@
 ''.trim||(String.prototype.trim=function(){return this.replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g,'');});
 if (!Function.prototype.bind) {
   Function.prototype.bind = function (oThis) {
-    if (typeof this !== "function") {
-      throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+    if (typeof this !== 'function') {
+      throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
     }
     var aArgs = Array.prototype.slice.call(arguments, 1), fToBind = this, FNOP = function () {},
         fBound = function () {
