@@ -29,6 +29,14 @@ __p+='<form method="post" action="." class="searchForm">\n  <input type="text" p
 return __p;
 };
 
+this["REIN"]["templates"]["loading"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<div class="loading">\n  <img src="gfx/loading.png" class="spinn"/>\n</div>\n';
+}
+return __p;
+};
+
 this["REIN"]["templates"]["mark"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){

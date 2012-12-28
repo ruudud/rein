@@ -54,33 +54,35 @@
 
     M.Views.Loading = function () {
         this.$body = $('body');
-        this.$doc = $('document');
-        this.$el = $('.loading');
+        this.$el = $(REIN.templates.loading());
+        this.$body.append(this.$el);
 
         REIN.events.on('loading:start', this._onLoading, this);
         REIN.events.on('loading:end', this._onLoadingEnd, this);
     };
-    M.Views.Loading.prototype._onLoading = function () {
-        this.$el.show();
-        this._blockUI(true);
-    };
-    M.Views.Loading.prototype._onLoadingEnd = function () {
-        this._blockUI(false);
-        this.$el.hide();
-    };
-    M.Views.Loading.prototype._blockUI = function (block) {
-        var events = 'click tap touchstart touchmove';
-        if (block) {
-            this.$el.bind(events, this._eventHandler);
-            this.$body.css({overflow: 'hidden'});
-        } else {
-            this.$el.unbind(events, this._eventHandler);
-            this.$body.css({overflow: ''});
+    _.extend(M.Views.Loading.prototype, {
+        _onLoading: function () {
+            this.$el.show();
+            this._blockUI(true);
+        },
+        _onLoadingEnd: function () {
+            this._blockUI(false);
+            this.$el.hide();
+        },
+        _blockUI: function (block) {
+            var events = 'click tap touchstart touchmove';
+            if (block) {
+                this.$el.bind(events, this._eventHandler);
+                this.$body.css({overflow: 'hidden'});
+            } else {
+                this.$el.unbind(events, this._eventHandler);
+                this.$body.css({overflow: ''});
+            }
+        },
+        _eventHandler: function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            return false;
         }
-    };
-    M.Views.Loading.prototype._eventHandler = function (e) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        return false;
-    };
+    });
 }(REIN.module('main'), REIN, $, window));
