@@ -68,6 +68,8 @@
     });
 
     L.Views.Districts = W.Views.List.extend({
+        activeDistrict: -1,
+
         initialize: function () {
             this.on('item:click', this._onDistrictClick, this);
         },
@@ -83,6 +85,7 @@
         },
 
         _onDistrictClick: function (districtId) {
+            this.activeDistrict = districtId;
             REIN.events.trigger('filter:districts', [districtId]);
             REIN.tools.trackEvent('nav', 'browseDistrict',
                                   this.collection[districtId].name);
