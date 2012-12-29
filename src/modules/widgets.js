@@ -35,15 +35,8 @@
         tagName: 'li',
         className: 'item',
         _active: false,
-        _defaultOptions: {
-            singleElementActive: false
-        },
         events: {
             'click': '_onClick'
-        },
-
-        initialize: function () {
-            this.options = _.defaults(this.options, this._defaultOptions);
         },
 
         render: function () {
@@ -59,19 +52,9 @@
 
         _onClick: function (event) {
             event.preventDefault();
-            if (this.options.singleElementActive) {
-                this.$el.addClass('selected').siblings('.selected').removeClass('selected');
-                this.options.app.trigger('item:click', true, parseInt(this.model.id, 10));
-                return;
-            }
-            this.$el.toggleClass('selected');
-            if (this._active) {
-                this.options.app.trigger('item:click', false, parseInt(this.model.id, 10));
-                this._active = false;
-            } else {
-                this.options.app.trigger('item:click', true, parseInt(this.model.id, 10));
-                this._active = true;
-            }
+            this.$el.addClass('selected').siblings('.selected').removeClass('selected');
+            this.options.app.trigger('item:click', parseInt(this.model.id, 10));
+            return;
         }
     });
 }(REIN.module('widget'), REIN));

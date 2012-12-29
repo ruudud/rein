@@ -1,10 +1,11 @@
 /*global Modernizr: true, canvg: true*/
 (function (L, W, REIN, $) {
     L.Views.Browse = REIN.View.extend({
+        districts: null,
+
         initialize: function () {
             this.areas = new L.Views.Areas({collection: REIN.Areas});
             this.areas.on('area', this._onBrowseArea, this);
-            this.districtList = new L.Views.Districts();
             REIN.events.on('toggleSearch', this._onToggleSearch, this);
             REIN.events.on('search', this._onSearch, this);
         },
@@ -17,7 +18,7 @@
         reset: function () {
             this.areas.reset();
             this.$('.districts').html('');
-            this.districtList.remove();
+            this.districts && this.districts.remove();
         },
 
         hide: function () {
@@ -28,13 +29,13 @@
             this.$el.show();
         },
 
-        _onBrowseArea: function (active, id) {
+        _onBrowseArea: function (id) {
             var $districts = this.$('.districts');
-            this.districtList = new L.Views.Districts({
+            this.districts = new L.Views.Districts({
                 collection: REIN.Areas[id].districts
             });
             $districts.html('<h2 class="sectionHeader">Velg distrikter</h2>');
-            $districts.append(this.districtList.render().el);
+            $districts.append(this.districts.render().el);
 
             $districts.css({opacity: 1});
             REIN.events.trigger('filter:area', id);
@@ -56,26 +57,19 @@
     });
 
     L.Views.Areas = W.Views.List.extend({
-        districtList: null,
-
         initialize: function () {
-            this.options.singleElementActive = true;
             this.on('item:click', this._onAreaClick, this);
         },
 
-        _onAreaClick: function (active, id) {
-            this.trigger('area', active, id);
+        _onAreaClick: function (id) {
+            this.trigger('area', id);
             REIN.tools.trackEvent('nav', 'browseArea', this.collection[id].name);
         }
     });
 
     L.Views.Districts = W.Views.List.extend({
-        _activeDistricts: [],
-
         initialize: function () {
-            this._clearDistricts();
-            this.on('item:click', this._updateDistricts, this);
-            REIN.events.on('filter:area', this._clearDistricts, this);
+            this.on('item:click', this._onDistrictClick, this);
         },
 
         getModel: function (id, item) {
@@ -88,24 +82,10 @@
             return model;
         },
 
-        _clearDistricts: function () {
-            this._activeDistricts = [];
-        },
-
-        _updateDistricts: function (enable, districtId) {
-            if (arguments.length < 2) {
-                return this._activeDistricts;
-            }
-            var districtIndex = _.indexOf(this._activeDistricts, districtId);
-            if (enable && districtIndex < 0) {
-                this._activeDistricts.push(districtId);
-                REIN.tools.trackEvent('nav', 'browseDistrict',
-                                this.collection[districtId].name);
-            }
-            if (!enable && districtIndex > -1) {
-                this._activeDistricts = _.without(this._activeDistricts, districtId);
-            }
-            REIN.events.trigger('filter:districts', this._activeDistricts);
+        _onDistrictClick: function (districtId) {
+            REIN.events.trigger('filter:districts', [districtId]);
+            REIN.tools.trackEvent('nav', 'browseDistrict',
+                                  this.collection[districtId].name);
         }
     });
 
@@ -122,9 +102,9 @@
 
         initialize: function () {
             REIN.events.onMultiple({
-                'toggleSearch': this._onToggleSearch,
-                'search': this.search,
-                'filter:area': this.filterOnArea,
+                'toggleSearch'    : this._onToggleSearch,
+                'search'          : this.search,
+                'filter:area'     : this.filterOnArea,
                 'filter:districts': this.filterOnDistricts
             }, this);
             this._currentHits.on('reset', this.render, this);
@@ -139,6 +119,7 @@
                 });
                 this.$el.append(markItem.render().el);
             }.bind(this));
+            window.scrollTo(0, this.$el.offset().top);
             REIN.events.trigger('loading:end');
             return this;
         },

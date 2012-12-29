@@ -65,20 +65,23 @@
             this.$el.show();
             this._blockUI(true);
         },
+
         _onLoadingEnd: function () {
             this._blockUI(false);
             this.$el.hide();
         },
+
         _blockUI: function (block) {
             var events = 'click tap touchstart touchmove';
             if (block) {
-                this.$el.bind(events, this._eventHandler);
+                this.$el.bind(events, this._eventHandler, false);
                 this.$body.css({overflow: 'hidden'});
             } else {
                 this.$el.unbind(events, this._eventHandler);
                 this.$body.css({overflow: ''});
             }
         },
+
         _eventHandler: function (e) {
             e.preventDefault();
             e.stopImmediatePropagation();
