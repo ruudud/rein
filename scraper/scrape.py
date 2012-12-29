@@ -17,47 +17,47 @@ CURRENT_DIR = os.getcwd()
 def run(*args):
     set_output(StringIO())
 
-    sys.stderr.write('Navigerer til merkeregister ..\n')
+    sys.stderr.write('Requesting register ..\n')
     go('%s%s' % (BASE_URL, 'sok.aspx'))
 
-    sys.stderr.write('Henter ut reinbeiteområder ..\n')
+    sys.stderr.write('Fetching areas ..\n')
     areas = [
         #(7, '&#216;st-Finnmark'),
         #(6, 'Vest-Finnmark'),
         #(5, 'Troms'),
         #(4, 'Nordland'),
-        #(3, 'Nord-Tr&#248;ndelag'),
+        (3, 'Nord-Tr&#248;ndelag'),
         (2, 'S&#248;r-Tr&#248;ndelag/Hedmark'),
     ]
 
     people = []
     for area in areas:
-        sys.stderr.write('Velger område %s ..\n' % area[1].encode('utf-8'))
+        sys.stderr.write('Choosing area %s ..\n' % area[1].encode('utf-8'))
         fv(1, 'ctl00$cphInnhold$ddlOmrade', '+%s' % area[0])
         submit()
 
-        sys.stderr.write('Henter ut distrikt i område ..\n')
+        sys.stderr.write('Fetching districts in area ..\n')
         districts = _get_districts(show())
 
         for district in districts:
-            sys.stderr.write('Velger distrikt %s ..\n' % district[0])
+            sys.stderr.write('Choosing district %s ..\n' % district[0])
             fv(1, 'ctl00$cphInnhold$ddlDistrikt', '+%s' % district[0])
 
             submit(submit_button='ctl00$cphInnhold$btnSok')
 
-            sys.stderr.write('Finner søkeresultat ..\n')
+            sys.stderr.write('Finding result ..\n')
             people_links = _get_people_links(show())
-            sys.stderr.write('Merker i distrikt: %d\n' % len(people_links))
+            sys.stderr.write('Marks in district: %d\n' % len(people_links))
 
             for link in people_links:
                 mark_url = '%s%s' % (BASE_URL, link)
                 mark_id = mark_url[mark_url.rfind('=') + 1:]
-                sys.stderr.write('Henter merkenummer %s\n' % mark_id)
+                sys.stderr.write('Fetching mark number %s\n' % mark_id)
 
                 response = requests.get(mark_url)
 
                 if not response:
-                    sys.stderr.write('FEIL: Merkenummer %s returnerte %d\n' % (
+                    sys.stderr.write('ERROR: Mark %s returned %d\n' % (
                         mark_id, response.status_code))
                     continue
 
@@ -72,15 +72,15 @@ def run(*args):
                 cut_id = int(_get_cut_id(link))
                 owner['cutId'] = cut_id
 
-                sys.stderr.write('Lagrer bilde ..\n')
+                sys.stderr.write('Saving image ..\n')
                 _save_cut_img(soup, cut_id)
 
                 people.append(owner)
-                sys.stderr.write('\t=> Fant merket til %s %s\n' % (
+                sys.stderr.write('\t=> Found the mark of %s %s\n' % (
                             owner['firstName'].encode('utf-8'),
                             owner['lastName'].encode('utf-8')))
 
-        sys.stderr.write('Skriver ut resultat ..\n')
+        sys.stderr.write('Printing result ..\n')
         _output(people, area[0])
 
 def _prettify_cut(string):
