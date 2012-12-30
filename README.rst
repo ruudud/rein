@@ -52,7 +52,7 @@ ImageMagic)::
 
     for fl in `ls`; do convert `echo $fl` -fuzz 20% -transparent white $fl; done
 
-Then, to convert to SVG::
+Then, to convert to SVG (requires potrace)::
 
     for fl in `ls`; do convert $fl -bordercolor None -border 1x1 -negate pgm:- | potrace --tight --color="#303030" --svg > $fl.svg; done
 

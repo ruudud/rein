@@ -11,7 +11,6 @@ from BeautifulSoup import BeautifulSoup
 import requests
 
 BASE_URL = 'https://merker.reindrift.no/'
-AREA = '3'
 CURRENT_DIR = os.getcwd()
 
 def run(*args):
@@ -24,14 +23,14 @@ def run(*args):
     areas = [
         #(7, '&#216;st-Finnmark'),
         #(6, 'Vest-Finnmark'),
-        #(5, 'Troms'),
+        (5, 'Troms'),
         #(4, 'Nordland'),
-        (3, 'Nord-Tr&#248;ndelag'),
-        (2, 'S&#248;r-Tr&#248;ndelag/Hedmark'),
+        #(3, 'Nord-Tr&#248;ndelag'),
+        #(2, 'S&#248;r-Tr&#248;ndelag/Hedmark'),
     ]
 
-    people = []
     for area in areas:
+        people = []
         sys.stderr.write('Choosing area %s ..\n' % area[1].encode('utf-8'))
         fv(1, 'ctl00$cphInnhold$ddlOmrade', '+%s' % area[0])
         submit()
@@ -72,7 +71,7 @@ def run(*args):
                 cut_id = int(_get_cut_id(link))
                 owner['cutId'] = cut_id
 
-                sys.stderr.write('Saving image ..\n')
+                sys.stderr.write('Fetching image ..\n')
                 _save_cut_img(soup, cut_id)
 
                 people.append(owner)
@@ -112,16 +111,21 @@ def _get_cut_id(uri):
     return match.group(1)
 
 def _download_cut(uri, cut_id):
+    sys.stderr.write('Downloading image %s\n' % cut_id)
     if u'æ' in uri:
-        sys.stderr.write('Æ i snitt, ikke støttet\n')
-        return
+        sys.stderr.write('WARNING: Letter Æ in cut, not supported, change to Y\n')
+        uri = uri.replace(u'æ', 'y')
 
+    uri = uri.replace(' ', '%20')
     cut = requests.get(BASE_URL + uri)
 
-    if cut:
-        fp = open('%s/%s.png' % (CURRENT_DIR, cut_id), 'w')
-        fp.write(cut.content)
-        fp.close()
+    if not cut:
+        sys.stderr.write('ERROR: Could not GET image %s\n' % uri)
+        return
+
+    fp = open('%s/%s.png' % (CURRENT_DIR, cut_id), 'w')
+    fp.write(cut.content)
+    fp.close()
 
 def _save_cut_img(soup, cut_id):
     img = soup.find(id='ctl00_cphInnhold_imgMerke')
