@@ -176,25 +176,25 @@ def _extract_owner_info(info_list):
 
 def _output(people, area_id):
     for i, owner in enumerate(people):
-        print ' '*3, "{"
-        print ' '*3, "    %s: %s," % ('id', owner['id'])
-        print ' '*3, "    %s: %s," % ('cutId', owner['cutId'])
-        print ' '*3, "    %s: %s," % ('area', owner['area'])
-        print ' '*3, "    %s: %s," % ('district', owner['district'])
-        print ' '*3, "    %s: '%s'," % ('firstName', owner['firstName'].encode('utf-8'))
-        print ' '*3, "    %s: '%s'," % ('lastName', owner['lastName'].encode('utf-8'))
-        print ' '*3, "    %s: '%s'," % ('address', owner['address'].encode('utf-8') or "")
-        print ' '*3, "    %s: '%s'," % ('place', owner['place'].encode('utf-8') or "")
-        print ' '*3, "    %s: '%s'," % ('c1', owner['c1'].encode('utf-8') or "")
-        print ' '*3, "    %s: '%s'," % ('c2', owner['c2'].encode('utf-8') or "")
-        print ' '*3, "    %s: '%s'," % ('c3', owner['c3'].encode('utf-8') or "")
-        print ' '*3, "    %s: '%s'," % ('c4', owner['c4'].encode('utf-8') or "")
-        print ' '*3, "    %s: '%s'," % ('c5', owner['c5'].encode('utf-8') or "")
-        print ' '*3, "    %s: '%s'" % ('c6', owner['c6'].encode('utf-8') or "")
+        print '  ', "{"
+        print '  ', "  %s: %s," % ('id', owner['id'])
+        print '  ', "  %s: %s," % ('cutId', owner['cutId'])
+        print '  ', "  %s: %s," % ('area', owner['area'])
+        print '  ', "  %s: %s," % ('district', owner['district'])
+        print '  ', "  %s: '%s'," % ('firstName', owner['firstName'].encode('utf-8'))
+        print '  ', "  %s: '%s'," % ('lastName', owner['lastName'].encode('utf-8'))
+        print '  ', "  %s: '%s'," % ('address', owner['address'].encode('utf-8') or "")
+        print '  ', "  %s: '%s'," % ('place', owner['place'].encode('utf-8') or "")
+        print '  ', "  %s: '%s'," % ('c1', owner['c1'].encode('utf-8') or "")
+        print '  ', "  %s: '%s'," % ('c2', owner['c2'].encode('utf-8') or "")
+        print '  ', "  %s: '%s'," % ('c3', owner['c3'].encode('utf-8') or "")
+        print '  ', "  %s: '%s'," % ('c4', owner['c4'].encode('utf-8') or "")
+        print '  ', "  %s: '%s'," % ('c5', owner['c5'].encode('utf-8') or "")
+        print '  ', "  %s: '%s'" % ('c6', owner['c6'].encode('utf-8') or "")
         if i == (len(people) - 1):
-            print ' '*3, "}"
+            print '  ', "}"
         else:
-            print ' '*3, "},"
+            print '  ', "},"
 
 if __name__ == '__main__':
     run(sys.argv[1:])
