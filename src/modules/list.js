@@ -1,6 +1,12 @@
 /*global Modernizr: true, canvg: true*/
 (function (L, W, REIN, $) {
     L.Views.Browse = REIN.View.extend({
+        subviews: {
+            search: null,
+            browse: null,
+            areas: null,
+            districts: null
+        },
         districts: null,
 
         initialize: function () {
@@ -40,7 +46,6 @@
             $districts.css({opacity: 1});
             REIN.events.trigger('filter:area', id);
 
-            //TODO: Make smoother or remove
             window.scrollTo(0, $districts.offset().top);
         },
 

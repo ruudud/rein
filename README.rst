@@ -54,7 +54,11 @@ ImageMagic)::
 
 Then, to convert to SVG (requires potrace)::
 
-    for fl in `ls`; do convert $fl -bordercolor None -border 1x1 -negate pgm:- | potrace --tight --color="#303030" --svg > $fl.svg; done
+    for fl in `ls`; do convert $fl -bordercolor None -border 1x1 -negate pgm:- | potrace -k 0.8 --tight --color="#303030" --svg > $fl.svg; done
+
+Lastly, fish out the ear parts with the `scraper/extract_cuts.py` script::
+
+    for fl in `ls *.svg`; do ./extract_cuts.py $fl >> cuts.js; done
 
 
 Application Description (in Norwegian)

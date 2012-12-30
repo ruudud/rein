@@ -21,14 +21,15 @@ def run(*args):
 
     sys.stderr.write('Fetching areas ..\n')
     areas = [
-        #(7, '&#216;st-Finnmark'),
-        #(6, 'Vest-Finnmark'),
+        (7, '&#216;st-Finnmark'),
+        (6, 'Vest-Finnmark'),
         (5, 'Troms'),
-        #(4, 'Nordland'),
-        #(3, 'Nord-Tr&#248;ndelag'),
-        #(2, 'S&#248;r-Tr&#248;ndelag/Hedmark'),
+        (4, 'Nordland'),
+        (3, 'Nord-Tr&#248;ndelag'),
+        (2, 'S&#248;r-Tr&#248;ndelag/Hedmark'),
     ]
 
+    print 'REIN.register = ['
     for area in areas:
         people = []
         sys.stderr.write('Choosing area %s ..\n' % area[1].encode('utf-8'))
@@ -81,6 +82,7 @@ def run(*args):
 
         sys.stderr.write('Printing result ..\n')
         _output(people, area[0])
+    print '];'
 
 def _prettify_cut(string):
     return string.strip().lower()
@@ -173,30 +175,26 @@ def _extract_owner_info(info_list):
 
 
 def _output(people, area_id):
-    print '(function (People) {'
-    print ' '*3, 'People.register = ['
     for i, owner in enumerate(people):
-        print ' '*7, "{"
-        print ' '*7, "    %s: %s," % ('id', owner['id'])
-        print ' '*7, "    %s: %s," % ('cutId', owner['cutId'])
-        print ' '*7, "    %s: %s," % ('area', owner['area'])
-        print ' '*7, "    %s: %s," % ('district', owner['district'])
-        print ' '*7, "    %s: '%s'," % ('firstName', owner['firstName'].encode('utf-8'))
-        print ' '*7, "    %s: '%s'," % ('lastName', owner['lastName'].encode('utf-8'))
-        print ' '*7, "    %s: '%s'," % ('address', owner['address'].encode('utf-8') or "")
-        print ' '*7, "    %s: '%s'," % ('place', owner['place'].encode('utf-8') or "")
-        print ' '*7, "    %s: '%s'," % ('c1', owner['c1'].encode('utf-8') or "")
-        print ' '*7, "    %s: '%s'," % ('c2', owner['c2'].encode('utf-8') or "")
-        print ' '*7, "    %s: '%s'," % ('c3', owner['c3'].encode('utf-8') or "")
-        print ' '*7, "    %s: '%s'," % ('c4', owner['c4'].encode('utf-8') or "")
-        print ' '*7, "    %s: '%s'," % ('c5', owner['c5'].encode('utf-8') or "")
-        print ' '*7, "    %s: '%s'" % ('c6', owner['c6'].encode('utf-8') or "")
+        print ' '*3, "{"
+        print ' '*3, "    %s: %s," % ('id', owner['id'])
+        print ' '*3, "    %s: %s," % ('cutId', owner['cutId'])
+        print ' '*3, "    %s: %s," % ('area', owner['area'])
+        print ' '*3, "    %s: %s," % ('district', owner['district'])
+        print ' '*3, "    %s: '%s'," % ('firstName', owner['firstName'].encode('utf-8'))
+        print ' '*3, "    %s: '%s'," % ('lastName', owner['lastName'].encode('utf-8'))
+        print ' '*3, "    %s: '%s'," % ('address', owner['address'].encode('utf-8') or "")
+        print ' '*3, "    %s: '%s'," % ('place', owner['place'].encode('utf-8') or "")
+        print ' '*3, "    %s: '%s'," % ('c1', owner['c1'].encode('utf-8') or "")
+        print ' '*3, "    %s: '%s'," % ('c2', owner['c2'].encode('utf-8') or "")
+        print ' '*3, "    %s: '%s'," % ('c3', owner['c3'].encode('utf-8') or "")
+        print ' '*3, "    %s: '%s'," % ('c4', owner['c4'].encode('utf-8') or "")
+        print ' '*3, "    %s: '%s'," % ('c5', owner['c5'].encode('utf-8') or "")
+        print ' '*3, "    %s: '%s'" % ('c6', owner['c6'].encode('utf-8') or "")
         if i == (len(people) - 1):
-            print ' '*7, "}"
+            print ' '*3, "}"
         else:
-            print ' '*7, "},"
-    print ' '*3, '];'
-    print "}(REIN.module('people')));"
+            print ' '*3, "},"
 
 if __name__ == '__main__':
     run(sys.argv[1:])
