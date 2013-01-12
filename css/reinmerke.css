@@ -55,9 +55,6 @@ section {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
 }
 .island h2 {
   line-height: 1.5;
@@ -76,9 +73,6 @@ section {
 }
 .island .close:active {
   background-color: #E4E4E4;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
 }
 .boxed {
   -webkit-box-sizing: border-box;
@@ -153,11 +147,30 @@ footer p {
 input {
   height: 40px;
   line-height: 40px;
-  padding-left: 0.5em;
+  padding: 1px 9px;
   margin-bottom: 5px;
   font-size: 18px;
   width: 100%;
   display: block;
+}
+input[type="text"] {
+  background-color: white;
+  border: 1px solid #D1D1D1;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+input[type="text"]:focus {
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9; /* <=IE9 */
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 .noHits {
   padding-bottom: 10px;
@@ -260,6 +273,12 @@ input {
     width: 20px;
 }
 
+.rounded {
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+}
+
 .button {
   line-height: 32px;
   background-color: #4D90FE;
@@ -272,9 +291,6 @@ input {
   font-weight: bold;
   text-align: center;
   border: 1px solid #3079ED;
-  -webkit-border-radius: 2px;
-     -moz-border-radius: 2px;
-          border-radius: 2px;
 }
 .button:hover {
   background-color: #357AE8;
