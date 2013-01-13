@@ -20,6 +20,12 @@ var REIN = (function () {
   };
 
   View = Backbone.View.extend({
+    assign: function (subviews) {
+      for (view in subviews) {
+        selector = (view[0] == '.') ? view : '.' + view;
+        subviews[view].setElement(this.$(selector)).render();
+      }
+    },
     delegateEvents: function (events) {
       if (!(events || (events = this.events))) {
         return;
@@ -34,6 +40,16 @@ var REIN = (function () {
         }
       }
       Backbone.View.prototype.delegateEvents.call(this, tapEvents);
+    },
+    hide: function () {
+      this.$el.hide();
+    },
+    show: function () {
+      this.$el.show();
+      this.$el.css({opacity: 1});
+    },
+    scrollTo: function () {
+      window.scrollTo(0, this.$el.offset().top);
     }
   });
 

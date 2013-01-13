@@ -34,7 +34,7 @@ li {
 }
 
 /*-- Common --*/
-section {
+section, .list {
   overflow: hidden;
   margin: 0 auto;
   background-color: #FFFFFF;
@@ -50,8 +50,8 @@ section {
   text-align: left;
   border: 1px solid rgba(0, 0, 0, 0.05);
   background-color: #F5F5F5;
-  margin: 5px;
-  padding: 20px;
+  margin: 10px;
+  padding: 9px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -89,18 +89,18 @@ section {
   z-index: 100;
   width: 100%;
   height: 52px; /* 32px + 10x2 */
-  padding: 10px;
+  padding: 10px 20px;
   background-color: #303030;
   text-align: left;
   color: #FFF;
   -webkit-box-shadow: 0 0 10px black;
-     -moz-box-shadow: 0 0 10px black;
+   20px   -moz-box-shadow: 0 0 10px black;
           box-shadow: 0 0 10px black;
 }
 
 .topHeading .menu {
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 50%;
   margin-top: -16px;
 }
@@ -110,7 +110,7 @@ section {
 }
 
 .information {
-  padding: 10px;
+  padding: 20px;
 }
 .ctaBox {
   margin-top: 20px;
@@ -118,7 +118,7 @@ section {
   font-weight: bold;
 }
 
-.districts {
+.districts, .marks {
   opacity: 0;
   -webkit-transition: opacity 1s ease-in-out;
      -moz-transition: opacity 1s ease-in-out;
@@ -187,7 +187,7 @@ input[type="text"]:focus {
 }
 .item {
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 5px 20px;
   border-bottom: 2px solid #CCC;
   font-weight: bolder;
   position: relative;
@@ -197,7 +197,7 @@ input[type="text"]:focus {
 }
 .item .follow {
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 50%;
   margin-top: -10px;
   font-size: 20px;
@@ -234,9 +234,9 @@ input[type="text"]:focus {
 }
 
 .marks .image .owner {
+  text-align: center;
   line-height: 12px;
   margin-bottom: 10px;
-  text-shadow: 1px 1px 0px #CCC;
 }
 
 .marks .selected {
@@ -247,9 +247,10 @@ input[type="text"]:focus {
   display: none;
 }
 
-.marks .information .content {
+/*.marks .information .content {
   padding: 1em 0;
 }
+*/
 
 /*-- Widgets --*/
 

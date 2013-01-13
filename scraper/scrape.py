@@ -22,11 +22,11 @@ def run(*args):
     sys.stderr.write('Fetching areas ..\n')
     areas = [
         (7, '&#216;st-Finnmark'),
-        (6, 'Vest-Finnmark'),
-        (5, 'Troms'),
-        (4, 'Nordland'),
-        (3, 'Nord-Tr&#248;ndelag'),
-        (2, 'S&#248;r-Tr&#248;ndelag/Hedmark'),
+        #(6, 'Vest-Finnmark'),
+        #(5, 'Troms'),
+        #(4, 'Nordland'),
+        #(3, 'Nord-Tr&#248;ndelag'),
+        #(2, 'S&#248;r-Tr&#248;ndelag/Hedmark'),
     ]
 
     print 'REIN.register = ['
@@ -40,6 +40,9 @@ def run(*args):
         districts = _get_districts(show())
 
         for district in districts:
+            if district[0] == '81':
+                sys.stderr.write('WARNING: Skipping district 81.\n')
+                continue
             sys.stderr.write('Choosing district %s ..\n' % district[0])
             fv(1, 'ctl00$cphInnhold$ddlDistrikt', '+%s' % district[0])
 
@@ -72,8 +75,8 @@ def run(*args):
                 cut_id = int(_get_cut_id(link))
                 owner['cutId'] = cut_id
 
-                sys.stderr.write('Fetching image ..\n')
-                _save_cut_img(soup, cut_id)
+                #sys.stderr.write('Fetching image ..\n')
+                #_save_cut_img(soup, cut_id)
 
                 people.append(owner)
                 sys.stderr.write('\t=> Found the mark of %s %s\n' % (
@@ -176,25 +179,25 @@ def _extract_owner_info(info_list):
 
 def _output(people, area_id):
     for i, owner in enumerate(people):
-        print '  ', "{"
-        print '  ', "  %s: %s," % ('id', owner['id'])
-        print '  ', "  %s: %s," % ('cutId', owner['cutId'])
-        print '  ', "  %s: %s," % ('area', owner['area'])
-        print '  ', "  %s: %s," % ('district', owner['district'])
-        print '  ', "  %s: '%s'," % ('firstName', owner['firstName'].encode('utf-8'))
-        print '  ', "  %s: '%s'," % ('lastName', owner['lastName'].encode('utf-8'))
-        print '  ', "  %s: '%s'," % ('address', owner['address'].encode('utf-8') or "")
-        print '  ', "  %s: '%s'," % ('place', owner['place'].encode('utf-8') or "")
-        print '  ', "  %s: '%s'," % ('c1', owner['c1'].encode('utf-8') or "")
-        print '  ', "  %s: '%s'," % ('c2', owner['c2'].encode('utf-8') or "")
-        print '  ', "  %s: '%s'," % ('c3', owner['c3'].encode('utf-8') or "")
-        print '  ', "  %s: '%s'," % ('c4', owner['c4'].encode('utf-8') or "")
-        print '  ', "  %s: '%s'," % ('c5', owner['c5'].encode('utf-8') or "")
-        print '  ', "  %s: '%s'" % ('c6', owner['c6'].encode('utf-8') or "")
+        print ' ', "{"
+        print ' ', "  %s: %s," % ('id', owner['id'])
+        print ' ', "  %s: %s," % ('cutId', owner['cutId'])
+        print ' ', "  %s: %s," % ('area', owner['area'])
+        print ' ', "  %s: %s," % ('district', owner['district'])
+        print ' ', "  %s: '%s'," % ('firstName', owner['firstName'].encode('utf-8'))
+        print ' ', "  %s: '%s'," % ('lastName', owner['lastName'].encode('utf-8'))
+        print ' ', "  %s: '%s'," % ('address', owner['address'].encode('utf-8') or "")
+        print ' ', "  %s: '%s'," % ('place', owner['place'].encode('utf-8') or "")
+        print ' ', "  %s: '%s'," % ('c1', owner['c1'].encode('utf-8') or "")
+        print ' ', "  %s: '%s'," % ('c2', owner['c2'].encode('utf-8') or "")
+        print ' ', "  %s: '%s'," % ('c3', owner['c3'].encode('utf-8') or "")
+        print ' ', "  %s: '%s'," % ('c4', owner['c4'].encode('utf-8') or "")
+        print ' ', "  %s: '%s'," % ('c5', owner['c5'].encode('utf-8') or "")
+        print ' ', "  %s: '%s'" % ('c6', owner['c6'].encode('utf-8') or "")
         if i == (len(people) - 1):
-            print '  ', "}"
+            print ' ', "}"
         else:
-            print '  ', "},"
+            print ' ', "},"
 
 if __name__ == '__main__':
     run(sys.argv[1:])

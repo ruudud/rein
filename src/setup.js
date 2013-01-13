@@ -1,7 +1,7 @@
 /*global window: true*/
 $(document).ready(function () {
   var setupMainViews = function () {
-    var browse, welcome, topNav, bottomNav, markList, search, loading,
+    var browse, welcome, topNav, bottomNav, search, loading,
       L = REIN.module('list'), M = REIN.module('main');
 
     browse = new L.Views.Browse({el: '#browse'});
@@ -11,12 +11,7 @@ $(document).ready(function () {
     topNav = new M.Views.TopNav({el: '#menu'});
     bottomNav = new M.Views.BottomNav({el: '#nav'});
 
-    markList = new L.Views.MarkList({
-      collection: REIN.Register
-    });
-    $('#marks').html(markList.render().el);
-
-    search = new M.Views.Search({collection: REIN.Register, el: '#search'});
+    search = new M.Views.Search({el: '#search'});
     search.render();
 
     loading = new M.Views.Loading();

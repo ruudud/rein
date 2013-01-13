@@ -2,6 +2,7 @@
 REIN = REIN || {};
 REIN.Areas = {
     2: {
+      id: 2,
       name: 'Sør-Trøndelag/Hedmark',
       count: 119,
       districts: {
@@ -13,8 +14,9 @@ REIN.Areas = {
       }
     },
     3: {
+      id: 3,
       name: 'Nord-Trøndelag',
-      count: 169,
+      count: 168,
       districts: {
         72: {'name': 'VA 7 - GASKEN-LAANTE'},
         73: {'name': 'VF 8 - SKÆHKERE'},
@@ -25,8 +27,9 @@ REIN.Areas = {
       }
     },
     4: {
+      id: 4,
       name: 'Nordland',
-      count: 185,
+      count: 190,
       districts: {
         60: {'name': 'WA 18 - VOENGELH-NJAARKE'},
         61: {'name': 'WB 20 - JILLEN-NJAARKE'},
@@ -43,8 +46,9 @@ REIN.Areas = {
       }
     },
     5: {
+      id: 5,
       name: 'Troms',
-      count: 173,
+      count: 177,
       districts: {
         46: {'name': 'XA 34 - KANSTADFJORD/VESTRE HINNØY'},
         47: {'name': 'XD 36 - TJELDØY'},
@@ -63,8 +67,9 @@ REIN.Areas = {
       }
     },
     6: {
+      id: 6,
       name: 'Vest-Finnmark',
-      count: 1523,
+      count: 1623,
       districts: {
         21: {'name': 'YA 19 - SÁLLAN'},
         22: {'name': 'YB 20 - FÁLÁ/KVALØY'},
@@ -97,8 +102,9 @@ REIN.Areas = {
       }
     },
     7: {
+      id: 7,
       name: 'Øst-Finnmark',
-      count: 548,
+      count: 552,
       districts: {
         1: {'name': 'ZA 1/2/3 - ØSTRE SØR-VARANGER'},
         2: {'name': 'ZB 5A - PASVIK'},
