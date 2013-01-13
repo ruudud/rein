@@ -52,21 +52,21 @@
     }
   });
 
-  M.Views.Loading = function () {
+  M.Views.Loading = function ($el) {
+    this.$el = $el;
     this.$body = $('body');
-    this.$el = $(REIN.templates.loading());
     this.$body.prepend(this.$el);
 
-    REIN.events.on('loading:start', this._onLoading, this);
-    REIN.events.on('loading:end', this._onLoadingEnd, this);
+    REIN.events.on('loading:start', this.show, this);
+    REIN.events.on('loading:end', this.hide, this);
   };
   _.extend(M.Views.Loading.prototype, {
-    _onLoading: function () {
+    show: function () {
       this.$el.show();
       this._blockUI(true);
     },
 
-    _onLoadingEnd: function () {
+    hide: function () {
       this._blockUI(false);
       this.$el.hide();
     },

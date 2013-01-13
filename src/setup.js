@@ -14,7 +14,8 @@ $(document).ready(function () {
     search = new M.Views.Search({el: '#search'});
     search.render();
 
-    loading = new M.Views.Loading();
+    loading = new M.Views.Loading($('#loading'));
+    loading.hide();
 
     window.scrollTo(0, 1);
   };
@@ -25,10 +26,10 @@ $(document).ready(function () {
         .addClass('loading')
         .show()
         .html(REIN.templates.install());
-      REIN.tools.trackPageView('iphone_install/start');
+      REIN.tools.trackEvent('iphone_install start');
       return false;
     } else {
-      REIN.tools.trackPageView('iphone_install/complete');
+      REIN.tools.trackEvent('iphone_install complete');
     }
   }
   setupMainViews();

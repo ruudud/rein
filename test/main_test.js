@@ -2,7 +2,7 @@
   buster.testCase('Main Module', {
     'loading': {
       setUp: function () {
-        this.loadingView = new M.Views.Loading();
+        this.loadingView = new M.Views.Loading($('<div></div>'));
         this.loadingSpy = sinon.spy(this.loadingView, '_blockUI');
       },
       'blockUI on loading event': function () {

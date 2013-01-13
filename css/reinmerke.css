@@ -321,7 +321,6 @@ input[type="text"]:focus {
   min-width: 70px;
 }
 .loading {
-  display: none;
   position: fixed;
   z-index: 90;
   top: 0;
