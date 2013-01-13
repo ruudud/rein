@@ -12,7 +12,7 @@ return __p;
 this["REIN"]["templates"]["browse"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<ul class="areas list"></ul>\n<section class="districts"></section>\n<section class="marks"></section>\n';
+__p+='<ul class="areas list selectable"></ul>\n<section class="districts"></section>\n<section class="marks"></section>\n';
 }
 return __p;
 };
@@ -22,7 +22,9 @@ var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+='<h2 class="sectionHeader">'+
 (title)+
-'</h2>\n<ul class="list"></ul>\n';
+'</h2>\n<ul class="list '+
+(className)+
+'"></ul>\n';
 }
 return __p;
 };

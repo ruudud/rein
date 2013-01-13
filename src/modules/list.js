@@ -59,14 +59,11 @@
     reset: function () {
       this.subviews.areas.reset();
       this.$('.districts').html('');
-      //this.subviews.districts && this.subviews.districts.remove();
     }
 
   });
 
   L.Views.Areas = REIN.View.extend({
-    tagName: 'ul',
-    className: 'list',
     collection: {},
     itemTemplate: REIN.templates.area,
     _$areas: [],
@@ -103,6 +100,7 @@
   });
 
   L.Views.Districts = REIN.View.extend({
+    className: 'selectable',
     collection: {},
     activeDistrict: -1,
     activeArea: -1,
@@ -117,7 +115,10 @@
     render: function () {
       if (this.activeArea < 0) return this;
 
-      this.$el.html(this.template({title: REIN.Areas[this.activeArea].name}));
+      this.$el.html(this.template({
+        className: this.className,
+        title: REIN.Areas[this.activeArea].name
+      }));
       this.renderDistricts(this.$('.list'));
 
       this.scrollTo();
@@ -169,6 +170,7 @@
   });
 
   L.Views.Marks = REIN.View.extend({
+    className: '',
     template: REIN.templates.list,
     _marksInActiveArea: new Backbone.Collection(),
 
@@ -179,7 +181,10 @@
     },
 
     render: function (title) {
-      this.$el.html(this.template({ title: title }));
+      this.$el.html(this.template({
+        className: this.className,
+        title: title
+      }));
       this.assign({'.list': this.markList});
 
       return this;

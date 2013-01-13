@@ -192,7 +192,7 @@ input[type="text"]:focus {
 .item .subText {
   color: #CCC;
 }
-.item .follow {
+.selectable .follow {
   position: absolute;
   right: 20px;
   top: 50%;
@@ -201,13 +201,12 @@ input[type="text"]:focus {
   font-style: normal;
   color: #CCC;
 }
-
-.list .selected .follow {
+.selectable .selected .follow {
   display: none;
 }
-.list .selected:after {
+.selectable .selected:after {
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 50%;
   margin-top: -10px;
   content: "✔ ";
@@ -219,7 +218,6 @@ input[type="text"]:focus {
   border-bottom: 1px solid #999;
   background-color: #F5F5F5;
 }
-
 .marks .mark:last-child {
   border-bottom: none;
 }
