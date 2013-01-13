@@ -21,8 +21,9 @@ var REIN = (function () {
 
   View = Backbone.View.extend({
     assign: function (subviews) {
+      var view, selector;
       for (view in subviews) {
-        selector = (view[0] == '.') ? view : '.' + view;
+        selector = (view[0] === '.') ? view : '.' + view;
         subviews[view].setElement(this.$(selector)).render();
       }
     },

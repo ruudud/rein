@@ -111,13 +111,9 @@ module.exports = function (grunt) {
         files: ['<config:lint.node>'],
         tasks: ['lint:node']
       },
-      browserscripts: {
-        files: ['src/**/*.js'],
-        tasks: ['lint:browser']
-      },
       tests: {
         files: ['src/**/*.js', 'test/**/*_test.js'],
-        tasks: ['buster']
+        tasks: ['buster', 'lint:browser']
       }
     }
   });

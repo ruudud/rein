@@ -113,7 +113,9 @@
     },
 
     render: function () {
-      if (this.activeArea < 0) return this;
+      if (this.activeArea < 0) {
+        return this;
+      }
 
       this.$el.html(this.template({
         className: this.className,
@@ -213,11 +215,13 @@
     },
 
     renderMarksInDistrict: function (areaId, districtId) {
+      var hits, districtName;
+
       this.reset();
-      var hits = this.filterByDistrict(districtId);
+      hits = this.filterByDistrict(districtId);
       this.markList.collection.reset(hits, { silent: true });
 
-      var districtName = REIN.Areas[areaId].districts[districtId].name;
+      districtName = REIN.Areas[areaId].districts[districtId].name;
       this.render(districtName);
       this.show();
       this.scrollTo();
@@ -285,8 +289,8 @@
     events: {'click': '_onClick'},
 
     render: function () {
-      var mark = this.model.toJSON();
-      var ears = REIN.Ears[mark.cutId],
+      var mark = this.model.toJSON(),
+        ears = REIN.Ears[mark.cutId],
         districtName = REIN.Areas[mark.area].districts[mark.district].name,
         svg = this.options.templates.svg({
           left: ears[0],
