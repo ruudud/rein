@@ -17,7 +17,7 @@
       this.$('.search').toggleClass('active');
       this.searchActive = !this.searchActive;
       REIN.events.trigger('toggleSearch', this.searchActive);
-      REIN.tools.trackEvent('nav', 'toggle', 'search');
+      REIN.tools.trackEvent('toggle', { category: 'nav', label: 'search' });
     }
   });
 
@@ -43,7 +43,7 @@
       var needle = this.$('input').val();
       if (needle.length > 1 ) {
         REIN.events.trigger('search', needle);
-        REIN.tools.trackEvent('nav', 'search', needle);
+        REIN.tools.trackEvent('search', { category: 'nav', label: needle });
       }
     },
 

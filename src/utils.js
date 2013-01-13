@@ -38,8 +38,14 @@ REIN.tools = {
     setTimeout(fnBind, delay);
   },
 
-  trackEvent: function (category, action, opt_label, opt_value) {
-    window._gaq && window._gaq.push(['_trackEvent', category, action, opt_label, opt_value]);
+  trackEvent: function (event, properties) { // (category, action, opt_label, opt_value) {
+    window._gaq && window._gaq.push([
+      '_trackEvent',
+      properties.category || 'All',
+      event,
+      properties.label
+    ]);
+    window.mixpanel && window.mixpanel.track(event, properties);
   },
 
   trackPageView: function (url) {

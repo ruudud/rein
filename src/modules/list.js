@@ -95,7 +95,10 @@
     _onAreaClick: function (id) {
       this.trigger('select:area', id);
       REIN.events.trigger('filter:area', id);
-      REIN.tools.trackEvent('nav', 'browseArea', this.collection[id].name);
+      REIN.tools.trackEvent('browseArea', {
+        category: 'nav',
+        label: this.collection[id].name
+      });
     }
   });
 
@@ -148,8 +151,10 @@
       this.activeDistrict = districtId;
       this.trigger('select:district', districtId);
       REIN.events.trigger('filter:district', districtId);
-      REIN.tools.trackEvent('nav', 'browseDistrict',
-                            this.collection[districtId].name);
+      REIN.tools.trackEvent('browseDistrict', {
+        category: 'nav',
+        label: this.collection[districtId].name
+      });
     },
 
     _getModel: function (id, item) {
@@ -199,11 +204,7 @@
 
       tElapsed = +(new Date()) - tBefore;
       tPerChar = tElapsed / needle.length;
-      REIN.tools.trackEvent('time', 'search', tPerChar);
-
-      //if (this._currentHits.length === 0) {
-      //  this.$el.html('<li class="noHits">Ingen treff på søket ditt.</li>');
-      //}
+      REIN.tools.trackEvent('search', { timePerChar: tPerChar });
     },
 
     renderMarksInDistrict: function (areaId, districtId) {
@@ -224,7 +225,6 @@
         return o.area === areaId;
       });
       this._marksInActiveArea.reset(hits, {silent: true});
-      console.log('filter area', this._marksInActiveArea.length);
       return this._marksInActiveArea;
     },
 
@@ -255,14 +255,7 @@
       canvas: REIN.templates.canvas
     },
 
-    initialize: function () {
-      this.collection.on('reset', function () {
-        console.log('reset', this.collection);
-      }, this);
-    },
-
     render: function () {
-      console.log('render marklist', this.collection);
       this.collection.each(function (owner) {
         var markItem = new L.Views.Mark({
           model: owner,
