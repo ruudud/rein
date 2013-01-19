@@ -14,8 +14,8 @@ $(document).ready(function () {
     search = new M.Views.Search({el: '#search'});
     search.render();
 
-    loading = new M.Views.Loading($('#loading'));
-    loading.hide();
+    //loading = new M.Views.Loading($('#loading'));
+    //loading.hide();
 
     window.scrollTo(0, 1);
   };
