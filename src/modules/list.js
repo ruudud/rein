@@ -194,7 +194,7 @@
 
     search: function (needle) {
       var hits, tElapsed, tPerChar, tBefore = +(new Date());
-      //REIN.events.trigger('loading:start');
+      REIN.events.trigger('loading:start');
 
       // TODO improve search, split needle for words
       needle = needle.toLowerCase().trim();
@@ -272,7 +272,7 @@
         });
         this.$el.append(markItem.render().el);
       }.bind(this));
-      //REIN.events.trigger('loading:end');
+      REIN.events.trigger('loading:end');
       return this;
     },
 

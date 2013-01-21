@@ -14,13 +14,13 @@ $(document).ready(function () {
     search = new M.Views.Search({el: '#search'});
     search.render();
 
-    //loading = new M.Views.Loading($('#loading'));
-    //loading.hide();
+    loading = new M.Views.Loading($('#loading'));
+    loading.hide();
 
     window.scrollTo(0, 1);
   };
 
-  if ($.os && $.os.ios) {
+  if ($.os && $.os.ios && !($.browser && $.browser.chrome)) {
     if (!window.navigator.standalone) {
       $('body')
         .addClass('loading')
@@ -28,8 +28,9 @@ $(document).ready(function () {
         .html(REIN.templates.install());
       REIN.tools.trackEvent('iphone_install start');
       return false;
-    } else {
-      REIN.tools.trackEvent('iphone_install complete');
+    // FIXME the next two lines cause iPad/iPhone to freeze
+    //} else {
+    //  REIN.tools.trackEvent('iphone_install complete');
     }
   }
   setupMainViews();
