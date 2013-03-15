@@ -39,13 +39,12 @@ REIN.tools = {
   },
 
   trackEvent: function (event, properties) { // (category, action, opt_label, opt_value) {
-    window._gaq && window._gaq.push([
-      '_trackEvent',
-      properties.category || 'All',
-      event,
-      properties.label
-    ]);
     window.mixpanel && window.mixpanel.track(event, properties);
+    if (window._gaq) {
+      var category = (properties && properties.category) || 'All',
+          label = (properties && properties.label) || '';
+      window._gaq.push([ '_trackEvent', category, event, label ]);
+    }
   },
 
   trackPageView: function (url) {

@@ -27,11 +27,14 @@ $(document).ready(function () {
         .show()
         .html(REIN.templates.install());
       REIN.tools.trackEvent('iphone_install start');
-      return false;
-    // FIXME the next two lines cause iPad/iPhone to freeze
-    //} else {
-    //  REIN.tools.trackEvent('iphone_install complete');
+      return;
+    } else {
+      REIN.tools.trackEvent('iphone_install complete');
     }
   }
   setupMainViews();
+
+  if (window.REINVERSION) {
+    REIN.tools.trackEvent('App Version', { label: window.REINVERSION });
+  }
 });
