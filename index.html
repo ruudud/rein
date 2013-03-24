@@ -136,7 +136,7 @@
    <script src="reindeerfinder.min.js" type="text/javascript"></script><!(endif)-->
 
   <script type="text/javascript">
-    if (!Modernizr.inlinesvg) {
+    if (Modernizr && !Modernizr.inlinesvg) {
         _load('lib/rgbcolor.min.js');
         _load('lib/canvg.min.js');
         REIN.tools.trackEvent('svgRenderer', { category: 'device', label: 'canvg' });
