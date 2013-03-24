@@ -1,42 +1,6 @@
 this["REIN"] = this["REIN"] || {};
 this["REIN"]["templates"] = this["REIN"]["templates"] || {};
 
-this["REIN"]["templates"]["install"] = function(obj){
-var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
-with(obj||{}){
-__p+='<div>\n  <div class="homescreen">\n    <section class="desc">\n    <h2 class="add">Legg til på <strong>Hjem-skjermen</strong></h2>\n    <h4 class="help">\n      <a href="http://www.apple.com/no/ios/add-to-home-screen/">\n        Hvordan?\n      </a>\n    </h4>\n    </section>\n  </div>\n</div>\n';
-}
-return __p;
-};
-
-this["REIN"]["templates"]["browse"] = function(obj){
-var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
-with(obj||{}){
-__p+='<ul class="areas list selectable"></ul>\n<section class="districts"></section>\n<section class="marks"></section>\n';
-}
-return __p;
-};
-
-this["REIN"]["templates"]["list"] = function(obj){
-var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
-with(obj||{}){
-__p+='<h2 class="sectionHeader">'+
-(title)+
-'</h2>\n<ul class="list '+
-(className)+
-'"></ul>\n';
-}
-return __p;
-};
-
-this["REIN"]["templates"]["canvas"] = function(obj){
-var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
-with(obj||{}){
-__p+='<canvas width="430" height="150"></canvas>\n';
-}
-return __p;
-};
-
 this["REIN"]["templates"]["area"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
@@ -49,10 +13,18 @@ __p+=''+
 return __p;
 };
 
-this["REIN"]["templates"]["search"] = function(obj){
+this["REIN"]["templates"]["browse"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<form method="post" action="." class="searchForm">\n  <input type="text" placeholder="Navn på eier" class="wide boxed rounded" x-webkit-speech>\n  <input type="submit" class="wide button btnText search rounded" value="Søk">\n</form>\n';
+__p+='<ul class="areas list selectable"></ul>\n<section class="districts"></section>\n<section class="marks"></section>\n';
+}
+return __p;
+};
+
+this["REIN"]["templates"]["canvas"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<canvas width="430" height="150"></canvas>\n';
 }
 return __p;
 };
@@ -63,6 +35,26 @@ with(obj||{}){
 __p+='<h2 class="sectionHeader">'+
 (title)+
 '</h2>\n<ul class="list"></ul>\n';
+}
+return __p;
+};
+
+this["REIN"]["templates"]["install"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<div>\n  <div class="homescreen">\n    <section class="desc">\n    <h2 class="add">Legg til på <strong>Hjem-skjermen</strong></h2>\n    <h4 class="help">\n      <a href="http://www.apple.com/no/ios/add-to-home-screen/">\n        Hvordan?\n      </a>\n    </h4>\n    </section>\n  </div>\n</div>\n';
+}
+return __p;
+};
+
+this["REIN"]["templates"]["list"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<h2 class="sectionHeader">'+
+(title)+
+'</h2>\n<ul class="list '+
+(className)+
+'"></ul>\n';
 }
 return __p;
 };
@@ -81,6 +73,14 @@ __p+='<figure class="image">\n  <p class="owner">\n    <strong>'+
 ' '+
 (mark.place)+
 '\n    </em>\n  </div>\n</div>\n';
+}
+return __p;
+};
+
+this["REIN"]["templates"]["search"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<form method="post" action="." class="searchForm">\n  <input type="text" placeholder="Navn på eier" class="wide boxed rounded" x-webkit-speech>\n  <input type="submit" class="wide button btnText search rounded" value="Søk">\n</form>\n';
 }
 return __p;
 };

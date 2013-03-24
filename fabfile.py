@@ -14,13 +14,12 @@ from __future__ import with_statement
 
 import re
 
-from fabric.api import local, abort, settings
+from fabric.api import local, lcd, abort, settings
 from fabric.colors import green
-from fabric.contex_managers import lcd
 from fabric.contrib.console import confirm
 
 LOCAL_BUILD_PATH = 'dist/'
-S3BUCKET = 's3://www.reinmerker.no/'
+S3BUCKET = 's3://reinmerker.no/'
 
 def deploy(version='patch'):
     if not version in ('patch', 'minor', 'major'):

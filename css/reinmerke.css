@@ -79,9 +79,6 @@ section, .list {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
-.grey {
-  color: #757575;
-}
 
 /*--- Main elements ---*/
 .topHeading {
@@ -242,16 +239,7 @@ input[type="text"]:focus {
   display: none;
 }
 
-
 /*-- Widgets --*/
-
-.uiBlock {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  height: 100%;
-  top: 144px;
-}
 .btnImg {
   display: inline-block;
   width: 48px;
