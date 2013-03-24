@@ -41,8 +41,9 @@ def test():
 
 def _uploadToS3():
     with lcd(LOCAL_BUILD_PATH):
-        local('s3cmd -P --guess-mime-type -r sync . %s' % S3BUCKET)
-        local('s3cmd -m text/cache-manifest -P put rein.appcache %srein.appcache' % S3BUCKET)
+        cmd = 's3cmd -P --add-header="Content-Encoding: gzip"'
+        local('%s --guess-mime-type -r sync . %s' % (cmd, S3BUCKET))
+        local('%s -m text/cache-manifest put rein.appcache %srein.appcache' % (cmd, S3BUCKET))
 
 def _bump_version(version):
     output = local('grunt bump:%s' % version, capture=True)

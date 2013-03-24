@@ -8,9 +8,6 @@ module.exports = function (grunt) {
         ' <%= pkg.author.name %>\n' +
         '* Licensed under AGPLv3. */'
     },
-    buster: {
-      test: { config: 'test/buster.js' }
-    },
     clean: {
       dist: ['dist'],
       temp: ['dist/temp']
@@ -120,7 +117,7 @@ module.exports = function (grunt) {
       },
       tests: {
         files: ['src/**/*.js', 'test/**/*_test.js'],
-        tasks: ['buster', 'jshint:browser']
+        tasks: ['jshint:browser']
       }
     }
   });
@@ -134,7 +131,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-bump');
-  grunt.loadNpmTasks('grunt-buster');
   grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-replace');
   grunt.loadNpmTasks('grunt-targethtml');
