@@ -25,7 +25,6 @@ def deploy(version='patch'):
     if not version in ('patch', 'minor', 'major'):
         abort('version is one of patch (default), minor or major')
 
-    test()
     build_version = _bump_version(version)
     _build()
 
