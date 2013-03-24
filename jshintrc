@@ -1,0 +1,9 @@
+{
+  "browser": true,
+  "undef": true,
+  "expr": true,
+  "trailing": true,
+  "eqeqeq": true,
+  "onevar": true,
+  "curly": true
+}

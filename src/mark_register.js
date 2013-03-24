@@ -1,4 +1,4 @@
-/*global REIN: true*/
+/*exported REIN*/
 REIN = REIN || {};
 REIN.Areas = {
     2: {
