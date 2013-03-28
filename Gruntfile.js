@@ -16,7 +16,7 @@ module.exports = function (grunt) {
     concat: {
       options: { banner: '<%= meta.banner %>' },
       dist: {
-        src: ['lib/modernizr-2.6.1.min.js', 'lib/underscore-1.4.4.min.js',
+        src: ['lib/modernizr-2.6.1.min.js', 'lib/lodash-1.1.1custom.min.js',
           'lib/backbone-1.0.0.min.js', 'dist/temp/<%= pkg.name %>.min.js'],
         dest: 'dist/<%= pkg.name %>.min.js'
       }
