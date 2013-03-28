@@ -1,6 +1,7 @@
 module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    aws: grunt.file.readJSON('aws-credentials.json'),
     meta: {
       banner: '/* <%= pkg.name %>\n' +
         '* <%= pkg.homepage %> \n' +
@@ -12,28 +13,35 @@ module.exports = function (grunt) {
       dist: ['dist'],
       temp: ['dist/temp']
     },
-    exec: {
-      gzip: {
-        cmd: "find dist/ -type f | while read f; do gzip -9 $f; done"
-      },
-      move: {
-        cmd: "find dist/ -type f -name '*.gz' | while read f; do mv \"$f\" \"${f%.gz}\"; done"
-      }
-    },
     concat: {
       options: { banner: '<%= meta.banner %>' },
       dist: {
-        src: ['lib/modernizr.min.js', 'lib/underscore.min.js',
-          'lib/backbone.min.js', 'dist/temp/<%= pkg.name %>.min.js'],
+        src: ['lib/modernizr-2.6.1.min.js', 'lib/underscore-1.4.3.min.js',
+          'lib/backbone-0.9.9.min.js', 'dist/temp/<%= pkg.name %>.min.js'],
         dest: 'dist/<%= pkg.name %>.min.js'
       }
     },
     copy: {
       dist: {
         files: [
-          { dest: 'dist/', src: ['favicon.ico', 'people.txt', 'robots.txt', 'sitemap.xml'] },
-          { dest: 'dist/gfx/', cwd: 'gfx/', src: ['*'], expand: true, filter: 'isFile' },
-          { dest: 'dist/lib/', cwd: 'lib/', src: ['zepto.min.js', 'jquery.min.js', 'rgbcolor.min.js', 'canvg.min.js'], expand: true }
+          {
+            dest: 'dist/',
+            src: ['favicon.ico', 'people.txt', 'robots.txt', 'sitemap.xml']
+          },
+          {
+            dest: 'dist/gfx/',
+            src: ['*'],
+            cwd: 'gfx/',
+            expand: true,
+            filter: 'isFile'
+          },
+          {
+            dest: 'dist/lib/',
+            src: ['zepto-1.0rc1.min.js', 'jquery-1.7.4.min.js',
+              'rgbcolor.min.js', 'canvg-1.2.min.js'],
+            cwd: 'lib/',
+            expand: true
+          }
         ]
       }
     },
@@ -88,6 +96,41 @@ module.exports = function (grunt) {
         }
       }
     },
+    s3: {
+      options: {
+        bucket: '<%= aws.bucket %>',
+        key: '<%= aws.accessKey %>',
+        secret: '<%= aws.secretKey %>',
+        secure: false,
+        access: 'public-read',
+        gzipExclude: ['.png'],
+        gzip: true
+      },
+      noCache: {
+        options: {
+          headers: { 'Cache-Control': 'max-age=3600, must-revalidate' }
+        },
+        upload: [
+          { src: 'dist/rein.appcache', dest: 'rein.appcache' },
+          { src: 'dist/reindeerfinder.min.css', dest: 'reindeerfinder.min.css' },
+          { src: 'dist/reindeerfinder.min.js', dest: 'reindeerfinder.min.js' },
+          { src: 'dist/index.html', dest: 'index.html' }
+        ]
+      },
+      cache: {
+        options: {
+          headers: { 'Cache-Control': 'public, max-age=2592000' }
+        },
+        upload: [
+          { src: 'dist/gfx/*', dest: 'gfx/' },
+          { src: 'dist/lib/*', dest: 'lib/' },
+          { src: 'dist/favicon.ico', dest: 'favicon.ico' },
+          { src: 'dist/people.txt', dest: 'people.txt' },
+          { src: 'dist/robots.txt', dest: 'robots.txt' },
+          { src: 'dist/sitemap.xml', dest: 'sitemap.xml' }
+        ]
+      }
+    },
     targethtml: {
       dist: {
         files: {
@@ -131,13 +174,20 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-bump');
-  grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-replace');
+  grunt.loadNpmTasks('grunt-s3');
   grunt.loadNpmTasks('grunt-targethtml');
 
+  grunt.registerTask('reloadPackageJson', 'Reloads the package.json', function () {
+    grunt.config('pkg', grunt.file.readJSON('package.json'));
+    grunt.log.writeln('Config reloaded.');
+  });
+
   grunt.registerTask('default', [
-      'jshint', 'jst', 'clean:dist', 'uglify', 'concat', 'cssmin', 'targethtml',
-      'replace', 'copy', 'clean:temp', 'exec:gzip', 'exec:move'
-    ]);
+    'jshint', 'jst', 'clean:dist', 'uglify', 'concat', 'cssmin', 'targethtml',
+    'replace', 'copy', 'clean:temp'
+  ]);
+
+  grunt.registerTask('release', [ 'bump', 'reloadPackageJson', 'default', 's3' ]);
 
 };

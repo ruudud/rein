@@ -1,4 +1,5 @@
 *.swp
 *.pyc
+aws-credentials.json
 node_modules/
 dist/

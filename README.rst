@@ -28,18 +28,16 @@ an API this makes more sense.
 
 Releasing
 ---------
-By the aid of `Fabric`_ the webapp gets released. The process is defined in
-``fabfile.py``. Use `pip`_ to install it::
+To be able to release, the S3 bucket name, access and secret key needs to be
+defined in a file called ``aws-credentials.json`` using the following format::
 
-  pip install fabric
+    {
+      "bucket"   : "reinmerker.no",
+      "accessKey": "XXXXXXXXXXXXXXXXXXXX",
+      "secretKey": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    }
 
-Example (reads your SSH config)::
-
-  fab -H my.host.com deploy
-
-.. _Fabric: http://fabfile.org/
-.. _pip: http://www.pip-installer.org/
-
+When the credentials is in place, ``grunt release`` will upload a new release.
 
 Scraping
 --------

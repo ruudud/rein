@@ -2,8 +2,8 @@ CACHE MANIFEST
 # @@version
 
 CACHE:
-/lib/zepto.min.js
-/lib/canvg.min.js
+/lib/zepto-1.0rc1.min.js
+/lib/canvg-1.2.min.js
 /lib/rgbcolor.min.js
 /reindeerfinder.min.js
 /reindeerfinder.min.css

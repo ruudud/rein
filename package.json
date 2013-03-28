@@ -1,6 +1,6 @@
 {
   "name": "reindeerfinder",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "homepage": "http://reinmerker.no",
   "description": "Find the owner of a reindeer based on its ear markings",
   "keywords": [
@@ -36,6 +36,6 @@
     "grunt-replace": "~0.4.0",
     "grunt-bump": "0.0.2",
     "grunt-contrib-cssmin": "~0.5.0",
-    "grunt-exec": "~0.4.0"
+    "grunt-s3": "git://github.com/pifantastic/grunt-s3.git#fbcf17b0c18"
   }
 }
