@@ -1,4 +1,4 @@
-/*global window: true*/
+/*global window: true, Modernizr: true, _load: true*/
 $(document).ready(function () {
   var setupMainViews = function () {
     var browse, welcome, topNav, bottomNav, search, loading,
@@ -32,6 +32,13 @@ $(document).ready(function () {
       REIN.tools.trackEvent('iphone_install complete');
     }
   }
+
+  if (Modernizr && !Modernizr.inlinesvg) {
+    _load('lib/rgbcolor.min.js');
+    _load('lib/canvg-1.2.min.js');
+    REIN.tools.trackEvent('svgRenderer', { category: 'device', label: 'canvg' });
+  }
+
   setupMainViews();
 
   if (window.REINVERSION) {
