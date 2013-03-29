@@ -70,19 +70,22 @@ module.exports = function (grunt) {
         files: {
           src: ['src/app.js', 'src/utils.js', 'src/mark_register.js',
             'src/cuts.js', 'src/modules/widgets.js', 'src/modules/list.js',
-            'src/modules/list.js', 'src/setup.js']
+            'src/modules/list.js', 'src/modules/ios_install.js',
+            'src/setup.js']
         }
       }
     },
     jst: {
-      options: {
-        namespace: 'REIN.templates',
-        processName: function (filename) {
-          return filename.split('/').pop().split('.')[0];
+      dist: {
+        options: {
+          namespace: 'REIN.templates',
+          processName: function (filename) {
+            return filename.split('/').pop().split('.')[0];
+          }
+        },
+        files: {
+          'src/templates/compiled.js': ['src/templates/*.html']
         }
-      },
-      files: {
-        'src/templates/compiled.js': ['src/templates/*.html']
       }
     },
     replace: {
@@ -145,7 +148,8 @@ module.exports = function (grunt) {
             'src/app.js', 'src/utils.js', 'src/mark_register.js',
             'src/cuts.js', 'src/templates/compiled.js',
             'src/modules/widgets.js', 'src/modules/main.js',
-            'src/modules/list.js', 'src/setup.js']
+            'src/modules/list.js', 'src/modules/ios_install.js',
+            'src/setup.js']
         }
       }
     },

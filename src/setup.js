@@ -1,6 +1,8 @@
 /*global window: true, Modernizr: true, _load: true*/
 $(document).ready(function () {
-  var setupMainViews = function () {
+  var I = REIN.module('ios'), setupMainViews;
+
+  setupMainViews = function () {
     var browse, welcome, topNav, bottomNav, search, loading,
       L = REIN.module('list'), M = REIN.module('main');
 
@@ -20,17 +22,9 @@ $(document).ready(function () {
     window.scrollTo(0, 1);
   };
 
-  if ($.os && $.os.ios && !($.browser && $.browser.chrome)) {
-    if (!window.navigator.standalone) {
-      $('body')
-        .addClass('loading')
-        .show()
-        .html(REIN.templates.install());
-      REIN.tools.trackEvent('iphone_install start');
-      return;
-    } else {
-      REIN.tools.trackEvent('iphone_install complete');
-    }
+  if (!I.isInstalled()) {
+    I.install();
+    return;
   }
 
   if (Modernizr && !Modernizr.inlinesvg) {
