@@ -26,7 +26,8 @@ module.exports = function (grunt) {
         files: [
           {
             dest: 'dist/',
-            src: ['favicon.ico', 'people.txt', 'robots.txt', 'sitemap.xml']
+            src: [ 'privacy-policy.html', 'favicon.ico', 'people.txt',
+              'robots.txt', 'sitemap.xml']
           },
           {
             dest: 'dist/gfx/',
