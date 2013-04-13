@@ -2,7 +2,7 @@
   "version": "@@version",
   "name": "ReindeerFinder",
   "description": "Find the owner of a reindeer based on its ear markings",
-  "launch_path": "/",
+  "launch_path": "/index.html",
   "icons": {
     "60": "/gfx/icon60.png",
     "128": "/gfx/icon128.png"
