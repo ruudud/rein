@@ -95,7 +95,7 @@ module.exports = function (grunt) {
         },
         files: {
           'dist/index.html': 'dist/temp/index.html',
-          'dist/': ['rein.appcache']
+          'dist/': ['rein.appcache', 'manifest.webapp']
         }
       }
     },
@@ -115,6 +115,7 @@ module.exports = function (grunt) {
         },
         upload: [
           { src: 'dist/rein.appcache', dest: 'rein.appcache' },
+          { src: 'dist/manifest.webapp', dest: 'manifest.webapp' },
           { src: 'dist/reindeerfinder.min.css', dest: 'reindeerfinder.min.css' },
           { src: 'dist/reindeerfinder.min.js', dest: 'reindeerfinder.min.js' },
           { src: 'dist/index.html', dest: 'index.html' }
