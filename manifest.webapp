@@ -13,7 +13,6 @@
   },
   "fullscreen": "true",
   "installs_allowed_from": ["*"],
-  "appcache_path": "/rein.appcache",
   "locales": {
     "no": {
       "description": "Finn eieren av en rein raskt basert på område, distrikt og reinmerke."
