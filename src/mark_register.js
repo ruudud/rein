@@ -10367,7 +10367,7 @@ REIN.Register = [
     cutId: 4193,
     area: 5,
     district: 55,
-    firstName: 'Berit R. Inga',
+    firstName: 'Berit Risten Inga',
     lastName: 'Eira',
     address: 'Fossbakken',
     place: 'Tennevoll',
