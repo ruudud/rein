@@ -11,6 +11,11 @@ gulp.task('server', connect.server({
   open: {}
 }));
 
+gulp.task('html', function() {
+  gulp.src(baseDir + 'index.html')
+    .pipe(connect.reload());
+});
+
 gulp.task('scripts', function() {
   gulp.src(scriptDir + 'app.js')
     .pipe(browserify({
@@ -24,6 +29,7 @@ gulp.task('scripts', function() {
 
 gulp.task('watch', function () {
   gulp.watch(scriptDir + '**/*.js', ['scripts']);
+  gulp.watch(baseDir + 'index.html', ['html']);
 });
 
 gulp.task('default', ['scripts', 'server', 'watch']);
