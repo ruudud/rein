@@ -1,0 +1,22 @@
+{
+  "version": "@@version",
+  "name": "ReindeerFinder",
+  "description": "Find the owner of a reindeer based on its ear markings",
+  "launch_path": "/index.html",
+  "icons": {
+    "60": "/gfx/icon60.png",
+    "128": "/gfx/icon128.png"
+  },
+  "developer": {
+    "name": "Pål Ruud",
+    "url": "http://ruudud.github.io/"
+  },
+  "fullscreen": "true",
+  "installs_allowed_from": ["*"],
+  "locales": {
+    "no": {
+      "description": "Finn eieren av en rein raskt basert på område, distrikt og reinmerke."
+    }
+  },
+  "default_locale": "en"
+}
