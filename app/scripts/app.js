@@ -7,7 +7,7 @@ var Counties = require('./controllers/counties');
 var mainPage = Counties.list;
 
 var routes = {
-  '/counties/:id': Counties.list,
+  '/counties/:id': Counties.show,
   '': mainPage
 };
 

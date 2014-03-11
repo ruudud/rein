@@ -115,7 +115,7 @@ section, .list {
   font-weight: bold;
 }
 
-.districts, .marks {
+.marks {
   opacity: 0;
   -webkit-transition: opacity 1s ease-in-out;
      -moz-transition: opacity 1s ease-in-out;
@@ -175,9 +175,6 @@ input[type="text"]:focus {
 .list {
   margin: 0 auto;
   text-align: left;
-}
-.list .item:last-child {
-  border-bottom: none;
 }
 .item {
   cursor: pointer;

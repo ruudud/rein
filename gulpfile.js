@@ -5,6 +5,7 @@ var connect = require('gulp-connect');
 
 var baseDir = './app/';
 var scriptDir = baseDir + 'scripts/';
+var styleDir = baseDir + 'styles/';
 var destDir = baseDir + 'dist/';
 
 gulp.task('server', connect.server({
@@ -13,6 +14,11 @@ gulp.task('server', connect.server({
 
 gulp.task('html', function() {
   gulp.src(baseDir + 'index.html')
+    .pipe(connect.reload());
+});
+
+gulp.task('styles', function() {
+  gulp.src(styleDir)
     .pipe(connect.reload());
 });
 
@@ -30,6 +36,7 @@ gulp.task('scripts', function() {
 gulp.task('watch', function () {
   gulp.watch(scriptDir + '**/*.js', ['scripts']);
   gulp.watch(baseDir + 'index.html', ['html']);
+  gulp.watch(styleDir, ['styles']);
 });
 
 gulp.task('default', ['scripts', 'server', 'watch']);
