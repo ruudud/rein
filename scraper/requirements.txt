@@ -1,4 +1,4 @@
 BeautifulSoup==3.2.0
 requests==0.8.3
-twill==0.9
+twill==0.9.1
 wsgiref==0.1.2

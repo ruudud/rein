@@ -75,8 +75,8 @@ def run(*args):
                 cut_id = int(_get_cut_id(link))
                 owner['cutId'] = cut_id
 
-                #sys.stderr.write('Fetching image ..\n')
-                #_save_cut_img(soup, cut_id)
+                sys.stderr.write('Fetching image ..\n')
+                _save_cut_img(soup, cut_id)
 
                 people.append(owner)
                 sys.stderr.write('\t=> Found the mark of %s %s\n' % (
@@ -152,11 +152,7 @@ def _extract_owner_info(info_list):
     for info in info_list:
         about = info.get('name')
 
-        if about == 'ctl00$cphInnhold$txtRegnr':
-            key = 'id'
-            owner[key] = int(info.get('value'))
-            continue
-        elif about.startswith('ctl00$cphInnhold$txtSnitt'):
+        if about.startswith('ctl00$cphInnhold$txtSnitt'):
             key = 'c%s' % about[-1]
             owner[key] = _prettify_cut(info.get('value', ''))
             continue
@@ -166,10 +162,6 @@ def _extract_owner_info(info_list):
             key = 'firstName'
         elif about == 'ctl00$cphInnhold$txtEtternavn':
             key = 'lastName'
-        elif about == 'ctl00$cphInnhold$txtAdresse':
-            key = 'address'
-        elif about == 'ctl00$cphInnhold$txtPoststed':
-            key = 'place'
         else:
             continue
 
@@ -180,14 +172,11 @@ def _extract_owner_info(info_list):
 def _output(people, area_id):
     for i, owner in enumerate(people):
         print ' ', "{"
-        print ' ', "  %s: %s," % ('id', owner['id'])
         print ' ', "  %s: %s," % ('cutId', owner['cutId'])
         print ' ', "  %s: %s," % ('area', owner['area'])
         print ' ', "  %s: %s," % ('district', owner['district'])
         print ' ', "  %s: '%s'," % ('firstName', owner['firstName'].encode('utf-8'))
         print ' ', "  %s: '%s'," % ('lastName', owner['lastName'].encode('utf-8'))
-        print ' ', "  %s: '%s'," % ('address', owner['address'].encode('utf-8') or "")
-        print ' ', "  %s: '%s'," % ('place', owner['place'].encode('utf-8') or "")
         print ' ', "  %s: '%s'," % ('c1', owner['c1'].encode('utf-8') or "")
         print ' ', "  %s: '%s'," % ('c2', owner['c2'].encode('utf-8') or "")
         print ' ', "  %s: '%s'," % ('c3', owner['c3'].encode('utf-8') or "")
