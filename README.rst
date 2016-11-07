@@ -9,7 +9,7 @@ Developer Setup
 ---------------
 To install dependencies, use `npm`_::
 
-    npm install --dev
+    npm install
 
 This should also install the tools `grunt.js`_. Run ``grunt watch`` in a
 separate window to make grunt automatically compile templates, run tests and
@@ -18,12 +18,6 @@ separate window to make grunt automatically compile templates, run tests and
 .. _npm: https://npmjs.org/
 .. _grunt.js: http://gruntjs.com/
 .. _jshint: http://jshint.com/
-
-
-Versioning
-----------
-We follow the specification from http://semver.org/ -- and as soon as we have
-an API this makes more sense.
 
 
 Releasing
@@ -48,15 +42,15 @@ Simply run::
 When it finishes, the white needs to be made transparent (requires
 ImageMagic)::
 
-    for fl in `ls`; do convert `echo $fl` -fuzz 20% -transparent white $fl; done
+    for fl in *.png; do convert "$fl" -fuzz 20% -transparent white "$fl"; done
 
 Then, to convert to SVG (requires potrace)::
 
-    for fl in `ls`; do convert $fl -bordercolor None -border 1x1 -negate pgm:- | potrace -k 0.8 --tight --color="#303030" --svg > $fl.svg; done
+    for fl in *.png; do convert "$fl" -bordercolor None -border 1x1 -negate pgm:- | potrace -k 0.8 --tight --color="#303030" --svg > "${fl}.svg"; done
 
-Lastly, fish out the ear parts with the `scraper/extract_cuts.py` script::
+Lastly, to extract only the ear parts of the SVGs::
 
-    for fl in `ls *.svg`; do ./extract_cuts.py $fl >> cuts.js; done
+    for fl in *.svg; do scraper/extract_cuts.py $fl >> cuts.js; done
 
 
 Application Description (in Norwegian)
