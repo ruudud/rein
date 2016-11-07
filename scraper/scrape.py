@@ -29,7 +29,7 @@ def run(*args):
         #(2, 'S&#248;r-Tr&#248;ndelag/Hedmark'),
     ]
 
-    print 'REIN.register = ['
+    print 'REIN.Register = ['
     for area in areas:
         people = []
         sys.stderr.write('Choosing area %s ..\n' % area[1].encode('utf-8'))
