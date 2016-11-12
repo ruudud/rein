@@ -1,0 +1,52 @@
+{
+  "name": "reindeerfinder",
+  "version": "1.0.0",
+  "homepage": "https://reinmerker.no",
+  "description": "Find the owner of a reindeer based on ear marks",
+  "keywords": [
+    "reindeer",
+    "norway"
+  ],
+  "scripts": {
+    "build:clean": "rm -rf dist/",
+    "build:html": "cp -r src/html/* dist/",
+    "build:css": "cp -r src/css/* dist/",
+    "build:js": "browserify -g uglifyify src/js/index.js > dist/rein.js",
+    "watch": "budo src/js/index.js:rein.js -d src/html/ -d src/css/ -P -l -o",
+    "prebuild": "npm run build:clean",
+    "build": "mkdir dist && npm run build:html && npm run build:css && npm run build:js"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "budo": "^9.2.1",
+    "uglifyify": "^3.0.4",
+    "watchify": "^3.7.0"
+  },
+  "repository": {
+    "url": "git://github.com/ruudud/ReindeerFinder.git",
+    "type": "git"
+  },
+  "author": {
+    "name": "Pål Ruud",
+    "email": "ruudud@gmail.com",
+    "url": "http://github.com/ruudud"
+  },
+  "license": "AGPLv3+",
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "mithril": "^0.2.5"
+  }
+}
