@@ -1,7 +1,7 @@
 import html from 'choo/html';
-import areas from './db/areas';
-import districts from './db/districts';
-import marks from './db/marks';
+import areas from '../db/areas';
+import districts from '../db/districts';
+import marks from '../db/marks';
 
 const getArea = id => areas.find(a => a.id == id);
 const getDistrict = id => districts.find(d => d.id == id);

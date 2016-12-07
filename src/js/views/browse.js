@@ -1,6 +1,5 @@
 import html from 'choo/html';
-import areas from './db/areas';
-
+import areas from '../db/areas';
 
 const Area = (area) => html`
   <li class="item">

@@ -1,15 +1,26 @@
 import choo from 'choo';
-import Browse from './browse';
-import BrowseArea from './browse-area';
-import BrowseDistrict from './browse-district';
-import Search from './search';
+import html from 'choo/html';
+
+import AppModel from './models/app';
+import MarkModel from './models/marks';
+
+import Browse from './views/browse';
+import BrowseArea from './views/browse-area';
+import BrowseDistrict from './views/browse-district';
+import Layout from './views/layout';
+import Search from './views/search';
+
 
 const app = choo();
+
+app.model(AppModel);
+app.model(MarkModel);
+
 app.router(route => [
-  route('/finn', Search),
-  route('/distrikt/:districtId', BrowseDistrict),
-  route('/fylke/:areaId', BrowseArea),
-  route('/', Browse)
+  route('/finn', Layout(Search)),
+  route('/distrikt/:districtId', Layout(BrowseDistrict)),
+  route('/fylke/:areaId', Layout(BrowseArea)),
+  route('/', Layout(Browse))
 ]);
 
 const tree = app.start('#app');

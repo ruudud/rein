@@ -6,6 +6,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reinmerker</title>
 <style>
+* {
+  box-sizing: border-box;
+}
+html,body {
+  padding: 0;
+  margin: 0;
+}
+.topHeading {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  height: 52px; /* 32px + 10x2 */
+  padding: 10px 20px;
+  background-color: #303030;
+  text-align: left;
+  color: #FFF;
+  box-shadow: 0 0 10px black;
+}
+.topHeading .menu {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  margin-top: -16px;
+}
+.button {
+  line-height: 32px;
+  background-color: #4D90FE;
+  background-image: linear-gradient(top, #4D90FE, #4787ED);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #3079ED;
+  border-radius: 2px;
+}
+.button--img {
+  display: inline-block;
+  width: 48px;
+  height: 32px;
+  padding: 4px 8px;
+}
+.button--img img {
+  border: none;
+  margin: 0 auto;
+  height: 20px;
+  width: 20px;
+}
 .sp {
   width: 40px;
   height: 40px;
@@ -36,18 +83,19 @@
   <link rel="stylesheet" href="/rein.css">
 </head>
 <body>
-  <header class="boxed topHeading">
+  <header class="topHeading">
     <a href="/">
       <img src="data:image/png;base64,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" height="32" width="37">
     </a>
-    <nav class="menu" id="menu">
-      <a href="/finn" class="boxed button btnImg search rounded">
+    <nav class="menu">
+      <a href="/finn" class="button button--img">
         <img class="image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAABGdBTUEAALGPC/xhBQAAARdQTFRF////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////AAAA////ZOqj8AAAAFx0Uk5Tr49aHLyFidt7uOGxi1X9f5WD7DEQP9goF6NsBQc22nOeO+Btxhrx6aa6Dd40lH1o1LUy762Yu6jXX9a3Ie4ks2BI9Z3VXXRXYY7mHR+suf6Z/Aj6aZAGBAMBAgBe/oYNAAAA70lEQVQY01WPVXIEMQxEHWZmZmbmbBiWKWPovv85Itu7lYw+LOlVtyQrOOT6e8ns8BSsRQjlMDDIvpGhQoWzQKQKrezJ+Wp6hktiCzBfKgLaGAMs8xQmwBa2IfGVRvXsPEpVVkmLSC8ekjBVsSNaIKleewxSxc4/uFa7j7CrvQk1trdctHdzDPOeJdhgubF9fHRyDtY5Uexs5hvbMcHFFV/tr7OAeIkyWFjl9d3JMffKPED4v5Ip1ZvM223xaBeHvPyATFBoLvfdFfkjWSCstv5xBp+s8Nvb/4VDnSXRpqDQL5KvaWg13oWmoadPL8+/Dbt87RePDsQAAAAASUVORK5CYII=">
       </a>
     </nav>
   </header>
   
   <div id="app"><div class="sp"></div></div>
+  
   <script src="/rein.js" async></script>
 </body>
 </html>
