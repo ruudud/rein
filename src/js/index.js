@@ -16,11 +16,17 @@ const app = choo();
 app.model(AppModel);
 app.model(MarkModel);
 
-app.router(route => [
-  route('/finn', Layout(Search)),
-  route('/distrikt/:districtId', Layout(BrowseDistrict)),
-  route('/fylke/:areaId', Layout(BrowseArea)),
-  route('/', Layout(Browse))
+app.router([
+  [ '/finn', Layout(Search) ],
+  [ '/distrikt/:districtId', Layout(BrowseDistrict) ],
+  [ '/fylke/:areaId', Layout(BrowseArea) ],
+  [ '/', Layout(Browse) ],
 ]);
 
-const tree = app.start('#app');
+if (process.env.NODE_ENV !== 'production') {
+  const log = require('choo-log');
+  app.use(log());
+}
+
+const tree = app.start();
+document.body.replaceChild(tree, document.getElementById('app'));

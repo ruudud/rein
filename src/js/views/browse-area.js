@@ -22,7 +22,7 @@ function District(id) {
 }
 
 function BrowseArea(state, prev, send) {
-  const area = getArea(state.params.areaId);
+  const area = getArea(state.location.params.areaId);
   return html`
     <section>
       <h1>${area.name}</h1>

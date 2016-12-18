@@ -11,6 +11,6 @@ export default {
   namespace: 'marks',
   state: { items: [] },
   reducers: {
-    find: (data, state) => ({ items: findMarks(data) })
+    find: (state, data) => ({ items: findMarks(data) })
   }
 };

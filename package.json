@@ -22,11 +22,12 @@
     "browserify": "^13.1.1",
     "budo": "^9.2.1",
     "bulkify": "^1.4.2",
+    "choo-log": "^3.0.0",
     "envify": "^4.0.0",
     "uglifyify": "^3.0.4",
     "uglifyjs": "^2.4.10",
     "unassertify": "^2.0.3",
-    "watchify": "^3.7.0",
+    "watchify": "^3.8.0",
     "yo-yoify": "^3.5.0"
   },
   "repository": {
@@ -40,8 +41,7 @@
   },
   "license": "AGPL-3.0",
   "browserify": {
-    "plugin": [
-    ],
+    "plugin": [],
     "global": [
       "envify",
       "uglifyify"
@@ -60,6 +60,6 @@
     ]
   },
   "dependencies": {
-    "choo": "^3.3.0"
+    "choo": "^4.0.0"
   }
 }
