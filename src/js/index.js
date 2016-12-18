@@ -24,6 +24,7 @@ app.router([
 ]);
 
 if (process.env.NODE_ENV !== 'production') {
+  // dep NOT removed in prod build, probably confused by import vs require()
   const log = require('choo-log');
   app.use(log());
 }

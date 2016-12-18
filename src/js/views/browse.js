@@ -12,9 +12,14 @@ const Area = (area) => html`
 `;
 
 const Browse = (state, prev, send) => html`
-  <ul class="list">
-    ${areas.map(a => Area(a))}
-  </ul>
+  <main>
+    <h1>Norge</h1>
+    <nav>
+      <ul class="list">
+        ${areas.map(a => Area(a))}
+      </ul>
+    </nav>
+  </main>
 `;
 
 export default Browse;

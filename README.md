@@ -1,12 +1,24 @@
 # Reindeer finder
 Locate owner of reindeer in Norway based on marks cut into ears.
 
-## Setup
+[![built with choo v4](https://img.shields.io/badge/built%20with%20choo-v4-ffc3e4.svg?style=flat-square)](https://github.com/yoshuawuyts/choo)
+[![license](https://img.shields.io/github/license/ruudud/rein.svg)](https://github.com/ruudud/rein/raw/master/LICENCE)
+
+## Development
 To install dependencies, run [yarn][] without arguments: `$ yarn`
 
 A nice watcher that autoreloads is available through: `$ yarn run watch`
 
 [yarn]: https://yarnpkg.com/
+
+### TODO
+ - [ ] Tracking
+ - [ ] 404 page (with tracking)
+ - [ ] Collect model logic now in views
+ - [ ] CSS variables, possible using http://cssnext.io/ PostCSS
+
+## Licence
+AGPL3, see `LICENCE` file.
 
 
 <!---

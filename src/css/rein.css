@@ -41,6 +41,8 @@ header,hgroup,menu,nav,section{
     display:block;
 }
 h1,h2,h3,h4,h5,h6{
+    text-align: left;
+    padding-left: 20px;
     font-size:1em;
 }
 strong,b,mark{
@@ -79,27 +81,28 @@ textarea{
 }
 
 /*--- $TYPE ---*/
-h1,.alpha{
+h1{
     font-size:2em;          /* 32px */
     line-height:1.5;        /* 48px */
+    margin-bottom: 0.5em;
 }
-h2,.beta{
+h2{
     font-size:1.5em;        /* 24px */
     line-height:1;          /* 24px */
 }
-h3,.gamma{
+h3{
     font-size:1.25em;       /* 20px */
     line-height:1.2;        /* 24px */
 }
-h4,.delta{
+h4{
     font-size:1.125em;      /* 18px */
     line-height:1.333;      /* 24px */
 }
-h5,.epsilon{
+h5{
     font-weight:bold;
 }
-h5,.epsilon,
-h6,.zeta{
+h5,
+h6{
     font-size:1em;          /* 16px */
     line-height:1.5;        /* 24px */
 }
@@ -126,17 +129,19 @@ img{
 }
 html {
   font-size: 100%;
-  background-color: #F5F5F5;
+  background-color: #FFF;
   color: #333;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-
 body {
   min-height: 100%;
   font: normal 12px/20px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
   text-align: center;
 }
-
+footer {
+  color: #767676;
+  font-size: 0.75em;
+}
 a {
   color: #357AE8;
 }
@@ -153,18 +158,12 @@ a:active {
   margin: 0 auto;
   background-color: #FFFFFF;
 }
-/*--- Main elements ---*/
 .content {
+  padding-top: 2em;
+}
+.content-inner {
   min-height: 280px;
   padding: 10px;
-}
-footer {
-  position: relative;
-  z-index: 100;
-  color: #767676;
-}
-footer p {
-  font-size: 0.75em;
 }
 
 /* Forms */
@@ -172,7 +171,7 @@ input {
   height: 40px;
   line-height: 40px;
   padding: 1px 9px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-size: 18px;
   width: 100%;
   display: block;
@@ -239,10 +238,10 @@ input[type="text"]:focus {
   color: #CCC;
 }
 .list .mark:nth-child(odd) {
-  background-color: #F5F5F5;
+  background-color: #FFF;
 }
 .list .mark:nth-child(even) {
-  background-color: #FFF;
+  background-color: #F5F5F5;
 }
 .mark .image {
   padding: 1em;
@@ -251,11 +250,10 @@ input[type="text"]:focus {
 .mark .image .cut {
   max-height: 150px;
 }
-.mark .image .owner {
+.mark .image .desc {
   text-align: center;
   line-height: 12px;
   margin-bottom: 10px;
-  font-weight: 700;
 }
 
 .cta {

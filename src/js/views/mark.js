@@ -6,7 +6,10 @@ function Mark(mark) {
   return html`
     <li class="mark">
       <figure class="image">
-        <p class="owner">${mark.firstName} ${mark.lastName}</p>
+        <p class="desc">
+          <strong>${mark.firstName} ${mark.lastName}</strong>
+        </p>
+        <p class="desc">${mark.loc}</p>
         <svg class="cut"
              preserveAspectRatio="xMidYMid meet"
              viewBox="0 0 430 150">

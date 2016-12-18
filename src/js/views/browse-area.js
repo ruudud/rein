@@ -24,12 +24,15 @@ function District(id) {
 function BrowseArea(state, prev, send) {
   const area = getArea(state.location.params.areaId);
   return html`
-    <section>
+    <main>
+      <h2><a href="/">Norge</a></h2>
       <h1>${area.name}</h1>
-      <ul class="list">
-        ${area.districts.map(District)}
-      </ul>
-    </section>
+      <nav>
+        <ul class="list">
+          ${area.districts.map(District)}
+        </ul>
+      </nav>
+    </main>
   `;
 }
 

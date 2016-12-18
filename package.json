@@ -9,12 +9,12 @@
   ],
   "scripts": {
     "build:clean": "rm -rf dist/",
-    "build:html": "cp -r src/html/* dist/",
-    "build:css": "cp -r src/css/* dist/",
-    "build:js": "NODE_ENV=production browserify src/js/index.js | uglifyjs > dist/rein.js",
-    "watch": "budo src/js/index.js:rein.js -d src/html/ -d src/css/ -P -l -o",
+    "build:static": "cp -r src/static/* dist/",
+    "build:css": "postcss -u cssnano -o dist/rein.css src/css/rein.css",
+    "build:js": "NODE_ENV=production browserify src/js/index.js | uglifyjs -c -- - > dist/rein.js",
+    "watch": "budo src/js/index.js:rein.js -d src/static/ -d src/css/ -P -l -o",
     "prebuild": "npm run build:clean",
-    "build": "mkdir dist && npm run build:html && npm run build:css && npm run build:js"
+    "build": "mkdir dist && npm run build:static && npm run build:css && npm run build:js"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.18.0",
@@ -23,9 +23,12 @@
     "budo": "^9.2.1",
     "bulkify": "^1.4.2",
     "choo-log": "^3.0.0",
+    "cssnano": "^3.9.1",
     "envify": "^4.0.0",
+    "errorify": "^0.3.1",
+    "postcss-cli": "^2.6.0",
+    "uglify-js": "^2.7.5",
     "uglifyify": "^3.0.4",
-    "uglifyjs": "^2.4.10",
     "unassertify": "^2.0.3",
     "watchify": "^3.8.0",
     "yo-yoify": "^3.5.0"
@@ -43,10 +46,10 @@
   "browserify": {
     "plugin": [],
     "global": [
-      "envify",
       "uglifyify"
     ],
     "transform": [
+      "envify",
       "unassertify",
       [
         "babelify",
@@ -60,6 +63,7 @@
     ]
   },
   "dependencies": {
-    "choo": "^4.0.0"
+    "choo": "^4.0.0",
+    "sheet-router": "^4.1.4"
   }
 }
