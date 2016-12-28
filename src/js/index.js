@@ -1,5 +1,4 @@
 import choo from 'choo';
-import html from 'choo/html';
 
 import AppModel from './models/app';
 import MarkModel from './models/marks';
