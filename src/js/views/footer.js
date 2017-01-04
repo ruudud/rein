@@ -1,6 +1,6 @@
 import html from 'choo/html';
 
-const Footer = (state) => html`
+const footer = state => html`
   <footer>
     <p>
       Reinmerker 2016 ${state.app.version} - Laget av Pål Ruud og Niila Blind.<br>
@@ -15,4 +15,4 @@ const Footer = (state) => html`
   </footer>
 `;
 
-export default Footer;
+export default footer;

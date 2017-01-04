@@ -1,69 +1,75 @@
 {
-  "name": "reindeerfinder",
-  "version": "1.0.0",
-  "homepage": "https://reinmerker.no",
-  "description": "Find the owner of a reindeer based on ear marks",
-  "keywords": [
-    "reindeer",
-    "norway"
-  ],
-  "scripts": {
-    "build:clean": "rm -rf dist/",
-    "build:static": "cp -r src/static/* dist/",
-    "build:css": "postcss -u cssnano -o dist/rein.css src/css/rein.css",
-    "build:js": "NODE_ENV=production browserify src/js/index.js | uglifyjs -c -- - > dist/rein.js",
-    "watch": "budo src/js/index.js:rein.js -d src/static/ -d src/css/ -P -l -o",
-    "prebuild": "npm run build:clean",
-    "build": "mkdir dist && npm run build:static && npm run build:css && npm run build:js"
-  },
-  "devDependencies": {
-    "babel-preset-es2015": "^6.18.0",
-    "babelify": "^7.3.0",
-    "browserify": "^13.1.1",
-    "budo": "^9.2.1",
-    "bulkify": "^1.4.2",
-    "choo-log": "^3.0.0",
-    "cssnano": "^3.9.1",
-    "envify": "^4.0.0",
-    "errorify": "^0.3.1",
-    "postcss-cli": "^2.6.0",
-    "uglify-js": "^2.7.5",
-    "uglifyify": "^3.0.4",
-    "unassertify": "^2.0.3",
-    "watchify": "^3.8.0",
-    "yo-yoify": "^3.5.0"
-  },
-  "repository": {
-    "url": "git://github.com/ruudud/ReindeerFinder.git",
-    "type": "git"
-  },
-  "author": {
-    "name": "Pål Ruud",
-    "email": "ruudud@gmail.com",
-    "url": "http://github.com/ruudud"
-  },
-  "license": "AGPL-3.0",
-  "browserify": {
-    "plugin": [],
-    "global": [
-      "uglifyify"
-    ],
-    "transform": [
-      "envify",
-      "unassertify",
-      [
-        "babelify",
-        {
-          "presets": [
-            "es2015"
-          ]
-        }
-      ],
-      "yo-yoify"
-    ]
-  },
-  "dependencies": {
-    "choo": "^4.0.0",
-    "sheet-router": "^4.1.4"
-  }
+	"name": "reindeerfinder",
+	"version": "1.0.0",
+	"homepage": "https://reinmerker.no",
+	"description": "Find the owner of a reindeer based on ear marks",
+	"keywords": [
+		"reindeer",
+		"norway"
+	],
+	"scripts": {
+		"build:clean": "rm -rf dist/",
+		"build:static": "cp -r src/static/* dist/",
+		"build:css": "postcss -u cssnano -o dist/rein.css src/css/rein.css",
+		"build:js": "NODE_ENV=production browserify src/js/index.js | uglifyjs -c -- - > dist/rein.js",
+		"watch": "budo src/js/index.js:rein.js -d src/static/ -d src/css/ -P -l -o",
+		"prebuild": "npm run build:clean",
+		"build": "mkdir dist && npm run build:static && npm run build:css && npm run build:js",
+		"test": "xo --reporter=compact"
+	},
+	"devDependencies": {
+		"babel-preset-es2015": "^6.18.0",
+		"babelify": "^7.3.0",
+		"browserify": "^13.1.1",
+		"budo": "^9.2.1",
+		"bulkify": "^1.4.2",
+		"choo-log": "^3.0.0",
+		"cssnano": "^3.9.1",
+		"envify": "^4.0.0",
+		"errorify": "^0.3.1",
+		"postcss-cli": "^2.6.0",
+		"uglify-js": "^2.7.5",
+		"uglifyify": "^3.0.4",
+		"unassertify": "^2.0.3",
+		"watchify": "^3.8.0",
+		"xo": "^0.17.1",
+		"yo-yoify": "^3.5.0"
+	},
+	"repository": {
+		"url": "git://github.com/ruudud/ReindeerFinder.git",
+		"type": "git"
+	},
+	"author": {
+		"name": "Pål Ruud",
+		"email": "ruudud@gmail.com",
+		"url": "http://github.com/ruudud"
+	},
+	"license": "AGPL-3.0",
+	"browserify": {
+		"plugin": [],
+		"global": [
+			"uglifyify"
+		],
+		"transform": [
+			"envify",
+			"unassertify",
+			[
+			"babelify",
+			{
+				"presets": [
+				"es2015"
+				]
+			}
+			],
+			"yo-yoify"
+		]
+	},
+	"xo": {
+		"envs": ["browser"],
+		"ignores": ["src/js/db/*"]
+	},
+	"dependencies": {
+		"choo": "^4.0.0",
+		"sheet-router": "^4.1.4"
+	}
 }

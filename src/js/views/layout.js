@@ -1,13 +1,13 @@
 import html from 'choo/html';
-import Footer from './footer';
+import footer from './footer';
 
-const Layout = (View) => (state, prev, send) => {
-  return html`
-    <div class="content">
-      ${View(state, prev, send)}
-      ${Footer(state, prev, send)}
-    </div>
-  `;
+const layout = view => (state, prev, send) => {
+	return html`
+		<div class="content">
+			${view(state, prev, send)}
+			${footer(state, prev, send)}
+		</div>
+	`;
 };
 
-export default Layout;
+export default layout;

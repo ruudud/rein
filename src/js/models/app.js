@@ -1,4 +1,6 @@
 export default {
-  namespace: 'app',
-  state: { version: 'v0.8.0' }
+	namespace: 'app',
+	state: {
+		version: 'v0.8.0'
+	}
 };
