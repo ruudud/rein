@@ -1,4 +1,4 @@
-export default [
+module.exports = [
       { id: 1, name: 'ZA 1/2/3 - ØSTRE SØR-VARANGER'},
       { id: 2, name: 'ZB 5A - PASVIK'},
       { id: 3, name: 'ZC 4/5B -  VESTRE SØR-VARANGER'},

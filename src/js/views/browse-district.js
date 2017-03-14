@@ -1,12 +1,12 @@
-import html from 'choo/html';
-import areas from '../db/areas';
-import districts from '../db/districts';
-import marks from '../db/marks';
-import mark from './mark';
+const html = require('choo/html');
+const areas = require('../db/areas');
+const districts = require('../db/districts');
+const marks = require('../db/marks');
+const mark = require('./mark');
 
-const getDistrictArea = id => areas.find(a => a.districts.find(d => d === id));
-const getDistrict = id => districts.find(d => d.id === id);
-const getMarks = id => marks.filter(m => m.district === id);
+const getDistrictArea = id => areas.find(a => a.districts.find(d => d == id));
+const getDistrict = id => districts.find(d => d.id == id);
+const getMarks = id => marks.filter(m => m.district == id);
 
 function browseDistrict(state) {
 	const id = state.location.params.districtId;
@@ -29,4 +29,4 @@ function browseDistrict(state) {
 	`;
 }
 
-export default browseDistrict;
+module.exports = browseDistrict;

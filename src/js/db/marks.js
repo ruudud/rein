@@ -1,4 +1,4 @@
-export default [
+module.exports = [
   {
     cutId: 1471,
     area: 7,

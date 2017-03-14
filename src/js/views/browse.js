@@ -1,5 +1,5 @@
-import html from 'choo/html';
-import areas from '../db/areas';
+const html = require('choo/html');
+const areas = require('../db/areas');
 
 const area = a => html`
   <li class="item">
@@ -22,4 +22,4 @@ const browse = () => html`
   </main>
 `;
 
-export default browse;
+module.exports = browse;

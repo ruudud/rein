@@ -1,4 +1,4 @@
-import html from 'choo/html';
+const html = require('choo/html');
 
 const footer = state => html`
   <footer>
@@ -15,4 +15,4 @@ const footer = state => html`
   </footer>
 `;
 
-export default footer;
+module.exports = footer;

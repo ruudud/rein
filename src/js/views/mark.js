@@ -1,5 +1,5 @@
-import html from 'choo/html';
-import cuts from '../db/cuts';
+const html = require('choo/html');
+const cuts = require('../db/cuts');
 
 function mark(mark) {
 	const [c1, c2] = cuts[mark.cutId];
@@ -9,7 +9,6 @@ function mark(mark) {
 				<p class="desc">
 					<strong>${mark.firstName} ${mark.lastName}</strong>
 				</p>
-				<p class="desc">${mark.loc}</p>
 				<svg class="cut"
 						 preserveAspectRatio="xMidYMid meet"
 						 viewBox="0 0 430 150">
@@ -23,4 +22,4 @@ function mark(mark) {
 	`;
 }
 
-export default mark;
+module.exports = mark;

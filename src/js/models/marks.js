@@ -1,6 +1,6 @@
-import areas from '../db/areas';
-import districts from '../db/districts';
-import marks from '../db/marks';
+const areas = require('../db/areas');
+const districts = require('../db/districts');
+const marks = require('../db/marks');
 
 const getArea = id => areas.find(a => a.id === id);
 const getDistrict = id => districts.find(d => d.id === id);
@@ -16,7 +16,7 @@ function findMarks(s) {
 		));
 }
 
-export default {
+module.exports = {
 	namespace: 'marks',
 	state: {needle: '', items: []},
 	reducers: {

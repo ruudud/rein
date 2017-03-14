@@ -1,11 +1,11 @@
-import html from 'choo/html';
-import areas from '../db/areas';
-import districts from '../db/districts';
-import marks from '../db/marks';
+const html = require('choo/html');
+const areas = require('../db/areas');
+const districts = require('../db/districts');
+const marks = require('../db/marks');
 
-const getArea = id => areas.find(a => a.id === id);
-const getDistrict = id => districts.find(d => d.id === id);
-const markCount = id => marks.reduce((c, m) => c + (m.district === id ? 1 : 0), 0);
+const getArea = id => areas.find(a => a.id == id);
+const getDistrict = id => districts.find(d => d.id == id);
+const markCount = id => marks.reduce((c, m) => c + (m.district == id ? 1 : 0), 0);
 
 function district(id) {
 	const count = markCount(id);
@@ -23,6 +23,7 @@ function district(id) {
 
 function browseArea(state) {
 	const area = getArea(state.location.params.areaId);
+	console.log(state);
 	return html`
 		<main>
 			<h2><a href="/">Norge</a></h2>
@@ -36,4 +37,4 @@ function browseArea(state) {
 	`;
 }
 
-export default browseArea;
+module.exports = browseArea;

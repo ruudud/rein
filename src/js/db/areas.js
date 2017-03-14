@@ -1,4 +1,4 @@
-export default [
+module.exports = [
   {
     id: 2,
     name: 'Sør-Trøndelag/Hedmark',

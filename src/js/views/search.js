@@ -1,6 +1,6 @@
-import html from 'choo/html';
-import createLocation from 'sheet-router/create-location';
-import Mark from './mark';
+const html = require('choo/html');
+const createLocation = require('sheet-router/create-location');
+const Mark = require('./mark');
 
 function search(state, prev, send) {
 	function onLoad() {
@@ -36,4 +36,4 @@ function search(state, prev, send) {
 	`;
 }
 
-export default search;
+module.exports = search;

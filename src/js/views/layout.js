@@ -1,5 +1,5 @@
-import html from 'choo/html';
-import footer from './footer';
+const html = require('choo/html');
+const footer = require('./footer');
 
 const layout = view => (state, prev, send) => {
 	return html`
@@ -10,4 +10,4 @@ const layout = view => (state, prev, send) => {
 	`;
 };
 
-export default layout;
+module.exports = layout;
