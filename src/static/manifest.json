@@ -1,0 +1,18 @@
+{
+  "name": "Reinmerker",
+  "short_name": "Reinmerker",
+  "start_url": "/?utm_source=homescreen",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#303030",
+  "icons": [{
+    "src": "android-chrome-192x192.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  },
+  {
+    "src": "android-chrome-512x512.png",
+    "type": "image/png",
+    "sizes": "512x512"
+  }]
+}
