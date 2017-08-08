@@ -11,7 +11,7 @@ const area = a => html`
   </li>
 `;
 
-const browse = () => html`
+module.exports = () => html`
   <main>
     <h1>Norge</h1>
     <nav>
@@ -21,5 +21,3 @@ const browse = () => html`
     </nav>
   </main>
 `;
-
-module.exports = browse;

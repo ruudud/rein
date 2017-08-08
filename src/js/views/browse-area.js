@@ -21,9 +21,8 @@ function district(id) {
 	`;
 }
 
-function browseArea(state) {
+module.exports = state => {
 	const area = getArea(state.location.params.areaId);
-	console.log(state);
 	return html`
 		<main>
 			<h2><a href="/">Norge</a></h2>
@@ -35,6 +34,4 @@ function browseArea(state) {
 			</nav>
 		</main>
 	`;
-}
-
-module.exports = browseArea;
+};

@@ -8,7 +8,7 @@ const getDistrictArea = id => areas.find(a => a.districts.find(d => d == id));
 const getDistrict = id => districts.find(d => d.id == id);
 const getMarks = id => marks.filter(m => m.district == id);
 
-function browseDistrict(state) {
+module.exports = state => {
 	const id = state.location.params.districtId;
 	const district = getDistrict(id);
 	const area = getDistrictArea(id);
@@ -27,6 +27,4 @@ function browseDistrict(state) {
 			</ul>
 		</main>
 	`;
-}
-
-module.exports = browseDistrict;
+};

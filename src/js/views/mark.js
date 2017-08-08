@@ -1,7 +1,7 @@
 const html = require('choo/html');
 const cuts = require('../db/cuts');
 
-function mark(mark) {
+module.exports = mark => {
 	const [c1, c2] = cuts[mark.cutId];
 	return html`
 		<li class="mark">
@@ -20,6 +20,4 @@ function mark(mark) {
 			</figure>
 		</li>
 	`;
-}
-
-module.exports = mark;
+};

@@ -1,11 +1,11 @@
 const html = require('choo/html');
 
-const footer = state => html`
+module.exports = state => html`
   <footer>
     <p>
-      Reinmerker 2016 ${state.app.version} - Laget av Pål Ruud og Niila Blind.<br>
+      Reinmerker 2017 ${state.app.version} - Laget av Pål Ruud og Niila Blind.<br>
       Merker basert på informasjon i
-      <a target="_blank" href="https://merker.reindrift.no/">Merkeregisteret</a>.<br>
+      <a target="_blank" href="https://www.landbruksdirektoratet.no/merkeregister/innsyn">Merkeregisteret</a>.<br>
       Kildekoden er åpent
       <a target="_blank" href="https://github.com/ruudud/rein">tilgjengelig</a>
       under
@@ -14,5 +14,3 @@ const footer = state => html`
     </p>
   </footer>
 `;
-
-module.exports = footer;

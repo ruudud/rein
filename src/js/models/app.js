@@ -1,6 +1,6 @@
 module.exports = {
 	namespace: 'app',
 	state: {
-		version: 'v0.8.0'
+		version: 'v1.0.0'
 	}
 };

@@ -2,7 +2,7 @@ const html = require('choo/html');
 const createLocation = require('sheet-router/create-location');
 const Mark = require('./mark');
 
-function search(state, prev, send) {
+module.exports = (state, prev, send) => {
 	function onLoad() {
 		const {search} = createLocation();
 		if (search.q && search.q.length > 0) {
@@ -34,6 +34,4 @@ function search(state, prev, send) {
 			</section>
 		</main>
 	`;
-}
-
-module.exports = search;
+};
