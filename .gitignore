@@ -1,0 +1,6 @@
+dist/
+!www/favicon.ico
+www/
+node_modules/
+yarn-error.log
+npm-error.log

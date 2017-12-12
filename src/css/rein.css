@@ -1,0 +1,269 @@
+@charset "UTF-8";
+/*------------------------------------*\
+    $RESET (inuitcss)
+
+ Author:             Harry Roberts
+ Project URL:        inuitcss.com
+ Copyright 2011 Harry Roberts
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+\*------------------------------------*/
+/*
+A more considered reset; more of a restart... csswizardry.com/2011/10/reset-restarted
+*/
+html,body,div,span,applet,object,iframe,
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,hr,
+a,abbr,address,cite,code,
+del,dfn,em,img,ins,kbd,q,s,samp,
+small,strong,sub,sup,tt,var,
+b,u,i,
+dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary,
+time,mark,audio,video{
+    margin:0;
+    padding:0;
+}
+article,aside,details,figcaption,figure,footer,
+header,hgroup,menu,nav,section{
+    display:block;
+}
+h1,h2,h3,h4,h5,h6{
+    text-align: left;
+    padding-left: 20px;
+    font-size:1em;
+}
+strong,b,mark{
+    font-weight:bold;
+    font-style:inherit;
+}
+em,i,cite,q,address,dfn,var{
+    font-style:italic;
+    font-weight:inherit;
+}
+abbr[title],dfn[title]{
+    cursor:help;
+    border-bottom:1px dotted;
+}
+ins{
+    border-bottom:1px solid;
+}
+a,u,ins{
+    text-decoration:none;
+}
+del,s{
+    text-decoration:line-through;
+}
+small{
+    font-size:0.75em;
+}
+img{
+    border:none;
+    font-style:italic;
+}
+input,
+select,option,optgroup,
+textarea{
+    font:inherit;
+    -webkit-appearance: none;
+}
+
+/*--- $TYPE ---*/
+h1{
+    font-size:2em;          /* 32px */
+    line-height:1.5;        /* 48px */
+    margin-bottom: 0.5em;
+}
+h2{
+    font-size:1.5em;        /* 24px */
+    line-height:1;          /* 24px */
+}
+h3{
+    font-size:1.25em;       /* 20px */
+    line-height:1.2;        /* 24px */
+}
+h4{
+    font-size:1.125em;      /* 18px */
+    line-height:1.333;      /* 24px */
+}
+h5{
+    font-weight:bold;
+}
+h5,
+h6{
+    font-size:1em;          /* 16px */
+    line-height:1.5;        /* 24px */
+}
+
+/* element base styles */
+figure img{
+    display:block;
+    margin-bottom:0;
+}
+
+li {
+  list-style-type: none;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+    /* Give it some text styles to offset alt text */
+    color:#c00;
+}
+/*--- Main ---*/
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 100%;
+  background-color: #FFF;
+  color: #333;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+body {
+  min-height: 100%;
+  font: normal 12px/20px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  text-align: center;
+}
+footer {
+  color: #767676;
+  font-size: 0.75em;
+}
+a {
+  color: #357AE8;
+}
+a:hover {
+  color: #4D90FE;
+}
+a:active {
+  color: #3079ED;
+}
+
+/*-- Common --*/
+.list {
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+}
+.content {
+  padding-top: 2em;
+}
+.content-inner {
+  min-height: 280px;
+  padding: 10px;
+}
+
+/* Forms */
+input {
+  height: 40px;
+  line-height: 40px;
+  padding: 1px 9px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  width: 100%;
+  display: block;
+}
+input[type="text"] {
+  background-color: white;
+  border: 1px solid #D1D1D1;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  border-radius: 2px;
+}
+input[type="text"]:focus {
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9; /* <=IE9 */
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+/* Buttons */
+.button:hover {
+  background-color: #357AE8;
+  background-image: linear-gradient(top, #4D90FE, #357AE8);
+  border: 1px solid #2F5BB7;
+}
+.button.active, .button:active {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.button--text {
+  padding: 0 8px;
+  height: 40px;
+  line-height: 27px;
+  min-width: 70px;
+}
+
+/*-- Listing --*/
+.list {
+  margin: 0 auto;
+  text-align: left;
+}
+.list .item:last-child {
+  border-bottom: none;
+}
+.item {
+  cursor: pointer;
+  border-bottom: 2px solid #CCC;
+  font-weight: bolder;
+  position: relative;
+}
+.itemLink {
+  padding: 5px 20px;
+  display: inline-block;
+  width: 100%;
+  color: #333;
+}
+.item .subText {
+  color: #CCC;
+}
+.follow {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  margin-top: -10px;
+  font-size: 20px;
+  font-style: normal;
+  color: #CCC;
+}
+.list .mark:nth-child(odd) {
+  background-color: #FFF;
+}
+.list .mark:nth-child(even) {
+  background-color: #F5F5F5;
+}
+.mark .image {
+  padding: 1em;
+  margin: 0 auto;
+}
+.mark .image .cut {
+  max-height: 150px;
+}
+.mark .image .desc {
+  text-align: center;
+  line-height: 12px;
+  margin-bottom: 10px;
+}
+
+.cta {
+  text-transform: uppercase;
+  border: 1px solid #DA9907;
+  background-color: #EAA407;
+  background-image: linear-gradient(top, #EAA407, #DD9B06);
+}
+.cta:hover {
+  background-color: #BB8304;
+  background-image: linear-gradient(top, #EAA407, #BB8304);
+  border: 1px solid #A57A1A;
+}

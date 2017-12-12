@@ -1,0 +1,30 @@
+Reinmerker
+----------
+
+Copyright 2011-2017 Pål Ruud
+
+License: AGPLv3+
+
+    Reinmerker is free software: you can redistribute it and/or modify
+    it under the terms of the Affero GNU General Public License as
+    published by the Free Software Foundation, either version 3 of
+    the License, or (at your option) any later version.
+
+    Reinmerker is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    Affero GNU General Public License for more details.
+
+    You should have received a copy of the Affero GNU General Public
+    License along with Reinmerker. If not, see <http://www.gnu.org/licenses/>.
+
+See COPYING for full license.
+
+The following license information covers the external libraries directly
+included in this distrubtion:
+
+Choo
+----
+Copyright (c) 2016 Yoshua Wuyts
+https://github.com/yoshuawuyts/choo
+License: MIT
