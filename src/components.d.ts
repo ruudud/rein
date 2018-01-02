@@ -11,29 +11,29 @@ import {
 } from '@stencil/router';
 
 import {
-  AppHome as AppHome
-} from './components/app-home/app-home';
+  ReinApp as ReinApp
+} from './components/rein-app/rein-app';
 
 declare global {
-  interface HTMLAppHomeElement extends AppHome, HTMLElement {
+  interface HTMLReinAppElement extends ReinApp, HTMLElement {
   }
-  var HTMLAppHomeElement: {
-    prototype: HTMLAppHomeElement;
-    new (): HTMLAppHomeElement;
+  var HTMLReinAppElement: {
+    prototype: HTMLReinAppElement;
+    new (): HTMLReinAppElement;
   };
   interface HTMLElementTagNameMap {
-    "app-home": HTMLAppHomeElement;
+    "rein-app": HTMLReinAppElement;
   }
   interface ElementTagNameMap {
-    "app-home": HTMLAppHomeElement;
+    "rein-app": HTMLReinAppElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "app-home": JSXElements.AppHomeAttributes;
+      "rein-app": JSXElements.ReinAppAttributes;
     }
   }
   namespace JSXElements {
-    export interface AppHomeAttributes extends HTMLAttributes {
+    export interface ReinAppAttributes extends HTMLAttributes {
       
     }
   }
@@ -41,29 +41,29 @@ declare global {
 
 
 import {
-  AppProfile as AppProfile
-} from './components/app-profile/app-profile';
+  ReinArea as ReinArea
+} from './components/rein-area/rein-area';
 
 declare global {
-  interface HTMLAppProfileElement extends AppProfile, HTMLElement {
+  interface HTMLReinAreaElement extends ReinArea, HTMLElement {
   }
-  var HTMLAppProfileElement: {
-    prototype: HTMLAppProfileElement;
-    new (): HTMLAppProfileElement;
+  var HTMLReinAreaElement: {
+    prototype: HTMLReinAreaElement;
+    new (): HTMLReinAreaElement;
   };
   interface HTMLElementTagNameMap {
-    "app-profile": HTMLAppProfileElement;
+    "rein-area": HTMLReinAreaElement;
   }
   interface ElementTagNameMap {
-    "app-profile": HTMLAppProfileElement;
+    "rein-area": HTMLReinAreaElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "app-profile": JSXElements.AppProfileAttributes;
+      "rein-area": JSXElements.ReinAreaAttributes;
     }
   }
   namespace JSXElements {
-    export interface AppProfileAttributes extends HTMLAttributes {
+    export interface ReinAreaAttributes extends HTMLAttributes {
       match?: MatchResults;
     }
   }
@@ -71,30 +71,60 @@ declare global {
 
 
 import {
-  MyApp as MyApp
-} from './components/my-app/my-app';
+  ReinAreas as ReinAreas
+} from './components/rein-areas/rein-areas';
 
 declare global {
-  interface HTMLMyAppElement extends MyApp, HTMLElement {
+  interface HTMLReinAreasElement extends ReinAreas, HTMLElement {
   }
-  var HTMLMyAppElement: {
-    prototype: HTMLMyAppElement;
-    new (): HTMLMyAppElement;
+  var HTMLReinAreasElement: {
+    prototype: HTMLReinAreasElement;
+    new (): HTMLReinAreasElement;
   };
   interface HTMLElementTagNameMap {
-    "my-app": HTMLMyAppElement;
+    "rein-areas": HTMLReinAreasElement;
   }
   interface ElementTagNameMap {
-    "my-app": HTMLMyAppElement;
+    "rein-areas": HTMLReinAreasElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "my-app": JSXElements.MyAppAttributes;
+      "rein-areas": JSXElements.ReinAreasAttributes;
     }
   }
   namespace JSXElements {
-    export interface MyAppAttributes extends HTMLAttributes {
+    export interface ReinAreasAttributes extends HTMLAttributes {
       
+    }
+  }
+}
+
+
+import {
+  ReinDistrict as ReinDistrict
+} from './components/rein-district/rein-district';
+
+declare global {
+  interface HTMLReinDistrictElement extends ReinDistrict, HTMLElement {
+  }
+  var HTMLReinDistrictElement: {
+    prototype: HTMLReinDistrictElement;
+    new (): HTMLReinDistrictElement;
+  };
+  interface HTMLElementTagNameMap {
+    "rein-district": HTMLReinDistrictElement;
+  }
+  interface ElementTagNameMap {
+    "rein-district": HTMLReinDistrictElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "rein-district": JSXElements.ReinDistrictAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface ReinDistrictAttributes extends HTMLAttributes {
+      match?: MatchResults;
     }
   }
 }

@@ -1,0 +1,23 @@
+rein-app {
+  header {
+    background: #16161d;
+    color: #fff;;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+    img {
+      height: inherit;
+    }
+    
+    h1 {
+      margin: 0;
+    }
+  }
+
+  .content {
+    padding-top: 2rem;
+  }
+}

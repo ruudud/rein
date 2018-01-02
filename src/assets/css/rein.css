@@ -152,20 +152,6 @@ a:active {
   color: #3079ED;
 }
 
-/*-- Common --*/
-.list {
-  overflow: hidden;
-  margin: 0 auto;
-  background-color: #FFFFFF;
-}
-.content {
-  padding-top: 2em;
-}
-.content-inner {
-  min-height: 280px;
-  padding: 10px;
-}
-
 /* Forms */
 input {
   height: 40px;
@@ -207,7 +193,9 @@ input[type="text"]:focus {
 
 /*-- Listing --*/
 .list {
+  overflow: hidden;
   margin: 0 auto;
+  background-color: #FFFFFF;
   text-align: left;
 }
 .list .item:last-child {

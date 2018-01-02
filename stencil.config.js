@@ -1,11 +1,15 @@
 exports.config = {
   bundles: [
-    { components: ['my-app', 'app-home'] },
-    { components: ['app-profile'] }
+    { components: ['rein-app', 'rein-areas'] },
+    { components: ['rein-area'] },
+    { components: ['rein-district'] }
   ],
   collections: [
     { name: '@stencil/router' }
-  ]
+  ],
+  serviceWorker: {
+    maximumFileSizeToCacheInBytes: 4000000
+  }
 };
 
 exports.devServer = {

@@ -8,15 +8,16 @@
   <meta name="theme-color" content="#16161d">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <script src="/build/app.js"></script>
+  <script src="/build/app.js" async></script>
 
   <link rel="apple-touch-icon" href="/assets/icon/icon.png">
   <link rel="icon" type="image/x-icon" href="/assets/icon/favicon.ico">
   <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/assets/css/rein.css">
 </head>
 <body>
-
-  <my-app></my-app>
+  <div class="sp" id="bootloader"></div>
+  <rein-app></rein-app>
 
   <style>
     body {
@@ -24,6 +25,22 @@
       padding: 0px;
       font-family: sans-serif;
     }
+    .sp {
+      width: 40px;
+      height: 40px;
+      margin: 100px auto;
+      background-color: #666;
+      border-radius: 100%;  
+      animation: sk 1.0s infinite ease-in-out;
+    }
+    @keyframes sk {
+      0% { transform: scale(0); }
+      100% {
+        transform: scale(1.0);
+        opacity: 0;
+      }
+    }
+
   </style>
 </body>
 </html>
